@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="272" id="ps1">
+        <f:facet name="first">
+            <af:panelBox id="pb1">
+                <f:facet name="toolbar">
+          <af:outputText value="Mastams" id="ot69" inlineStyle="color:Maroon; font-size:x-large; font-style:italic;"/>
+        </f:facet>
+                <af:panelFormLayout id="pfl1">
+                    <af:outputText value="Purchase Omc Report" id="ot20"
+                                   inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+                    <af:inputText value="#{bindings.PurchaseOmcParamId.inputValue}"
+                                  label="#{bindings.PurchaseOmcParamId.hints.label}"
+                                  required="#{bindings.PurchaseOmcParamId.hints.mandatory}"
+                                  columns="#{bindings.PurchaseOmcParamId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PurchaseOmcParamId.hints.precision}"
+                                  shortDesc="#{bindings.PurchaseOmcParamId.hints.tooltip}" id="it1" rendered="false">
+                        <f:validator binding="#{bindings.PurchaseOmcParamId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PurchaseOmcParamId.format}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.PurchaseOmcParamStartDate.inputValue}"
+                                  label="#{bindings.PurchaseOmcParamStartDate.hints.label}"
+                                  required="#{bindings.PurchaseOmcParamStartDate.hints.mandatory}"
+                                  columns="#{bindings.PurchaseOmcParamStartDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.PurchaseOmcParamStartDate.hints.tooltip}" id="id1">
+                        <f:validator binding="#{bindings.PurchaseOmcParamStartDate.validator}"/>
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:inputText value="#{bindings.PurchaseOmcParamOmcId.inputValue}"
+                                  label="#{bindings.PurchaseOmcParamOmcId.hints.label}"
+                                  required="#{bindings.PurchaseOmcParamOmcId.hints.mandatory}"
+                                  columns="#{bindings.PurchaseOmcParamOmcId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PurchaseOmcParamOmcId.hints.precision}"
+                                  shortDesc="#{bindings.PurchaseOmcParamOmcId.hints.tooltip}" id="it2" rendered="false">
+                        <f:validator binding="#{bindings.PurchaseOmcParamOmcId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PurchaseOmcParamOmcId.format}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.PurchaseOmcParamEndDate.inputValue}"
+                                  label="#{bindings.PurchaseOmcParamEndDate.hints.label}"
+                                  required="#{bindings.PurchaseOmcParamEndDate.hints.mandatory}"
+                                  columns="#{bindings.PurchaseOmcParamEndDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.PurchaseOmcParamEndDate.hints.tooltip}" id="id2">
+                        <f:validator binding="#{bindings.PurchaseOmcParamEndDate.validator}"/>
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:inputListOfValues id="coaNameId" popupTitle="Search and Select: #{bindings.CoaName.hints.label}"
+                                          value="#{bindings.CoaName.inputValue}" label="#{bindings.CoaName.hints.label}"
+                                          model="#{bindings.CoaName.listOfValuesModel}"
+                                          required="#{bindings.CoaName.hints.mandatory}"
+                                          columns="#{bindings.CoaName.hints.displayWidth}"
+                                          shortDesc="#{bindings.CoaName.hints.tooltip}" autoSubmit="true">
+                        <f:validator binding="#{bindings.CoaName.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.CoaName.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputText value="#{bindings.CoaActNumber.inputValue}"
+                                  label="#{bindings.CoaActNumber.hints.label}"
+                                  required="#{bindings.CoaActNumber.hints.mandatory}"
+                                  columns="#{bindings.CoaActNumber.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaActNumber.hints.precision}"
+                                  shortDesc="#{bindings.CoaActNumber.hints.tooltip}" id="it3">
+                        <f:validator binding="#{bindings.CoaActNumber.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaActNumber.format}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout id="pgl2">
+                            <af:button actionListener="#{bindings.Execute.execute}" text="Show"
+                                       disabled="#{!bindings.Execute.enabled}" id="b2"/>
+                            <af:spacer width="80" height="10" id="s1"/>
+                            <af:button text="Submit" id="b1" actionListener="#{bindings.Commit.execute}"
+                                       icon="#{resource['images:commit.png']}"/>
+                            <af:spacer width="500" height="10" id="s2"/>
+                            <af:button text="Excel" id="b3" inlineStyle="color:Green;"
+                                       icon="#{resource['images:export.png']}">
+                                <af:exportCollectionActionListener type="excelHTML" exportedId="pc1:t1"
+                                                                   filename="PurchaseOMCReport.xls"
+                                                                   title="Purchase Omc Report"/>
+                            </af:button>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar">
+                    <af:toolbar id="t2">
+                        <af:outputText value="Mastams" id="ot21" inlineStyle="color:Purple; font-size:large;"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.ZRptPurchaseOmcDataView1.collectionModel}" var="row"
+                          rows="#{bindings.ZRptPurchaseOmcDataView1.rangeSize}"
+                          emptyText="#{bindings.ZRptPurchaseOmcDataView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.ZRptPurchaseOmcDataView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.ZRptPurchaseOmcDataView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.ZRptPurchaseOmcDataView1.rangeSize}"
+                          filterModel="#{bindings.ZRptPurchaseOmcDataView1Query.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.ZRptPurchaseOmcDataView1Query.processQuery}" varStatus="vs" id="t1" width="1200"
+                          partialTriggers=":::b2 :::b1">
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataCoa.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataCoa.label}" id="c1"
+                               width="150" inlineStyle="text-align:left;" align="center">
+                        <af:outputText value="#{row.PurchaseAllDataCoa}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataCoa.tooltip}"
+                                       id="ot1">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataCoa.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataCoaName.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataCoaName.label}"
+                               id="c2" width="250" inlineStyle="text-align:left;" align="center">
+                        <af:outputText value="#{row.PurchaseAllDataCoaName}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataCoaName.tooltip}"
+                                       id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataOmcName.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataOmcName.label}"
+                               id="c3" width="80" inlineStyle="text-align:left;" align="center">
+                        <af:outputText value="#{row.PurchaseAllDataOmcName}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataOmcName.tooltip}"
+                                       id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsd.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsd.label}" id="c4"
+                               inlineStyle="text-align:right;" align="center">
+                        <af:outputText value="#{row.PurchaseAllDataHsd}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsd.tooltip}"
+                                       id="ot4">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsd.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsdRate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsdRate.label}"
+                               id="c5" inlineStyle="text-align:right;" align="center" visible="false">
+                        <af:outputText value="#{row.PurchaseAllDataHsdRate}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsdRate.tooltip}"
+                                       id="ot5">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsdRate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsdAmt.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsdAmt.label}"
+                               id="c6" inlineStyle="text-align:left;" align="center" rendered="false">
+                        <af:outputText value="#{row.PurchaseAllDataHsdAmt}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsdAmt.tooltip}"
+                                       id="ot6">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHsdAmt.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmg.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmg.label}" id="c7"
+                               inlineStyle="text-align:right;" align="center">
+                        <af:outputText value="#{row.PurchaseAllDataPmg}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmg.tooltip}"
+                                       id="ot7">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmg.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmgRate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmgRate.label}"
+                               id="c8" inlineStyle="text-align:right;" align="center" visible="false">
+                        <af:outputText value="#{row.PurchaseAllDataPmgRate}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmgRate.tooltip}"
+                                       id="ot8">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmgRate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmgAmt.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmgAmt.label}"
+                               id="c9" inlineStyle="text-align:left;" align="center" rendered="false">
+                        <af:outputText value="#{row.PurchaseAllDataPmgAmt}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmgAmt.tooltip}"
+                                       id="ot9">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataPmgAmt.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSko.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSko.label}" id="c10"
+                               inlineStyle="text-align:right;" align="center">
+                        <af:outputText value="#{row.PurchaseAllDataSko}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSko.tooltip}"
+                                       id="ot10">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSko.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSkoRate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSkoRate.label}"
+                               id="c11" inlineStyle="text-align:right;" align="center" visible="false">
+                        <af:outputText value="#{row.PurchaseAllDataSkoRate}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSkoRate.tooltip}"
+                                       id="ot11">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSkoRate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSkoAmt.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSkoAmt.label}"
+                               id="c12" inlineStyle="text-align:left;" align="center" rendered="false">
+                        <af:outputText value="#{row.PurchaseAllDataSkoAmt}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSkoAmt.tooltip}"
+                                       id="ot12">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataSkoAmt.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobc.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobc.label}"
+                               id="c13" inlineStyle="text-align:right;" align="center">
+                        <af:outputText value="#{row.PurchaseAllDataHobc}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobc.tooltip}"
+                                       id="ot13">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobc.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobcRate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobcRate.label}"
+                               id="c14" inlineStyle="text-align:right;" align="center" visible="false">
+                        <af:outputText value="#{row.PurchaseAllDataHobcRate}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobcRate.tooltip}"
+                                       id="ot14">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobcRate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobcAmt.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobcAmt.label}"
+                               id="c15" inlineStyle="text-align:left;" align="center" rendered="false">
+                        <af:outputText value="#{row.PurchaseAllDataHobcAmt}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobcAmt.tooltip}"
+                                       id="ot15">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataHobcAmt.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdo.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdo.label}" id="c16"
+                               inlineStyle="text-align:right;" align="center">
+                        <af:outputText value="#{row.PurchaseAllDataLdo}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdo.tooltip}"
+                                       id="ot16">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdo.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdoRate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdoRate.label}"
+                               id="c17" inlineStyle="text-align:left;" align="center" visible="false">
+                        <af:outputText value="#{row.PurchaseAllDataLdoRate}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdoRate.tooltip}"
+                                       id="ot17">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdoRate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdoAmt.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdoAmt.label}"
+                               id="c18" inlineStyle="text-align:left;" align="center" rendered="false">
+                        <af:outputText value="#{row.PurchaseAllDataLdoAmt}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdoAmt.tooltip}"
+                                       id="ot18">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataLdoAmt.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataCat.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataCat.label}" id="c19"
+                               inlineStyle="text-align:left;" align="center" rendered="false">
+                        <af:outputText value="#{row.PurchaseAllDataCat}"
+                                       shortDesc="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataCat.tooltip}"
+                                       id="ot19">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptPurchaseOmcDataView1.hints.PurchaseAllDataCat.format}"/>
+                        </af:outputText>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+</ui:composition>

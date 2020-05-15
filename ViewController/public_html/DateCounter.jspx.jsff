@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGridLayout id="pgl1">
+        <af:gridRow height="100%" id="gr1">
+            <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                <!-- Content -->
+                <af:panelGroupLayout id="pgl2" inlineStyle="width:750px; height:436px;">
+                    <af:panelFormLayout id="pfl1">
+                        <af:inputText value="#{bindings.DcId.inputValue}" label="#{bindings.DcId.hints.label}"
+                                      required="#{bindings.DcId.hints.mandatory}" readOnly="true"
+                                      columns="#{bindings.DcId.hints.displayWidth}"
+                                      maximumLength="#{bindings.DcId.hints.precision}"
+                                      shortDesc="#{bindings.DcId.hints.tooltip}" id="it1">
+                            <f:validator binding="#{bindings.DcId.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.DcId.format}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.DcDate.inputValue}" readOnly="true"
+                                      label="#{bindings.DcDate.hints.label}"
+                                      required="#{bindings.DcDate.hints.mandatory}"
+                                      columns="#{bindings.DcDate.hints.displayWidth}"
+                                      shortDesc="#{bindings.DcDate.hints.tooltip}" id="id1">
+                            <f:validator binding="#{bindings.DcDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.DcDate.format}"/>
+                        </af:inputDate>
+                        <af:inputDate value="#{bindings.DcDateCounter.inputValue}" readOnly="true"
+                                      label="#{bindings.DcDateCounter.hints.label}"
+                                      required="#{bindings.DcDateCounter.hints.mandatory}"
+                                      columns="#{bindings.DcDateCounter.hints.displayWidth}"
+                                      shortDesc="#{bindings.DcDateCounter.hints.tooltip}" id="id2">
+                            <f:validator binding="#{bindings.DcDateCounter.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.DcDateCounter.format}"/>
+                        </af:inputDate>
+                        <af:inputDate value="#{bindings.DcStartDate.inputValue}" readOnly="true"
+                                      label="#{bindings.DcStartDate.hints.label}"
+                                      required="#{bindings.DcStartDate.hints.mandatory}"
+                                      columns="#{bindings.DcStartDate.hints.displayWidth}"
+                                      shortDesc="#{bindings.DcStartDate.hints.tooltip}" id="id3">
+                            <f:validator binding="#{bindings.DcStartDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.DcStartDate.format}"/>
+                        </af:inputDate>
+                        <af:inputDate value="#{bindings.DcEndDate.inputValue}" readOnly="true"
+                                      label="#{bindings.DcEndDate.hints.label}"
+                                      required="#{bindings.DcEndDate.hints.mandatory}"
+                                      columns="#{bindings.DcEndDate.hints.displayWidth}"
+                                      shortDesc="#{bindings.DcEndDate.hints.tooltip}" id="id4">
+                            <f:validator binding="#{bindings.DcEndDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.DcEndDate.format}"/>
+                        </af:inputDate>
+                        <f:facet name="footer">
+                            <af:panelGroupLayout layout="horizontal" id="pgl3">
+                                <af:button actionListener="#{bindings.First.execute}" text="First"
+                                           disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1"/>
+                                <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                           disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"/>
+                                <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                           disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"/>
+                                <af:button actionListener="#{bindings.Last.execute}" text="Last"
+                                           disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4"/>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                        <af:button text="MeterReadings" id="b5" action="MeterReadings"/>
+                    </af:panelFormLayout>
+                </af:panelGroupLayout>
+            </af:gridCell>
+        </af:gridRow>
+    </af:panelGridLayout>
+</jsp:root>

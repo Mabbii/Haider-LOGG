@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelSplitter orientation="vertical" splitterPosition="276" id="ps1">
+    <f:facet name="first">
+      <af:panelBox id="pb1">
+        <f:facet name="toolbar">
+          <af:outputText value="Mastams" id="ot13" inlineStyle="color:Maroon; font-size:x-large; font-style:italic;"/>
+        </f:facet>
+        <af:panelFormLayout id="pfl1">
+          <af:outputText value="Customer Debit Limit" id="ot12"
+                         inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+          <af:inputText value="#{bindings.SingCusDblmtParamId.inputValue}"
+                        label="#{bindings.SingCusDblmtParamId.hints.label}"
+                        required="#{bindings.SingCusDblmtParamId.hints.mandatory}"
+                        columns="#{bindings.SingCusDblmtParamId.hints.displayWidth}"
+                        maximumLength="#{bindings.SingCusDblmtParamId.hints.precision}"
+                        shortDesc="#{bindings.SingCusDblmtParamId.hints.tooltip}" id="it1" rendered="false">
+            <f:validator binding="#{bindings.SingCusDblmtParamId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.SingCusDblmtParamId.format}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.SingCusDblmtParamStrtDate.inputValue}"
+                        label="#{bindings.SingCusDblmtParamStrtDate.hints.label}"
+                        required="#{bindings.SingCusDblmtParamStrtDate.hints.mandatory}"
+                        columns="#{bindings.SingCusDblmtParamStrtDate.hints.displayWidth}"
+                        shortDesc="#{bindings.SingCusDblmtParamStrtDate.hints.tooltip}" id="id1">
+            <f:validator binding="#{bindings.SingCusDblmtParamStrtDate.validator}"/>
+            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+          </af:inputDate>
+          <af:inputDate value="#{bindings.SingCusDblmtParamEndDate.inputValue}"
+                        label="#{bindings.SingCusDblmtParamEndDate.hints.label}"
+                        required="#{bindings.SingCusDblmtParamEndDate.hints.mandatory}"
+                        columns="#{bindings.SingCusDblmtParamEndDate.hints.displayWidth}"
+                        shortDesc="#{bindings.SingCusDblmtParamEndDate.hints.tooltip}" id="id2" rendered="true">
+            <f:validator binding="#{bindings.SingCusDblmtParamEndDate.validator}"/>
+            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.SingCusDblmtParamPartyId.inputValue}"
+                        label="#{bindings.SingCusDblmtParamPartyId.hints.label}"
+                        required="#{bindings.SingCusDblmtParamPartyId.hints.mandatory}"
+                        columns="#{bindings.SingCusDblmtParamPartyId.hints.displayWidth}"
+                        maximumLength="#{bindings.SingCusDblmtParamPartyId.hints.precision}"
+                        shortDesc="#{bindings.SingCusDblmtParamPartyId.hints.tooltip}" id="it2" rendered="false">
+            <f:validator binding="#{bindings.SingCusDblmtParamPartyId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.SingCusDblmtParamPartyId.format}"/>
+          </af:inputText>
+          <af:inputListOfValues id="coaNameId" popupTitle="Search and Select: #{bindings.CoaName.hints.label}"
+                                value="#{bindings.CoaName.inputValue}" label="#{bindings.CoaName.hints.label}"
+                                model="#{bindings.CoaName.listOfValuesModel}"
+                                required="#{bindings.CoaName.hints.mandatory}"
+                                columns="#{bindings.CoaName.hints.displayWidth}"
+                                shortDesc="#{bindings.CoaName.hints.tooltip}" autoSubmit="true">
+            <f:validator binding="#{bindings.CoaName.validator}"/>
+            <af:autoSuggestBehavior suggestedItems="#{bindings.CoaName.suggestedItems}"/>
+          </af:inputListOfValues>
+          <af:inputText value="#{bindings.CoaActNumber.inputValue}" label="#{bindings.CoaActNumber.hints.label}"
+                        required="#{bindings.CoaActNumber.hints.mandatory}"
+                        columns="#{bindings.CoaActNumber.hints.displayWidth}"
+                        maximumLength="#{bindings.CoaActNumber.hints.precision}"
+                        shortDesc="#{bindings.CoaActNumber.hints.tooltip}" id="it3">
+            <f:validator binding="#{bindings.CoaActNumber.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaActNumber.format}"/>
+          </af:inputText>
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl2">
+              <af:button actionListener="#{bindings.Execute.execute}" text="Show"
+                         disabled="#{!bindings.Execute.enabled}" id="b2"/>
+              <af:spacer width="80" height="10" id="s1"/>
+              <af:button text="Submit" id="b1" actionListener="#{bindings.Commit.execute}"
+                         icon="#{resource['images:commit.png']}"/>
+              <af:spacer width="500" height="10" id="s2"/>
+              <af:button text="Excel" id="b3" inlineStyle="color:Green;" icon="#{resource['images:export.png']}">
+                <af:exportCollectionActionListener type="excelHTML" exportedId="pc1:t1"
+                                                   filename="Customer_debitLimit.xls" title="Customer Debit Limit"/>
+              </af:button>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="second">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.ZRptOneCusDblmtDataView1.collectionModel}" var="row"
+                  rows="#{bindings.ZRptOneCusDblmtDataView1.rangeSize}"
+                  emptyText="#{bindings.ZRptOneCusDblmtDataView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.ZRptOneCusDblmtDataView1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.ZRptOneCusDblmtDataView1.collectionModel.makeCurrent}"
+                  rowSelection="single" fetchSize="#{bindings.ZRptOneCusDblmtDataView1.rangeSize}"
+                  filterModel="#{bindings.ZRptOneCusDblmtDataView1Query.queryDescriptor}" filterVisible="true"
+                  queryListener="#{bindings.ZRptOneCusDblmtDataView1Query.processQuery}" varStatus="vs" id="t1"
+                  partialTriggers="::b2 :::b2 :::b1" scrollPolicy="page" width="1200">
+          <af:column sortProperty="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPartyId.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPartyId.label}" id="c1"
+                     align="center" width="120" inlineStyle="text-align:left;">
+            <af:outputText value="#{row.SingCusDblmtPartyId}"
+                           shortDesc="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPartyId.tooltip}" id="ot1">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPartyId.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtDate.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtDate.label}"
+                     id="c2" width="150" align="center" inlineStyle="text-align:left;">
+            <f:facet name="filter">
+              <af:inputDate value="#{bindings.ZRptOneCusDblmtDataView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.SingCusDblmtDate.value}"
+                            id="id3">
+                <af:convertDateTime pattern="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtDate.format}"/>
+              </af:inputDate>
+            </f:facet>
+            <af:outputText value="#{row.SingCusDblmtDate}"
+                           shortDesc="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtDate.tooltip}" id="ot2">
+              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPartyName.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPartyName.label}" id="c3"
+                     width="120" align="center" inlineStyle="text-align:left;">
+            <af:outputText value="#{row.SingCusDblmtPartyName}"
+                           shortDesc="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPartyName.tooltip}"
+                           id="ot3"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtLedgerBalance.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtLedgerBalance.label}" id="c4"
+                     width="150" align="center" inlineStyle="text-align:right;">
+            <af:outputText value="#{row.SingCusDblmtLedgerBalance}"
+                           shortDesc="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtLedgerBalance.tooltip}"
+                           id="ot4">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtLedgerBalance.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPayments.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPayments.label}" id="c6"
+                     width="120" align="center" inlineStyle="text-align:right;">
+            <af:outputText value="#{row.SingCusDblmtPayments}"
+                           shortDesc="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPayments.tooltip}" id="ot6">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPayments.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPurchases.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPurchases.label}" id="c5"
+                     width="120" align="center" inlineStyle="text-align:right;">
+            <af:outputText value="#{row.SingCusDblmtPurchases}"
+                           shortDesc="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPurchases.tooltip}"
+                           id="ot5">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtPurchases.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtNetBalance.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtNetBalance.label}" id="c7"
+                     inlineStyle="text-align:right;" width="150" align="center">
+            <af:outputText value="#{row.SingCusDblmtNetBalance}"
+                           shortDesc="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtNetBalance.tooltip}"
+                           id="ot7">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtNetBalance.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtCreditLimit.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtCreditLimit.label}" id="c8"
+                     width="120" align="center" inlineStyle="text-align:right;">
+            <af:outputText value="#{row.SingCusDblmtCreditLimit}"
+                           shortDesc="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtCreditLimit.tooltip}"
+                           id="ot8">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtCreditLimit.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusBalanceWithLimit.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusBalanceWithLimit.label}" id="c9"
+                     inlineStyle="text-align:right;" width="150" align="center">
+            <af:outputText value="#{row.SingCusBalanceWithLimit}"
+                           shortDesc="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusBalanceWithLimit.tooltip}"
+                           id="ot9">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusBalanceWithLimit.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtComments.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtComments.label}" id="c10"
+                     width="150" align="center" inlineStyle="text-align:left;">
+            <af:outputText value="#{row.SingCusDblmtComments}"
+                           shortDesc="#{bindings.ZRptOneCusDblmtDataView1.hints.SingCusDblmtComments.tooltip}"
+                           id="ot10"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptOneCusDblmtDataView1.hints.CreditLimitCat.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.ZRptOneCusDblmtDataView1.hints.CreditLimitCat.label}"
+                     id="c11" rendered="false">
+            <af:outputText value="#{row.CreditLimitCat}"
+                           shortDesc="#{bindings.ZRptOneCusDblmtDataView1.hints.CreditLimitCat.tooltip}" id="ot11">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptOneCusDblmtDataView1.hints.CreditLimitCat.format}"/>
+            </af:outputText>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+  </af:panelSplitter>
+</ui:composition>

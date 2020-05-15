@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="275" id="ps1" partialTriggers="ps1">
+        <f:facet name="first">
+            <af:panelBox id="pb1">
+                <f:facet name="toolbar">
+          <af:outputText value="Mastams" id="ot69" inlineStyle="color:Maroon; font-size:x-large; font-style:italic;"/>
+        </f:facet>
+                <af:panelFormLayout id="pfl1" partialTriggers="pc1:t1">
+                    <af:outputText value="Payment Omc" id="ot12"
+                                   inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+                    <af:inputText value="#{bindings.RecieptOmcParamId.inputValue}"
+                                  label="#{bindings.RecieptOmcParamId.hints.label}"
+                                  required="#{bindings.RecieptOmcParamId.hints.mandatory}"
+                                  columns="#{bindings.RecieptOmcParamId.hints.displayWidth}"
+                                  maximumLength="#{bindings.RecieptOmcParamId.hints.precision}"
+                                  shortDesc="#{bindings.RecieptOmcParamId.hints.tooltip}" id="it1" rendered="false">
+                        <f:validator binding="#{bindings.RecieptOmcParamId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.RecieptOmcParamId.format}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.RecieptOmcParamStartDate.inputValue}"
+                                  label="#{bindings.RecieptOmcParamStartDate.hints.label}"
+                                  required="#{bindings.RecieptOmcParamStartDate.hints.mandatory}"
+                                  columns="#{bindings.RecieptOmcParamStartDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.RecieptOmcParamStartDate.hints.tooltip}" id="id1">
+                        <f:validator binding="#{bindings.RecieptOmcParamStartDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.RecieptOmcParamStartDate.format}"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.RecieptOmcParamEndDate.inputValue}"
+                                  label="#{bindings.RecieptOmcParamEndDate.hints.label}"
+                                  required="#{bindings.RecieptOmcParamEndDate.hints.mandatory}"
+                                  columns="#{bindings.RecieptOmcParamEndDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.RecieptOmcParamEndDate.hints.tooltip}" id="id2">
+                        <f:validator binding="#{bindings.RecieptOmcParamEndDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.RecieptOmcParamEndDate.format}"/>
+                    </af:inputDate>
+                    <af:inputText value="#{bindings.RecieptOmcParamOmcId.inputValue}"
+                                  label="#{bindings.RecieptOmcParamOmcId.hints.label}"
+                                  required="#{bindings.RecieptOmcParamOmcId.hints.mandatory}"
+                                  columns="#{bindings.RecieptOmcParamOmcId.hints.displayWidth}"
+                                  maximumLength="#{bindings.RecieptOmcParamOmcId.hints.precision}"
+                                  shortDesc="#{bindings.RecieptOmcParamOmcId.hints.tooltip}" partialTriggers="coaNameId"
+                                  id="it2" rendered="false">
+                        <f:validator binding="#{bindings.RecieptOmcParamOmcId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.RecieptOmcParamOmcId.format}"/>
+                    </af:inputText>
+                    <af:inputListOfValues id="coaNameId" popupTitle="Search and Select: #{bindings.CoaName.hints.label}"
+                                          value="#{bindings.CoaName.inputValue}" label="#{bindings.CoaName.hints.label}"
+                                          model="#{bindings.CoaName.listOfValuesModel}"
+                                          required="#{bindings.CoaName.hints.mandatory}"
+                                          columns="#{bindings.CoaName.hints.displayWidth}"
+                                          shortDesc="#{bindings.CoaName.hints.tooltip}" autoSubmit="true">
+                        <f:validator binding="#{bindings.CoaName.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.CoaName.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputText value="#{bindings.CoaActNumber.inputValue}"
+                                  label="#{bindings.CoaActNumber.hints.label}"
+                                  required="#{bindings.CoaActNumber.hints.mandatory}"
+                                  columns="#{bindings.CoaActNumber.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaActNumber.hints.precision}"
+                                  shortDesc="#{bindings.CoaActNumber.hints.tooltip}" id="it3">
+                        <f:validator binding="#{bindings.CoaActNumber.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaActNumber.format}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout id="pgl1">
+                            <af:button actionListener="#{bindings.Execute.execute}" text="Execute"
+                                       disabled="#{!bindings.Execute.enabled}" id="b2"/>
+                            <af:spacer width="150" height="10" id="s1"/>
+                            <af:button text="Submit" id="b1" actionListener="#{bindings.Commit.execute}"
+                                       disabled="#{!bindings.Commit.enabled}" icon="#{resource['images:commit.png']}"/>
+                            <af:spacer width="360" height="10" id="s2"/>
+                            <af:button text="Excel" id="b3" inlineStyle="color:Green;"
+                                       icon="#{resource['images:export.png']}"/>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.ZRptRecieptOmcDataView1.collectionModel}" var="row"
+                          rows="#{bindings.ZRptRecieptOmcDataView1.rangeSize}"
+                          emptyText="#{bindings.ZRptRecieptOmcDataView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.ZRptRecieptOmcDataView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.ZRptRecieptOmcDataView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.ZRptRecieptOmcDataView1.rangeSize}"
+                          filterModel="#{bindings.ZRptRecieptOmcDataView1Query.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.ZRptRecieptOmcDataView1Query.processQuery}" varStatus="vs" id="t1"
+                          partialTriggers=":::b2 :::b1">
+                    <af:column sortProperty="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataDate.label}" id="c1"
+                               align="center" inlineStyle="text-align:left;">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.ZRptRecieptOmcDataView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.RecieptOmcDataDate.value}"
+                                          id="id3">
+                                <af:convertDateTime pattern="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.RecieptOmcDataDate}"
+                                       shortDesc="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataDate.tooltip}"
+                                       id="ot1">
+                            <af:convertDateTime pattern="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataOmcPump.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataOmcPump.label}"
+                               id="c2" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.RecieptOmcDataOmcPump}"
+                                       shortDesc="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataOmcPump.tooltip}"
+                                       id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataCustomer.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataCustomer.label}"
+                               id="c3" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.RecieptOmcDataCustomer}"
+                                       shortDesc="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataCustomer.tooltip}"
+                                       id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataAmount.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataAmount.label}"
+                               id="c4" align="center" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.RecieptOmcDataAmount}"
+                                       shortDesc="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataAmount.tooltip}"
+                                       id="ot4">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataAmount.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataBranchCode.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataBranchCode.label}"
+                               id="c5" align="center" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.RecieptOmcDataBranchCode}"
+                                       shortDesc="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataBranchCode.tooltip}"
+                                       id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataSlipDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataSlipDate.label}"
+                               id="c6" align="center" inlineStyle="text-align:left;">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.ZRptRecieptOmcDataView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.RecieptOmcDataSlipDate.value}"
+                                          id="id4">
+                                <af:convertDateTime pattern="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataSlipDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.RecieptOmcDataSlipDate}"
+                                       shortDesc="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataSlipDate.tooltip}"
+                                       id="ot6">
+                            <af:convertDateTime pattern="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataSlipDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataSlipNo.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataSlipNo.label}"
+                               id="c7" align="center" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.RecieptOmcDataSlipNo}"
+                                       shortDesc="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataSlipNo.tooltip}"
+                                       id="ot7"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataRefBank.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataRefBank.label}"
+                               id="c8" align="center">
+                        <af:outputText value="#{row.RecieptOmcDataRefBank}"
+                                       shortDesc="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataRefBank.tooltip}"
+                                       id="ot8"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataTType.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataTType.label}" id="c9"
+                               align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.RecieptOmcDataTType}"
+                                       shortDesc="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataTType.tooltip}"
+                                       id="ot9"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataEtc.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataEtc.label}" id="c10"
+                               align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.RecieptOmcDataEtc}"
+                                       shortDesc="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataEtc.tooltip}"
+                                       id="ot10"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataDetails.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataDetails.label}"
+                               id="c11" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.RecieptOmcDataDetails}"
+                                       shortDesc="#{bindings.ZRptRecieptOmcDataView1.hints.RecieptOmcDataDetails.tooltip}"
+                                       id="ot11"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+</ui:composition>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBox text="X-Depo" id="pb1">
+    <f:facet name="toolbar"/>
+    <af:panelGroupLayout id="pgl1">
+      <af:panelFormLayout id="pfl1">
+        <af:outputText value="Add X-Depo Rate" id="ot1"
+                       inlineStyle="font-size:x-large; font-weight:bold; font-style:italic;"/>
+        <af:inputText value="#{bindings.XdrId.inputValue}" label="#{bindings.XdrId.hints.label}"
+                      required="#{bindings.XdrId.hints.mandatory}" columns="#{bindings.XdrId.hints.displayWidth}"
+                      maximumLength="#{bindings.XdrId.hints.precision}" shortDesc="#{bindings.XdrId.hints.tooltip}"
+                      id="it1">
+          <f:validator binding="#{bindings.XdrId.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.XdrId.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.XdrPmg.inputValue}" label="#{bindings.XdrPmg.hints.label}"
+                      required="#{bindings.XdrPmg.hints.mandatory}" columns="#{bindings.XdrPmg.hints.displayWidth}"
+                      maximumLength="#{bindings.XdrPmg.hints.precision}" shortDesc="#{bindings.XdrPmg.hints.tooltip}"
+                      id="it2">
+          <f:validator binding="#{bindings.XdrPmg.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.XdrPmg.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.XdrHsd.inputValue}" label="#{bindings.XdrHsd.hints.label}"
+                      required="#{bindings.XdrHsd.hints.mandatory}" columns="#{bindings.XdrHsd.hints.displayWidth}"
+                      maximumLength="#{bindings.XdrHsd.hints.precision}" shortDesc="#{bindings.XdrHsd.hints.tooltip}"
+                      id="it3">
+          <f:validator binding="#{bindings.XdrHsd.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.XdrHsd.format}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.XdrDate.inputValue}" label="#{bindings.XdrDate.hints.label}"
+                      required="#{bindings.XdrDate.hints.mandatory}" columns="#{bindings.XdrDate.hints.displayWidth}"
+                      shortDesc="#{bindings.XdrDate.hints.tooltip}" id="id1">
+          <f:validator binding="#{bindings.XdrDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.XdrDate.format}"/>
+        </af:inputDate>
+         <f:facet name="footer">
+                            <af:panelGroupLayout layout="horizontal" id="pgl9">
+                                <af:panelGroupLayout layout="horizontal" id="pgl3">
+                                    <af:button actionListener="#{bindings.First.execute}"
+                                               disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1" icon="#{resource['images:first_hor_ena.png']}"/>
+                                    <af:button actionListener="#{bindings.Previous.execute}"
+                                               disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2" icon="#{resource['images:previoustraversalarrow_ena.png']}"/>
+                                    <af:button actionListener="#{bindings.Next.execute}"
+                                               disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3" icon="#{resource['images:nexttraversalarrow_ena.png']}"/>
+                                    <af:button actionListener="#{bindings.Last.execute}"
+                                               disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4" icon="#{resource['images:last_hor_ena.png']}"/>
+                                    <af:outputText value="---------" id="ot7"/>
+                                </af:panelGroupLayout>
+                                <af:button text="Submit" id="b5" actionListener="#{bindings.Commit.execute}"
+                                           icon="#{resource['images:commit.png']}">
+                                           <af:showPopupBehavior popupId="p1" triggerType="click"/>
+                                </af:button>
+                                <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                                           disabled="#{!bindings.CreateInsert.enabled}" id="b6"
+                                           icon="#{resource['images:add.png']}"/>
+                                <af:outputText value="--------------" id="ot6"/>
+                                <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                           disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b7" icon="#{resource['images:rollback.png']}">
+                                    <af:resetActionListener/>
+                                </af:button>
+                                <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                                    <af:noteWindow id="nw1">
+                                            <b style="color:Maroon;">Submitted</b>
+                                    </af:noteWindow>
+                                </af:popup>
+                            </af:panelGroupLayout>
+                        </f:facet>
+      </af:panelFormLayout>
+      <af:panelBox text="X-Depo Rate Table" id="pb2">
+        <f:facet name="toolbar"/>
+        <af:panelCollection id="pc1">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar"/>
+          <af:table value="#{bindings.XdporateVO1.collectionModel}" var="row" rows="#{bindings.XdporateVO1.rangeSize}"
+                    emptyText="#{bindings.XdporateVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" selectedRowKeys="#{bindings.XdporateVO1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.XdporateVO1.collectionModel.makeCurrent}" rowSelection="single"
+                    fetchSize="#{bindings.XdporateVO1.rangeSize}"
+                    filterModel="#{bindings.XdporateVO1Query.queryDescriptor}" filterVisible="true"
+                    queryListener="#{bindings.XdporateVO1Query.processQuery}" varStatus="vs" id="t1"
+                    partialTriggers=":::b1 :::b2 :::b3 :::b4 :::b6">
+            <af:column sortProperty="#{bindings.XdporateVO1.hints.XdrId.name}" filterable="true" sortable="true"
+                       headerText="#{bindings.XdporateVO1.hints.XdrId.label}" id="c1">
+              <af:outputText value="#{row.XdrId}" shortDesc="#{bindings.XdporateVO1.hints.XdrId.tooltip}" id="ot2">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.XdporateVO1.hints.XdrId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.XdporateVO1.hints.XdrPmg.name}" filterable="true" sortable="true"
+                       headerText="#{bindings.XdporateVO1.hints.XdrPmg.label}" id="c2">
+              <af:outputText value="#{row.XdrPmg}" shortDesc="#{bindings.XdporateVO1.hints.XdrPmg.tooltip}" id="ot3">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.XdporateVO1.hints.XdrPmg.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.XdporateVO1.hints.XdrHsd.name}" filterable="true" sortable="true"
+                       headerText="#{bindings.XdporateVO1.hints.XdrHsd.label}" id="c3">
+              <af:outputText value="#{row.XdrHsd}" shortDesc="#{bindings.XdporateVO1.hints.XdrHsd.tooltip}" id="ot4">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.XdporateVO1.hints.XdrHsd.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.XdporateVO1.hints.XdrDate.name}" filterable="true" sortable="true"
+                       headerText="#{bindings.XdporateVO1.hints.XdrDate.label}" id="c4">
+              <f:facet name="filter">
+                <af:inputDate value="#{bindings.XdporateVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.XdrDate.value}"
+                              id="id2">
+                  <af:convertDateTime pattern="#{bindings.XdporateVO1.hints.XdrDate.format}"/>
+                </af:inputDate>
+              </f:facet>
+              <af:outputText value="#{row.XdrDate}" shortDesc="#{bindings.XdporateVO1.hints.XdrDate.tooltip}" id="ot5">
+                <af:convertDateTime pattern="#{bindings.XdporateVO1.hints.XdrDate.format}"/>
+              </af:outputText>
+            </af:column>
+          </af:table>
+          <f:facet name="statusbar"/>
+        </af:panelCollection>
+      </af:panelBox>
+    </af:panelGroupLayout>
+  </af:panelBox>
+</ui:composition>

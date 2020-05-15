@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="308" id="ps1" partialTriggers="ps1">
+        <f:facet name="first">
+            <af:panelBox id="pb1">
+                <f:facet name="toolbar">
+          <af:outputText value="Mastams" id="ot69" inlineStyle="color:Maroon; font-size:x-large; font-style:italic;"/>
+        </f:facet>
+                <af:panelFormLayout id="pfl1" partialTriggers="pc1:t1">
+                    <af:outputText value="Omc Pump Credit Limit" id="ot12"
+                                   inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+                    <af:inputText value="#{bindings.OmcPmpClPrmId1.inputValue}"
+                                  label="#{bindings.OmcPmpClPrmId1.hints.label}"
+                                  required="#{bindings.OmcPmpClPrmId1.hints.mandatory}"
+                                  columns="#{bindings.OmcPmpClPrmId1.hints.displayWidth}"
+                                  maximumLength="#{bindings.OmcPmpClPrmId1.hints.precision}"
+                                  shortDesc="#{bindings.OmcPmpClPrmId1.hints.tooltip}" id="it1" rendered="false">
+                        <f:validator binding="#{bindings.OmcPmpClPrmId1.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcPmpClPrmId1.format}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.OmcPmpClPrmStrtDate1.inputValue}"
+                                  label="#{bindings.OmcPmpClPrmStrtDate1.hints.label}"
+                                  required="#{bindings.OmcPmpClPrmStrtDate1.hints.mandatory}"
+                                  columns="#{bindings.OmcPmpClPrmStrtDate1.hints.displayWidth}"
+                                  shortDesc="#{bindings.OmcPmpClPrmStrtDate1.hints.tooltip}" id="id1">
+                        <f:validator binding="#{bindings.OmcPmpClPrmStrtDate1.validator}"/>
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.OmcPmpClPrmEndDate1.inputValue}"
+                                  label="#{bindings.OmcPmpClPrmEndDate1.hints.label}"
+                                  required="#{bindings.OmcPmpClPrmEndDate1.hints.mandatory}"
+                                  columns="#{bindings.OmcPmpClPrmEndDate1.hints.displayWidth}"
+                                  shortDesc="#{bindings.OmcPmpClPrmEndDate1.hints.tooltip}" id="id2">
+                        <f:validator binding="#{bindings.OmcPmpClPrmEndDate1.validator}"/>
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:inputText value="#{bindings.OmcPmpClPrmPartyId1.inputValue}"
+                                  label="#{bindings.OmcPmpClPrmPartyId1.hints.label}"
+                                  required="#{bindings.OmcPmpClPrmPartyId1.hints.mandatory}"
+                                  columns="#{bindings.OmcPmpClPrmPartyId1.hints.displayWidth}"
+                                  maximumLength="#{bindings.OmcPmpClPrmPartyId1.hints.precision}"
+                                  shortDesc="#{bindings.OmcPmpClPrmPartyId1.hints.tooltip}" id="it2" rendered="false">
+                        <f:validator binding="#{bindings.OmcPmpClPrmPartyId1.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcPmpClPrmPartyId1.format}"/>
+                    </af:inputText>
+                    <af:inputListOfValues id="coaName1Id"
+                                          popupTitle="Search and Select: #{bindings.CoaName1.hints.label}"
+                                          value="#{bindings.CoaName1.inputValue}"
+                                          label="#{bindings.CoaName1.hints.label}"
+                                          model="#{bindings.CoaName1.listOfValuesModel}"
+                                          required="#{bindings.CoaName1.hints.mandatory}"
+                                          columns="#{bindings.CoaName1.hints.displayWidth}"
+                                          shortDesc="#{bindings.CoaName1.hints.tooltip}" autoSubmit="true">
+                        <f:validator binding="#{bindings.CoaName1.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.CoaName1.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:selectOneChoice value="#{bindings.ShowOmcPump1.inputValue}"
+                                        label="#{bindings.ShowOmcPump1.label}"
+                                        required="#{bindings.ShowOmcPump1.hints.mandatory}"
+                                        shortDesc="#{bindings.ShowOmcPump1.hints.tooltip}" id="soc1" autoSubmit="true">
+                        <f:selectItems value="#{bindings.ShowOmcPump1.items}" id="si1"/>
+                        <f:validator binding="#{bindings.ShowOmcPump1.validator}"/>
+                    </af:selectOneChoice>
+                    <af:inputText value="#{bindings.CoaActNumber1.inputValue}"
+                                  label="#{bindings.CoaActNumber1.hints.label}"
+                                  required="#{bindings.CoaActNumber1.hints.mandatory}"
+                                  columns="#{bindings.CoaActNumber1.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaActNumber1.hints.precision}"
+                                  shortDesc="#{bindings.CoaActNumber1.hints.tooltip}" id="it3">
+                        <f:validator binding="#{bindings.CoaActNumber1.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaActNumber1.format}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout id="pgl1">
+                            <af:button actionListener="#{bindings.Execute.execute}" text="Show"
+                                       disabled="#{!bindings.Execute.enabled}" id="b3"/>
+                            <af:spacer width="40" height="10" id="s1"/>
+                            <af:button text="Submit" id="b1" actionListener="#{bindings.Commit.execute}"
+                                       icon="#{resource['images:commit.png']}"/>
+                            <af:spacer width="500" height="10" id="s2"/>
+                            <af:button text="Excel" id="b2" inlineStyle="color:Green;"
+                                       icon="#{resource['images:export.png']}">
+                                <af:exportCollectionActionListener type="excelHTML" exportedId="pc1:t1"
+                                                                   filename="OmcPumpCreditLimitReport.xls"
+                                                                   title="OMC Pump Credit Limit"/>
+                            </af:button>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar">
+                    <af:toolbar id="t2">
+                        <af:outputText value="MasTam" id="ot13" inlineStyle="color:Purple; font-size:large;"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.ZRptOmcPumpCrdLimitDataView3.collectionModel}" var="row"
+                          rows="#{bindings.ZRptOmcPumpCrdLimitDataView3.rangeSize}"
+                          emptyText="#{bindings.ZRptOmcPumpCrdLimitDataView3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.ZRptOmcPumpCrdLimitDataView3.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.ZRptOmcPumpCrdLimitDataView3.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.ZRptOmcPumpCrdLimitDataView3.rangeSize}"
+                          filterModel="#{bindings.ZRptOmcPumpCrdLimitDataView3Query.queryDescriptor}"
+                          filterVisible="true"
+                          queryListener="#{bindings.ZRptOmcPumpCrdLimitDataView3Query.processQuery}" varStatus="vs"
+                          id="t1" partialTriggers="::b3 :::b3 :::b1" scrollPolicy="page" width="1200">
+                    <af:column sortProperty="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtDate.label}"
+                               id="c1" align="center" width="150" inlineStyle="text-align:left;">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.ZRptOmcPumpCrdLimitDataView3Query.queryDescriptor.filterConjunctionCriterion.criterionMap.OmcPmpCrdLmtDate.value}"
+                                          id="id3">
+                                <af:convertDateTime pattern="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.OmcPmpCrdLmtDate}"
+                                       shortDesc="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtDate.tooltip}"
+                                       id="ot1">
+                            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPartyId.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPartyId.label}"
+                               id="c2" width="120" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.OmcPmpCrdLmtPartyId}"
+                                       shortDesc="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPartyId.tooltip}"
+                                       id="ot2">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPartyId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPartyName.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPartyName.label}"
+                               id="c10" width="120" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.OmcPmpCrdLmtPartyName}"
+                                       shortDesc="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPartyName.tooltip}"
+                                       id="ot10"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtLedgerBal.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtLedgerBal.label}"
+                               id="c3" width="150" align="center" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.OmcPmpCrdLmtLedgerBal}"
+                                       shortDesc="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtLedgerBal.tooltip}"
+                                       id="ot3">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtLedgerBal.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPayments.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPayments.label}"
+                               id="c5" align="center" width="120" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.OmcPmpCrdLmtPayments}"
+                                       shortDesc="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPayments.tooltip}"
+                                       id="ot5">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPayments.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPurchases.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPurchases.label}"
+                               id="c4" width="120" align="center" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.OmcPmpCrdLmtPurchases}"
+                                       shortDesc="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPurchases.tooltip}"
+                                       id="ot4">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtPurchases.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtNetBalance.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtNetBalance.label}"
+                               id="c6" align="center" width="150" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.OmcPmpCrdLmtNetBalance}"
+                                       shortDesc="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtNetBalance.tooltip}"
+                                       id="ot6">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtNetBalance.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtCreditLimit.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtCreditLimit.label}"
+                               id="c7" width="120" align="center" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.OmcPmpCrdLmtCreditLimit}"
+                                       shortDesc="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtCreditLimit.tooltip}"
+                                       id="ot7">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtCreditLimit.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpBalanceWithLimit.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpBalanceWithLimit.label}"
+                               id="c8" width="150" align="center" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.OmcPmpBalanceWithLimit}"
+                                       shortDesc="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpBalanceWithLimit.tooltip}"
+                                       id="ot8">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpBalanceWithLimit.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtComments.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtComments.label}"
+                               id="c9" width="150" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.OmcPmpCrdLmtComments}"
+                                       shortDesc="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.OmcPmpCrdLmtComments.tooltip}"
+                                       id="ot9"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.CreditLimitCat.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.CreditLimitCat.label}" id="c11"
+                               rendered="false">
+                        <af:outputText value="#{row.CreditLimitCat}"
+                                       shortDesc="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.CreditLimitCat.tooltip}"
+                                       id="ot11">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcPumpCrdLimitDataView3.hints.CreditLimitCat.format}"/>
+                        </af:outputText>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+</ui:composition>

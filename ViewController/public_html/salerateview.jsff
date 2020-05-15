@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="208" id="ps1" partialTriggers="ps1">
+        <f:facet name="first">
+            <af:panelGroupLayout id="pgl2" binding="#{backingBeanScope.backing_salerateview.pgl2}">
+                <af:panelFormLayout id="pfl1" maxColumns="2" rows="2" partialTriggers="pc1:t1">
+                    <af:outputText value="Sales Rate" id="ot9"
+                                   inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+                    <af:inputListOfValues id="partyNameId"
+                                          popupTitle="Search and Select: #{bindings.PartyName.hints.label}"
+                                          value="#{bindings.PartyName.inputValue}"
+                                          label="#{bindings.PartyName.hints.label}"
+                                          model="#{bindings.PartyName.listOfValuesModel}"
+                                          required="#{bindings.PartyName.hints.mandatory}"
+                                          columns="#{bindings.PartyName.hints.displayWidth}"
+                                          shortDesc="#{bindings.PartyName.hints.tooltip}" autoSubmit="true">
+                        <f:validator binding="#{bindings.PartyName.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.PartyName.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputListOfValues id="productShortnameId"
+                                          popupTitle="Search and Select: #{bindings.ProductShortname.hints.label}"
+                                          value="#{bindings.ProductShortname.inputValue}"
+                                          label="#{bindings.ProductShortname.hints.label}"
+                                          model="#{bindings.ProductShortname.listOfValuesModel}"
+                                          required="#{bindings.ProductShortname.hints.mandatory}"
+                                          columns="#{bindings.ProductShortname.hints.displayWidth}"
+                                          shortDesc="#{bindings.ProductShortname.hints.tooltip}" autoSubmit="true">
+                        <f:validator binding="#{bindings.ProductShortname.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.ProductShortname.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputText value="#{bindings.SaleRateId.inputValue}" label="#{bindings.SaleRateId.hints.label}"
+                                  required="#{bindings.SaleRateId.hints.mandatory}"
+                                  columns="#{bindings.SaleRateId.hints.displayWidth}"
+                                  maximumLength="#{bindings.SaleRateId.hints.precision}"
+                                  shortDesc="#{bindings.SaleRateId.hints.tooltip}" id="it1" rendered="false">
+                        <f:validator binding="#{bindings.SaleRateId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.SaleRateId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.SaleRateR.inputValue}" label="#{bindings.SaleRateR.hints.label}"
+                                  required="#{bindings.SaleRateR.hints.mandatory}"
+                                  columns="#{bindings.SaleRateR.hints.displayWidth}"
+                                  maximumLength="#{bindings.SaleRateR.hints.precision}"
+                                  shortDesc="#{bindings.SaleRateR.hints.tooltip}" id="it2"
+                                  inlineStyle="text-align:right;" autoSubmit="true">
+                        <f:validator binding="#{bindings.SaleRateR.validator}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.SaleRateStartDate.inputValue}"
+                                  label="#{bindings.SaleRateStartDate.hints.label}"
+                                  required="#{bindings.SaleRateStartDate.hints.mandatory}"
+                                  columns="#{bindings.SaleRateStartDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.SaleRateStartDate.hints.tooltip}" id="id1">
+                        <f:validator binding="#{bindings.SaleRateStartDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.SaleRateStartDate.format}"/>
+                    </af:inputDate>
+                    <af:inputText value="#{bindings.PpartyId.inputValue}" label="#{bindings.PpartyId.hints.label}"
+                                  required="#{bindings.PpartyId.hints.mandatory}"
+                                  columns="#{bindings.PpartyId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PpartyId.hints.precision}"
+                                  shortDesc="#{bindings.PpartyId.hints.tooltip}" id="it3" rendered="false">
+                        <f:validator binding="#{bindings.PpartyId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PpartyId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PproductId.inputValue}" label="#{bindings.PproductId.hints.label}"
+                                  required="#{bindings.PproductId.hints.mandatory}"
+                                  columns="#{bindings.PproductId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PproductId.hints.precision}"
+                                  shortDesc="#{bindings.PproductId.hints.tooltip}"
+                                  id="it4" rendered="false">
+                        <f:validator binding="#{bindings.PproductId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PproductId.format}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.SaleRateEndDate.inputValue}"
+                                  label="#{bindings.SaleRateEndDate.hints.label}"
+                                  required="#{bindings.SaleRateEndDate.hints.mandatory}"
+                                  columns="#{bindings.SaleRateEndDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.SaleRateEndDate.hints.tooltip}" id="id2">
+                        <f:validator binding="#{bindings.SaleRateEndDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.SaleRateEndDate.format}"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.SaleRateDate.inputValue}"
+                                  label="#{bindings.SaleRateDate.hints.label}"
+                                  required="#{bindings.SaleRateDate.hints.mandatory}"
+                                  columns="#{bindings.SaleRateDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.SaleRateDate.hints.tooltip}" id="id3">
+                        <f:validator binding="#{bindings.SaleRateDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.SaleRateDate.format}"/>
+                    </af:inputDate>
+                    <af:inputText value="#{bindings.SaleRateDetails.inputValue}"
+                                  label="Detail"
+                                  required="#{bindings.SaleRateDetails.hints.mandatory}"
+                                  columns="#{bindings.SaleRateDetails.hints.displayWidth}"
+                                  maximumLength="#{bindings.SaleRateDetails.hints.precision}"
+                                  shortDesc="#{bindings.SaleRateDetails.hints.tooltip}" id="it5" autoSubmit="true">
+                        <f:validator binding="#{bindings.SaleRateDetails.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PartyId.inputValue}" label="#{bindings.PartyId.hints.label}"
+                                  required="#{bindings.PartyId.hints.mandatory}"
+                                  columns="#{bindings.PartyId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PartyId.hints.precision}"
+                                  shortDesc="#{bindings.PartyId.hints.tooltip}" id="it6" rendered="false">
+                        <f:validator binding="#{bindings.PartyId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PartyId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.ProductId.inputValue}" label="#{bindings.ProductId.hints.label}"
+                                  required="#{bindings.ProductId.hints.mandatory}"
+                                  columns="#{bindings.ProductId.hints.displayWidth}"
+                                  maximumLength="#{bindings.ProductId.hints.precision}"
+                                  shortDesc="#{bindings.ProductId.hints.tooltip}" id="it7" rendered="false">
+                        <f:validator binding="#{bindings.ProductId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.ProductId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PtypeId.inputValue}" label="#{bindings.PtypeId.hints.label}"
+                                  required="#{bindings.PtypeId.hints.mandatory}"
+                                  columns="#{bindings.PtypeId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PtypeId.hints.precision}"
+                                  shortDesc="#{bindings.PtypeId.hints.tooltip}" id="it8" rendered="false">
+                        <f:validator binding="#{bindings.PtypeId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PtypeId.format}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                            <af:panelGroupLayout layout="horizontal" id="pgl1">
+                                <af:panelGroupLayout layout="horizontal" id="pgl3">
+                                    <af:button actionListener="#{bindings.First.execute}"
+                                               disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1" icon="#{resource['images:first_hor_ena.png']}"/>
+                                    <af:button actionListener="#{bindings.Previous.execute}"
+                                               disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2" icon="#{resource['images:previoustraversalarrow_ena.png']}"/>
+                                    <af:button actionListener="#{bindings.Next.execute}"
+                                               disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3" icon="#{resource['images:nexttraversalarrow_ena.png']}"/>
+                                    <af:button actionListener="#{bindings.Last.execute}"
+                                               disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4" icon="#{resource['images:last_hor_ena.png']}"/>
+                                    <af:outputText value="---------" id="ot50"/>
+                                </af:panelGroupLayout>
+                                <af:button text="Submit" id="b5" actionListener="#{bindings.Commit.execute}"
+                                           icon="#{resource['images:commit.png']}">
+                                           <af:showPopupBehavior popupId="p1" triggerType="click"/>
+                                </af:button>
+                                <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                                           disabled="#{!bindings.CreateInsert.enabled}" id="b6"
+                                           icon="#{resource['images:add.png']}"/>
+                                <af:outputText value="--------------" id="ot60"/>
+                                <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                           disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b7" icon="#{resource['images:rollback.png']}">
+                                    <af:resetActionListener/>
+                                </af:button>
+                                <af:button text="EXCEL" id="b8" inlineStyle="color:Green;">
+                                <af:exportCollectionActionListener type="excelHTML" exportedId="t1"
+                                                                   filename="SALE RATE.XLS"/>
+                            </af:button>
+                            <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                                    <af:noteWindow id="nw1">
+                                            <b style="color:Maroon;">Submitted</b>
+                                    </af:noteWindow>
+                                </af:popup>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                </af:panelFormLayout>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar">
+                    <af:toolbar id="t2">
+                        <af:outputText value="Mastams" id="ot10" inlineStyle="color:Purple; font-size:large;"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.SaleRateView1.collectionModel}" var="row"
+                          rows="#{bindings.SaleRateView1.rangeSize}"
+                          emptyText="#{bindings.SaleRateView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" selectedRowKeys="#{bindings.SaleRateView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.SaleRateView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.SaleRateView1.rangeSize}"
+                          filterModel="#{bindings.SaleRateView1Query.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.SaleRateView1Query.processQuery}" varStatus="vs" id="t1"
+                          partialTriggers="::b1 ::b2 ::b3 ::b4 ::b6 :::b1 :::b2 :::b3 :::b4 :::b6" scrollPolicy="page"
+                          width="1050">
+                    <af:column sortProperty="#{bindings.SaleRateView1.hints.SaleRateStartDate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.SaleRateView1.hints.SaleRateStartDate.label}"
+                               id="c3" width="150">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.SaleRateView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.SaleRateStartDate.value}"
+                                          id="id4">
+                                <af:convertDateTime pattern="#{bindings.SaleRateView1.hints.SaleRateStartDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.SaleRateStartDate}"
+                                       shortDesc="#{bindings.SaleRateView1.hints.SaleRateStartDate.tooltip}" id="ot3">
+                            <af:convertDateTime pattern="dd-MMM-yyyy hh:mm:ss "/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SaleRateView1.hints.SaleRateId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.SaleRateView1.hints.SaleRateId.label}" id="c1">
+                        <af:outputText value="#{row.SaleRateId}"
+                                       shortDesc="#{bindings.SaleRateView1.hints.SaleRateId.tooltip}" id="ot1">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.SaleRateView1.hints.SaleRateId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SaleRateView1.hints.PartyName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.SaleRateView1.hints.PartyName.label}" id="c7">
+                        <af:outputText value="#{row.PartyName}"
+                                       shortDesc="#{bindings.SaleRateView1.hints.PartyName.tooltip}" id="ot7"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SaleRateView1.hints.ProductShortname.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.SaleRateView1.hints.ProductShortname.label}"
+                               id="c8">
+                        <af:outputText value="#{row.ProductShortname}"
+                                       shortDesc="#{bindings.SaleRateView1.hints.ProductShortname.tooltip}" id="ot8"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SaleRateView1.hints.SaleRateR.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.SaleRateView1.hints.SaleRateR.label}" id="c2"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.SaleRateR}"
+                                       shortDesc="#{bindings.SaleRateView1.hints.SaleRateR.tooltip}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SaleRateView1.hints.SaleRateEndDate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.SaleRateView1.hints.SaleRateEndDate.label}"
+                               id="c4" width="150">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.SaleRateView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.SaleRateEndDate.value}"
+                                          id="id5">
+                                <af:convertDateTime pattern="#{bindings.SaleRateView1.hints.SaleRateEndDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.SaleRateEndDate}"
+                                       shortDesc="#{bindings.SaleRateView1.hints.SaleRateEndDate.tooltip}" id="ot4">
+                            <af:convertDateTime pattern="dd-MMM-yyyy hh:mm:ss "/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SaleRateView1.hints.SaleRateDate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.SaleRateView1.hints.SaleRateDate.label}" id="c5"
+                               width="150">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.SaleRateView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.SaleRateDate.value}"
+                                          id="id6">
+                                <af:convertDateTime pattern="#{bindings.SaleRateView1.hints.SaleRateDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.SaleRateDate}"
+                                       shortDesc="#{bindings.SaleRateView1.hints.SaleRateDate.tooltip}" id="ot5">
+                            <af:convertDateTime pattern="dd-MMM-yyyy hh:mm:ss "/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SaleRateView1.hints.SaleRateDetails.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.SaleRateView1.hints.SaleRateDetails.label}"
+                               id="c6">
+                        <af:outputText value="#{row.SaleRateDetails}"
+                                       shortDesc="#{bindings.SaleRateView1.hints.SaleRateDetails.tooltip}" id="ot6"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_salerateview-->
+</ui:composition>

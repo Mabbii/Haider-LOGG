@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="165" id="ps1" partialTriggers="ps1">
+        <f:facet name="first">
+            <af:panelFormLayout id="pfl1" partialTriggers="pc1:t1">
+                <af:outputText value="Sales All Report" id="ot16"
+                               inlineStyle="font-size:xx-large; font-style:italic; font-weight:bold;"/>
+                <af:inputText value="#{bindings.SalesAllParamId.inputValue}"
+                              label="#{bindings.SalesAllParamId.hints.label}"
+                              required="#{bindings.SalesAllParamId.hints.mandatory}"
+                              columns="#{bindings.SalesAllParamId.hints.displayWidth}"
+                              maximumLength="#{bindings.SalesAllParamId.hints.precision}"
+                              shortDesc="#{bindings.SalesAllParamId.hints.tooltip}" id="it1" rendered="false">
+                    <f:validator binding="#{bindings.SalesAllParamId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.SalesAllParamId.format}"/>
+                </af:inputText>
+                <af:inputDate value="#{bindings.SalesAllParamStartDate.inputValue}"
+                              label="#{bindings.SalesAllParamStartDate.hints.label}"
+                              required="#{bindings.SalesAllParamStartDate.hints.mandatory}"
+                              columns="#{bindings.SalesAllParamStartDate.hints.displayWidth}"
+                              shortDesc="#{bindings.SalesAllParamStartDate.hints.tooltip}" id="id1">
+                    <f:validator binding="#{bindings.SalesAllParamStartDate.validator}"/>
+                    <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                </af:inputDate>
+                <af:inputDate value="#{bindings.SalesAllParamEndDate.inputValue}"
+                              label="#{bindings.SalesAllParamEndDate.hints.label}"
+                              required="#{bindings.SalesAllParamEndDate.hints.mandatory}"
+                              columns="#{bindings.SalesAllParamEndDate.hints.displayWidth}"
+                              shortDesc="#{bindings.SalesAllParamEndDate.hints.tooltip}" id="id2">
+                    <f:validator binding="#{bindings.SalesAllParamEndDate.validator}"/>
+                    <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                </af:inputDate>
+                <f:facet name="footer">
+                    <af:panelGroupLayout id="pgl1">
+                        <af:button actionListener="#{bindings.Execute.execute}" text="Show"
+                                   disabled="#{!bindings.Execute.enabled}" id="b2"/>
+                        <af:spacer width="80" height="10" id="s1"/>
+                        <af:button text="Submit" id="b1" actionListener="#{bindings.Commit.execute}"/>
+                        <af:spacer width="500" height="10" id="s2"/>
+                        <af:button text="Excel" id="b3" inlineStyle="color:Green;">
+                            <af:exportCollectionActionListener type="excelHTML" exportedId="pc1:t1"
+                                                               filename="sales all report.xls"
+                                                               title="Sales All Report"/>
+                        </af:button>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelFormLayout>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar">
+                    <af:toolbar id="t2">
+                        <af:outputText value="Mastams" id="ot17" inlineStyle="color:Purple; font-size:large;"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.Z_Rpt_Sales_All_DataView2.collectionModel}" var="row"
+                          rows="#{bindings.Z_Rpt_Sales_All_DataView2.rangeSize}"
+                          emptyText="#{bindings.Z_Rpt_Sales_All_DataView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.Z_Rpt_Sales_All_DataView2.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.Z_Rpt_Sales_All_DataView2.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.Z_Rpt_Sales_All_DataView2.rangeSize}"
+                          filterModel="#{bindings.Z_Rpt_Sales_All_DataView2Query.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.Z_Rpt_Sales_All_DataView2Query.processQuery}" varStatus="vs" id="t1" scrollPolicy="page" width="1200">
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataCoa.name}"
+                               filterable="true" sortable="true" headerText="A/C #" id="c1" width="130">
+                        <af:outputText value="#{row.SalesAllDataCoa}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataCoa.tooltip}"
+                                       id="ot1">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataCoa.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataCoaName.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataCoaName.label}"
+                               id="c2" width="300" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.SalesAllDataCoaName}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataCoaName.tooltip}"
+                                       id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHsd.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHsd.label}" id="c3"
+                               width="100" inlineStyle="text-align:right;" align="center">
+                        <af:outputText value="#{row.SalesAllDataHsd}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHsd.tooltip}"
+                                       id="ot3">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHsd.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHsdRate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHsdRate.label}"
+                               id="c8" width="100" inlineStyle="text-align:right;" visible="false">
+                        <af:outputText value="#{row.SalesAllDataHsdRate}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHsdRate.tooltip}"
+                                       id="ot8">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHsdRate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataPmg.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataPmg.label}" id="c4"
+                               width="100" inlineStyle="text-align:right;" align="center">
+                        <af:outputText value="#{row.SalesAllDataPmg}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataPmg.tooltip}"
+                                       id="ot4">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataPmg.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataPmgRate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataPmgRate.label}"
+                               id="c9" width="100" inlineStyle="text-align:right;" visible="false">
+                        <af:outputText value="#{row.SalesAllDataPmgRate}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataPmgRate.tooltip}"
+                                       id="ot9">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataPmgRate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataSko.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataSko.label}" id="c5"
+                               width="100" inlineStyle="text-align:right;" align="center">
+                        <af:outputText value="#{row.SalesAllDataSko}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataSko.tooltip}"
+                                       id="ot5">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataSko.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataSkoRate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataSkoRate.label}"
+                               id="c10" width="100" inlineStyle="text-align:right;" visible="false">
+                        <af:outputText value="#{row.SalesAllDataSkoRate}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataSkoRate.tooltip}"
+                                       id="ot10">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataSkoRate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHobc.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHobc.label}" id="c6"
+                               width="100" inlineStyle="text-align:right;" align="center">
+                        <af:outputText value="#{row.SalesAllDataHobc}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHobc.tooltip}"
+                                       id="ot6">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHobc.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHobcRate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHobcRate.label}"
+                               id="c11" width="100" inlineStyle="text-align:right;" visible="false">
+                        <af:outputText value="#{row.SalesAllDataHobcRate}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHobcRate.tooltip}"
+                                       id="ot11">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataHobcRate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataLdo.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataLdo.label}" id="c7"
+                               width="100" inlineStyle="text-align:right;" align="center">
+                        <af:outputText value="#{row.SalesAllDataLdo}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataLdo.tooltip}"
+                                       id="ot7">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataLdo.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataLdoRate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataLdoRate.label}"
+                               id="c12" width="100" inlineStyle="text-align:right;" visible="false">
+                        <af:outputText value="#{row.SalesAllDataLdoRate}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataLdoRate.tooltip}"
+                                       id="ot12">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataLdoRate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataCat.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataCat.label}" id="c13"
+                               rendered="false">
+                        <af:outputText value="#{row.SalesAllDataCat}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataCat.tooltip}"
+                                       id="ot13">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataCat.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllParamIdFk.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllParamIdFk.label}" id="c14"
+                               rendered="false">
+                        <af:outputText value="#{row.SalesAllParamIdFk}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllParamIdFk.tooltip}"
+                                       id="ot14">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllParamIdFk.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataId.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataId.label}" id="c15"
+                               rendered="false">
+                        <af:outputText value="#{row.SalesAllDataId}"
+                                       shortDesc="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataId.tooltip}"
+                                       id="ot15">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Z_Rpt_Sales_All_DataView2.hints.SalesAllDataId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+</ui:composition>

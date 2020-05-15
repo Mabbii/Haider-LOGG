@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="193" id="ps1">
+        <f:facet name="first">
+            <af:panelFormLayout id="pfl1">
+                <af:outputText value="Add Vehicle" id="ot4"
+                               inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+                <af:inputText value="#{bindings.VehicleId.inputValue}" label="#{bindings.VehicleId.hints.label}"
+                              required="#{bindings.VehicleId.hints.mandatory}"
+                              columns="#{bindings.VehicleId.hints.displayWidth}"
+                              maximumLength="#{bindings.VehicleId.hints.precision}"
+                              shortDesc="#{bindings.VehicleId.hints.tooltip}" id="it1" readOnly="true">
+                    <f:validator binding="#{bindings.VehicleId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.VehicleId.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.VehicleRegNo.inputValue}" label="Vehicle No."
+                              required="#{bindings.VehicleRegNo.hints.mandatory}"
+                              columns="#{bindings.VehicleRegNo.hints.displayWidth}"
+                              maximumLength="#{bindings.VehicleRegNo.hints.precision}"
+                              shortDesc="#{bindings.VehicleRegNo.hints.tooltip}" id="it3">
+                    <f:validator binding="#{bindings.VehicleRegNo.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.VehicleDetails.inputValue}"
+                              label="Vehicle Details"
+                              required="#{bindings.VehicleDetails.hints.mandatory}"
+                              columns="#{bindings.VehicleDetails.hints.displayWidth}"
+                              maximumLength="#{bindings.VehicleDetails.hints.precision}"
+                              shortDesc="#{bindings.VehicleDetails.hints.tooltip}" id="it2">
+                    <f:validator binding="#{bindings.VehicleDetails.validator}"/>
+                </af:inputText>
+                <f:facet name="footer">
+                    <af:panelGroupLayout layout="horizontal" id="pgl2">
+                        <af:panelGroupLayout layout="horizontal" id="pgl3">
+                            <af:button actionListener="#{bindings.First.execute}"
+                            icon="#{resource['images:first_hor_ena.png']}"
+                                       disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1"/>
+                            <af:button actionListener="#{bindings.Previous.execute}"
+                            icon="#{resource['images:previoustraversalarrow_ena.png']}"
+                                       disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"/>
+                            <af:button actionListener="#{bindings.Next.execute}"
+                            icon="#{resource['images:nexttraversalarrow_ena.png']}"
+                                       disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"/>
+                            <af:button actionListener="#{bindings.Last.execute}"
+                            icon="#{resource['images:last_hor_ena.png']}"
+                                       disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4"/>
+                            <af:outputText value="--------------" id="ot61"/>           
+                        </af:panelGroupLayout>
+                        <af:button text="Submit" id="b5" actionListener="#{bindings.Commit.execute}"
+                        icon="#{resource['images:commit.png']}"
+                                   disabled="#{!bindings.Commit.enabled}"/>
+                        <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                        icon="#{resource['images:add.png']}"
+                                   disabled="#{!bindings.CreateInsert.enabled}" id="b6"/>
+                             <af:outputText value="----------------------" id="ot62"/>      
+                        <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                        icon="#{resource['images:rollback.png']}"
+                                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b7">
+                            <af:resetActionListener/>
+                        </af:button>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelFormLayout>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1" inlineStyle="font-style:italic;">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar">
+                <af:toolbar id="t2">
+                        <af:outputText value="Mastams" id="ot14" inlineStyle="color:Maroon; font-size:large;"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.Vehicle1View1.collectionModel}" var="row"
+                          rows="#{bindings.Vehicle1View1.rangeSize}"
+                          emptyText="#{bindings.Vehicle1View1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" selectedRowKeys="#{bindings.Vehicle1View1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.Vehicle1View1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.Vehicle1View1.rangeSize}"
+                          filterModel="#{bindings.Vehicle1View1Query.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.Vehicle1View1Query.processQuery}" varStatus="vs" id="t1"
+                          partialTriggers="::b1 ::b2 ::b3 ::b4 ::b6 :::b1 :::b2 :::b3 :::b4 :::b6" scrollPolicy="page">
+                    <af:column sortProperty="#{bindings.Vehicle1View1.hints.VehicleId.name}" filterable="true"
+                               sortable="true" headerText="Vehicle ID" id="c1"
+                               inlineStyle="border-radius:10px 10px 10px 10px / 10px 10px 10px 10px ; border-left-width:medium; border-right-width:medium; border-top-width:medium; border-bottom-width:medium; text-align:left;"
+                               align="center">
+                        <af:outputText value="#{row.VehicleId}"
+                                       shortDesc="#{bindings.Vehicle1View1.hints.VehicleId.tooltip}" id="ot1">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.Vehicle1View1.hints.VehicleId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Vehicle1View1.hints.VehicleRegNo.name}" filterable="true"
+                               sortable="true" headerText="Vehicle No." id="c3"
+                               inlineStyle="border-radius:10px 10px 10px 10px / 10px 10px 10px 10px ; border-left-width:medium; border-right-width:medium; border-top-width:medium; border-bottom-width:medium; text-align:left;"
+                               align="center" width="120">
+                        <af:outputText value="#{row.VehicleRegNo}"
+                                       shortDesc="#{bindings.Vehicle1View1.hints.VehicleRegNo.tooltip}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Vehicle1View1.hints.VehicleDetails.name}" filterable="true"
+                               sortable="true" headerText="Vehicle Details"
+                               id="c2"
+                               inlineStyle="border-radius:10px 10px 10px 10px / 10px 10px 10px 10px ; border-left-width:medium; border-right-width:medium; border-top-width:medium; border-bottom-width:medium; text-align:left;"
+                               align="center" width="130">
+                        <af:outputText value="#{row.VehicleDetails}"
+                                       shortDesc="#{bindings.Vehicle1View1.hints.VehicleDetails.tooltip}" id="ot2"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+</ui:composition>

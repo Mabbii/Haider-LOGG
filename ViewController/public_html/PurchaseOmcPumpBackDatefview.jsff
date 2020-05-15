@@ -1,0 +1,714 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="547" id="ps1" partialTriggers="ps1">
+        <f:facet name="first">
+            <af:panelBox id="pb1"
+                         binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.pb1}">
+                <f:facet name="toolbar"/>
+                <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.pfl1}"
+                                    maxColumns="2" rows="2" partialTriggers="pc1:t1">
+                    <af:outputText value="Purchase Omc Pump (Back D)" id="ot26"
+                                   binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.ot26}"
+                                   inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+                    <af:inputDate value="#{bindings.TnsDate.inputValue}" label="#{bindings.TnsDate.hints.label}"
+                                  required="#{bindings.TnsDate.hints.mandatory}"
+                                  columns="#{bindings.TnsDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.TnsDate.hints.tooltip}" id="id1"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.id1}">
+                        <f:validator binding="#{bindings.TnsDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.TnsDate.format}"/>
+                    </af:inputDate>
+                    <af:inputListOfValues id="coaNameId" popupTitle="Search and Select: #{bindings.CoaName.hints.label}"
+                                          value="#{bindings.CoaName.inputValue}" label="#{bindings.CoaName.hints.label}"
+                                          model="#{bindings.CoaName.listOfValuesModel}"
+                                          required="#{bindings.CoaName.hints.mandatory}"
+                                          columns="#{bindings.CoaName.hints.displayWidth}"
+                                          shortDesc="#{bindings.CoaName.hints.tooltip}"
+                                          binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.coaNameId}"
+                                          autoSubmit="true">
+                        <f:validator binding="#{bindings.CoaName.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.CoaName.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputListOfValues id="coaName1Id"
+                                          popupTitle="Search and Select: #{bindings.CoaName1.hints.label}"
+                                          value="#{bindings.CoaName1.inputValue}"
+                                          label="#{bindings.CoaName1.hints.label}"
+                                          model="#{bindings.CoaName1.listOfValuesModel}"
+                                          required="#{bindings.CoaName1.hints.mandatory}"
+                                          columns="#{bindings.CoaName1.hints.displayWidth}"
+                                          shortDesc="#{bindings.CoaName1.hints.tooltip}"
+                                          binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.coaName1Id}"
+                                          autoSubmit="true">
+                        <f:validator binding="#{bindings.CoaName1.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.CoaName1.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputComboboxListOfValues id="purchaseRateLogRId"
+                                                  popupTitle="Search and Select: #{bindings.PurchaseRateLogR.hints.label}"
+                                                  value="#{bindings.PurchaseRateLogR.inputValue}"
+                                                  label="#{bindings.PurchaseRateLogR.hints.label}"
+                                                  model="#{bindings.PurchaseRateLogR.listOfValuesModel}"
+                                                  required="#{bindings.PurchaseRateLogR.hints.mandatory}"
+                                                  columns="#{bindings.PurchaseRateLogR.hints.displayWidth}"
+                                                  shortDesc="#{bindings.PurchaseRateLogR.hints.tooltip}"
+                                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.purchaseRateLogRId}"
+                                                  autoSubmit="true">
+                        <f:validator binding="#{bindings.PurchaseRateLogR.validator}"/>
+                    </af:inputComboboxListOfValues>
+                    <af:inputListOfValues id="oiltRegistrationId"
+                                          popupTitle="Search and Select: #{bindings.OiltRegistration.hints.label}"
+                                          value="#{bindings.OiltRegistration.inputValue}"
+                                          label="#{bindings.OiltRegistration.hints.label}"
+                                          model="#{bindings.OiltRegistration.listOfValuesModel}"
+                                          required="#{bindings.OiltRegistration.hints.mandatory}"
+                                          columns="#{bindings.OiltRegistration.hints.displayWidth}"
+                                          shortDesc="#{bindings.OiltRegistration.hints.tooltip}"
+                                          binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.oiltRegistrationId}"
+                                          autoSubmit="true">
+                        <f:validator binding="#{bindings.OiltRegistration.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.OiltRegistration.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputListOfValues id="oildShortname1Id"
+                                          popupTitle="Search and Select: #{bindings.OildShortname1.hints.label}"
+                                          value="#{bindings.OildShortname1.inputValue}"
+                                          label="#{bindings.OildShortname1.hints.label}"
+                                          model="#{bindings.OildShortname1.listOfValuesModel}"
+                                          required="#{bindings.OildShortname1.hints.mandatory}"
+                                          columns="#{bindings.OildShortname1.hints.displayWidth}"
+                                          shortDesc="#{bindings.OildShortname1.hints.tooltip}"
+                                          binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.oildShortname1Id}"
+                                          autoSubmit="true">
+                        <f:validator binding="#{bindings.OildShortname1.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.OildShortname1.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputListOfValues id="oildShortnameId"
+                                          popupTitle="Search and Select: #{bindings.OildShortname.hints.label}"
+                                          value="#{bindings.OildShortname.inputValue}"
+                                          label="#{bindings.OildShortname.hints.label}"
+                                          model="#{bindings.OildShortname.listOfValuesModel}"
+                                          required="#{bindings.OildShortname.hints.mandatory}"
+                                          columns="#{bindings.OildShortname.hints.displayWidth}"
+                                          shortDesc="#{bindings.OildShortname.hints.tooltip}"
+                                          binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.oildShortnameId}"
+                                          autoSubmit="true">
+                        <f:validator binding="#{bindings.OildShortname.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.OildShortname.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputText value="#{bindings.TnsQty.inputValue}" label="#{bindings.TnsQty.hints.label}"
+                                  required="#{bindings.TnsQty.hints.mandatory}"
+                                  columns="#{bindings.TnsQty.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsQty.hints.precision}"
+                                  shortDesc="#{bindings.TnsQty.hints.tooltip}" partialTriggers="oiltRegistrationId"
+                                  id="it6" binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it6}"
+                                  autoSubmit="true" inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.TnsQty.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsQty.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsNewrate.inputValue}" label="#{bindings.TnsNewrate.hints.label}"
+                                  required="#{bindings.TnsNewrate.hints.mandatory}"
+                                  columns="#{bindings.TnsNewrate.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsNewrate.hints.precision}"
+                                  shortDesc="#{bindings.TnsNewrate.hints.tooltip}" id="it5"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it5}"
+                                  autoSubmit="true" inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.TnsNewrate.validator}"/>
+                    </af:inputText>
+                    <af:outputText value="#{bindings.TnsFormatAmount.inputValue}"
+                                   shortDesc="#{bindings.TnsFormatAmount.hints.tooltip}" id="ot24"
+                                   binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.ot24}"
+                                   inlineStyle="font-size:larger; font-weight:bold;">
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsFormatAmount.format}"/>
+                    </af:outputText>
+                    <af:inputText value="#{bindings.TnsAmount.inputValue}" label="#{bindings.TnsAmount.hints.label}"
+                                  required="#{bindings.TnsAmount.hints.mandatory}"
+                                  columns="#{bindings.TnsAmount.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsAmount.hints.precision}"
+                                  shortDesc="#{bindings.TnsAmount.hints.tooltip}" id="it7"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it7}" readOnly="true"
+                                  inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.TnsAmount.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsAmount.format}"/>
+                    </af:inputText>
+                    <af:outputText value="#{bindings.TnsSpellAmount.inputValue}"
+                                   shortDesc="#{bindings.TnsSpellAmount.hints.tooltip}" id="ot25"
+                                   binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.ot25}"
+                                   inlineStyle="font-size:larger; font-weight:bold;"/>
+                    <af:inputDate value="#{bindings.TnsOildLoadDate.inputValue}"
+                                  label="#{bindings.TnsOildLoadDate.hints.label}"
+                                  required="#{bindings.TnsOildLoadDate.hints.mandatory}"
+                                  columns="#{bindings.TnsOildLoadDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.TnsOildLoadDate.hints.tooltip}" id="id3"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.id3}"
+                                  autoSubmit="true">
+                        <f:validator binding="#{bindings.TnsOildLoadDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.TnsOildLoadDate.format}"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.TnsSlipDate.inputValue}" label="#{bindings.TnsSlipDate.hints.label}"
+                                  required="#{bindings.TnsSlipDate.hints.mandatory}"
+                                  columns="#{bindings.TnsSlipDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.TnsSlipDate.hints.tooltip}" id="id2"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.id2}"
+                                  autoSubmit="true">
+                        <f:validator binding="#{bindings.TnsSlipDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.TnsSlipDate.format}"/>
+                    </af:inputDate>
+                    <af:inputText value="#{bindings.TnsSlipNo.inputValue}" label="#{bindings.TnsSlipNo.hints.label}"
+                                  required="#{bindings.TnsSlipNo.hints.mandatory}"
+                                  columns="#{bindings.TnsSlipNo.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsSlipNo.hints.precision}"
+                                  shortDesc="#{bindings.TnsSlipNo.hints.tooltip}" id="it8"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it8}"
+                                  autoSubmit="true" inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.TnsSlipNo.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsInfo.inputValue}" label="#{bindings.TnsInfo.hints.label}"
+                                  required="#{bindings.TnsInfo.hints.mandatory}"
+                                  columns="#{bindings.TnsInfo.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsInfo.hints.precision}"
+                                  shortDesc="#{bindings.TnsInfo.hints.tooltip}" id="it3"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it3}"
+                                  autoSubmit="true">
+                        <f:validator binding="#{bindings.TnsInfo.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsId.inputValue}" label="#{bindings.TnsId.hints.label}"
+                                  required="#{bindings.TnsId.hints.mandatory}"
+                                  columns="#{bindings.TnsId.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsId.hints.precision}"
+                                  shortDesc="#{bindings.TnsId.hints.tooltip}" id="it1"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it1}" readOnly="true"
+                                  inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.TnsId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsRate.inputValue}" label="#{bindings.TnsRate.hints.label}"
+                                  required="#{bindings.TnsRate.hints.mandatory}"
+                                  columns="#{bindings.TnsRate.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsRate.hints.precision}"
+                                  shortDesc="#{bindings.TnsRate.hints.tooltip}" partialTriggers="purchaseRateLogRId"
+                                  id="it4" binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it4}"
+                                  readOnly="true" inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.TnsRate.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsTnsTypeIdFk.inputValue}"
+                                  label="#{bindings.TnsTnsTypeIdFk.hints.label}"
+                                  required="#{bindings.TnsTnsTypeIdFk.hints.mandatory}"
+                                  columns="#{bindings.TnsTnsTypeIdFk.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsTnsTypeIdFk.hints.precision}"
+                                  shortDesc="#{bindings.TnsTnsTypeIdFk.hints.tooltip}" id="it9"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it9}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.TnsTnsTypeIdFk.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsTnsTypeIdFk.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsPurchaseRateLogIdFk.inputValue}"
+                                  label="#{bindings.TnsPurchaseRateLogIdFk.hints.label}"
+                                  required="#{bindings.TnsPurchaseRateLogIdFk.hints.mandatory}"
+                                  columns="#{bindings.TnsPurchaseRateLogIdFk.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsPurchaseRateLogIdFk.hints.precision}"
+                                  shortDesc="#{bindings.TnsPurchaseRateLogIdFk.hints.tooltip}" id="it10"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it10}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.TnsPurchaseRateLogIdFk.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsPurchaseRateLogIdFk.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsCoaCactNumber.inputValue}"
+                                  label="#{bindings.TnsCoaCactNumber.hints.label}"
+                                  required="#{bindings.TnsCoaCactNumber.hints.mandatory}"
+                                  columns="#{bindings.TnsCoaCactNumber.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsCoaCactNumber.hints.precision}"
+                                  shortDesc="#{bindings.TnsCoaCactNumber.hints.tooltip}" id="it11"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it11}"
+                                  inlineStyle="text-align:right;" readOnly="true">
+                        <f:validator binding="#{bindings.TnsCoaCactNumber.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsCoaCactNumber.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsCoaDactNumber.inputValue}"
+                                  label="#{bindings.TnsCoaDactNumber.hints.label}"
+                                  required="#{bindings.TnsCoaDactNumber.hints.mandatory}"
+                                  columns="#{bindings.TnsCoaDactNumber.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsCoaDactNumber.hints.precision}"
+                                  shortDesc="#{bindings.TnsCoaDactNumber.hints.tooltip}" id="it12"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it12}"
+                                  inlineStyle="text-align:right;" readOnly="true">
+                        <f:validator binding="#{bindings.TnsCoaDactNumber.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsCoaDactNumber.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CoaActNumber.inputValue}"
+                                  label="#{bindings.CoaActNumber.hints.label}"
+                                  required="#{bindings.CoaActNumber.hints.mandatory}"
+                                  columns="#{bindings.CoaActNumber.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaActNumber.hints.precision}"
+                                  shortDesc="#{bindings.CoaActNumber.hints.tooltip}" id="it13"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it13}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.CoaActNumber.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaActNumber.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CoaCode.inputValue}" label="#{bindings.CoaCode.hints.label}"
+                                  required="#{bindings.CoaCode.hints.mandatory}"
+                                  columns="#{bindings.CoaCode.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaCode.hints.precision}"
+                                  shortDesc="#{bindings.CoaCode.hints.tooltip}" id="it14"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it14}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.CoaCode.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaCode.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CoaBalance.inputValue}" label="#{bindings.CoaBalance.hints.label}"
+                                  required="#{bindings.CoaBalance.hints.mandatory}"
+                                  columns="#{bindings.CoaBalance.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaBalance.hints.precision}"
+                                  shortDesc="#{bindings.CoaBalance.hints.tooltip}" id="it15"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it15}"
+                                  readOnly="true" inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.CoaBalance.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaBalance.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CoaPartyId.inputValue}" label="#{bindings.CoaPartyId.hints.label}"
+                                  required="#{bindings.CoaPartyId.hints.mandatory}"
+                                  columns="#{bindings.CoaPartyId.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaPartyId.hints.precision}"
+                                  shortDesc="#{bindings.CoaPartyId.hints.tooltip}" id="it16"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it16}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.CoaPartyId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaPartyId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OildId.inputValue}" label="#{bindings.OildId.hints.label}"
+                                  required="#{bindings.OildId.hints.mandatory}"
+                                  columns="#{bindings.OildId.hints.displayWidth}"
+                                  maximumLength="#{bindings.OildId.hints.precision}"
+                                  shortDesc="#{bindings.OildId.hints.tooltip}" id="it17"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it17}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.OildId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OildId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OiltId.inputValue}" label="#{bindings.OiltId.hints.label}"
+                                  required="#{bindings.OiltId.hints.mandatory}"
+                                  columns="#{bindings.OiltId.hints.displayWidth}"
+                                  maximumLength="#{bindings.OiltId.hints.precision}"
+                                  shortDesc="#{bindings.OiltId.hints.tooltip}" id="it18"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it18}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.OiltId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OiltId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OiltCapacity.inputValue}"
+                                  label="#{bindings.OiltCapacity.hints.label}"
+                                  required="#{bindings.OiltCapacity.hints.mandatory}"
+                                  columns="#{bindings.OiltCapacity.hints.displayWidth}"
+                                  maximumLength="#{bindings.OiltCapacity.hints.precision}"
+                                  shortDesc="#{bindings.OiltCapacity.hints.tooltip}" id="it19"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it19}"
+                                  readOnly="true" inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.OiltCapacity.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OiltCapacity.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PurchaseRateLogId.inputValue}"
+                                  label="#{bindings.PurchaseRateLogId.hints.label}"
+                                  required="#{bindings.PurchaseRateLogId.hints.mandatory}"
+                                  columns="#{bindings.PurchaseRateLogId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PurchaseRateLogId.hints.precision}"
+                                  shortDesc="#{bindings.PurchaseRateLogId.hints.tooltip}" id="it20"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it20}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.PurchaseRateLogId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PurchaseRateLogId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CoaActNumber1.inputValue}"
+                                  label="#{bindings.CoaActNumber1.hints.label}"
+                                  required="#{bindings.CoaActNumber1.hints.mandatory}"
+                                  columns="#{bindings.CoaActNumber1.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaActNumber1.hints.precision}"
+                                  shortDesc="#{bindings.CoaActNumber1.hints.tooltip}" id="it21"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it21}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.CoaActNumber1.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaActNumber1.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CoaCode1.inputValue}" label="#{bindings.CoaCode1.hints.label}"
+                                  required="#{bindings.CoaCode1.hints.mandatory}"
+                                  columns="#{bindings.CoaCode1.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaCode1.hints.precision}"
+                                  shortDesc="#{bindings.CoaCode1.hints.tooltip}" id="it22"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it22}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.CoaCode1.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaCode1.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CoaBalance1.inputValue}" label="#{bindings.CoaBalance1.hints.label}"
+                                  required="#{bindings.CoaBalance1.hints.mandatory}"
+                                  columns="#{bindings.CoaBalance1.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaBalance1.hints.precision}"
+                                  shortDesc="#{bindings.CoaBalance1.hints.tooltip}" id="it23"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it23}"
+                                  readOnly="true" inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.CoaBalance1.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaBalance1.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CoaProductId.inputValue}"
+                                  label="#{bindings.CoaProductId.hints.label}"
+                                  required="#{bindings.CoaProductId.hints.mandatory}"
+                                  columns="#{bindings.CoaProductId.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaProductId.hints.precision}"
+                                  shortDesc="#{bindings.CoaProductId.hints.tooltip}" id="it24"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it24}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.CoaProductId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaProductId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CoaQtyBalance.inputValue}"
+                                  label="#{bindings.CoaQtyBalance.hints.label}"
+                                  required="#{bindings.CoaQtyBalance.hints.mandatory}"
+                                  columns="#{bindings.CoaQtyBalance.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaQtyBalance.hints.precision}"
+                                  shortDesc="#{bindings.CoaQtyBalance.hints.tooltip}" id="it25"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it25}"
+                                  readOnly="true" inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.CoaQtyBalance.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaQtyBalance.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OildId1.inputValue}" label="#{bindings.OildId1.hints.label}"
+                                  required="#{bindings.OildId1.hints.mandatory}"
+                                  columns="#{bindings.OildId1.hints.displayWidth}"
+                                  maximumLength="#{bindings.OildId1.hints.precision}"
+                                  shortDesc="#{bindings.OildId1.hints.tooltip}" id="it26"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it26}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.OildId1.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OildId1.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsOildLoadId.inputValue}"
+                                  label="#{bindings.TnsOildLoadId.hints.label}"
+                                  required="#{bindings.TnsOildLoadId.hints.mandatory}"
+                                  columns="#{bindings.TnsOildLoadId.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsOildLoadId.hints.precision}"
+                                  shortDesc="#{bindings.TnsOildLoadId.hints.tooltip}" id="it27"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it27}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.TnsOildLoadId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsOildLoadId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsTnsviewId.inputValue}"
+                                  label="#{bindings.TnsTnsviewId.hints.label}"
+                                  required="#{bindings.TnsTnsviewId.hints.mandatory}"
+                                  columns="#{bindings.TnsTnsviewId.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsTnsviewId.hints.precision}"
+                                  shortDesc="#{bindings.TnsTnsviewId.hints.tooltip}" id="it28"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it28}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.TnsTnsviewId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsTnsviewId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsOiltId.inputValue}" label="#{bindings.TnsOiltId.hints.label}"
+                                  required="#{bindings.TnsOiltId.hints.mandatory}"
+                                  columns="#{bindings.TnsOiltId.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsOiltId.hints.precision}"
+                                  shortDesc="#{bindings.TnsOiltId.hints.tooltip}" id="it29"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it29}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.TnsOiltId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsOiltId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TnsOildId.inputValue}" label="#{bindings.TnsOildId.hints.label}"
+                                  required="#{bindings.TnsOildId.hints.mandatory}"
+                                  columns="#{bindings.TnsOildId.hints.displayWidth}"
+                                  maximumLength="#{bindings.TnsOildId.hints.precision}"
+                                  shortDesc="#{bindings.TnsOildId.hints.tooltip}" id="it30"
+                                  binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.it30}"
+                                  rendered="false">
+                        <f:validator binding="#{bindings.TnsOildId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TnsOildId.format}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout layout="horizontal" id="pgl1"
+                                             binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.pgl1}"
+                                             halign="left">
+                            <af:panelGroupLayout layout="horizontal" id="pgl2"
+                                                 binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.pgl2}">
+                                <af:button actionListener="#{bindings.First.execute}"
+                                           icon="#{resource['images:first_hor_ena.png']}"
+                                           disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1"
+                                           binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.b1}"/>
+                                <af:button actionListener="#{bindings.Previous.execute}"
+                                           icon="#{resource['images:previoustraversalarrow_ena.png']}"
+                                           disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"
+                                           binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.b2}"/>
+                                <af:button actionListener="#{bindings.Next.execute}"
+                                           icon="#{resource['images:nexttraversalarrow_ena.png']}"
+                                           disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"
+                                           binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.b3}"/>
+                                <af:button actionListener="#{bindings.Last.execute}"
+                                           icon="#{resource['images:last_hor_ena.png']}"
+                                           disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4"
+                                           binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.b4}"/>
+                                <af:outputText value="---------" id="ot50"/>
+                                <af:button id="b5" icon="#{resource['images:commit.png']}"
+                                           binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.b5}"
+                                           actionListener="#{bindings.Commit.execute}" text="Submit">
+                                           <af:showPopupBehavior popupId="p1" triggerType="click"/>
+                                </af:button>
+                                <af:button actionListener="#{bindings.CreateInsert.execute}"
+                                           icon="#{resource['images:add.png']}"
+                                           disabled="#{!bindings.CreateInsert.enabled}" id="b6"
+                                           binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.b6}"
+                                           text="CreateInsert"/>
+                            </af:panelGroupLayout>
+                            <af:outputText value="----------------" id="ot60"/>
+                            <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                       icon="#{resource['images:rollback.png']}"
+                                       disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b7"
+                                       binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.b7}">
+                                <af:resetActionListener/>
+                            </af:button>
+                            <af:outputText value="---------------------------" id="ot61"/>
+                            <af:button actionListener="#{bindings.Delete.execute}" text="Delete"
+                                       disabled="#{!bindings.Delete.enabled}" id="b8"
+                                       binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.b8}"
+                                       inlineStyle="color:Red;" icon="#{resource['images:garbg.png']}"/>
+                                       <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                                    <af:noteWindow id="nw1">
+                                            <b style="color:Maroon;">Submitted</b>
+                                    </af:noteWindow>
+                                </af:popup>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1" binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.pc1}">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar">
+                    <af:toolbar id="t2" binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.t2}">
+                        <af:outputText value="Mastams" id="ot27"
+                                       binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.ot27}"
+                                       inlineStyle="color:Purple; font-size:large;"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.PurchaseOmcPumpBack1.collectionModel}" var="row"
+                          rows="#{bindings.PurchaseOmcPumpBack1.rangeSize}"
+                          emptyText="#{bindings.PurchaseOmcPumpBack1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.PurchaseOmcPumpBack1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.PurchaseOmcPumpBack1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.PurchaseOmcPumpBack1.rangeSize}"
+                          filterModel="#{bindings.PurchaseOmcPumpBack1Query.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.PurchaseOmcPumpBack1Query.processQuery}" varStatus="vs" id="t1"
+                          partialTriggers="::b1 ::b2 ::b3 ::b4 ::b6 ::b8 ::b7 ::b5 :::b1 :::b2 :::b3 :::b4 :::b6 :::b8 :::b5 :::b7"
+                          binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.t1}" scrollPolicy="page"
+                          width="1200">
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsDate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsDate.label}" id="c1"
+                               width="150">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.PurchaseOmcPumpBack1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.TnsDate.value}"
+                                          id="id4"
+                                          binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.id4}">
+                                <af:convertDateTime pattern="#{bindings.PurchaseOmcPumpBack1.hints.TnsDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.TnsDate}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsDate.tooltip}" id="ot1">
+                            <af:convertDateTime pattern="dd-MMM-yyyy hh:mm:ss a"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.CoaName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.CoaName.label}" id="c2"
+                               width="300" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.CoaName}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.CoaName.tooltip}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.CoaName1.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.CoaName1.label}"
+                               id="c3" width="150" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.CoaName1}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.CoaName1.tooltip}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsRate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsRate.label}" id="c4"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.TnsRate}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsRate.tooltip}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsQty.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsQty.label}" id="c5"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.TnsQty}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsQty.tooltip}" id="ot5">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseOmcPumpBack1.hints.TnsQty.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsAmount.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsAmount.label}"
+                               id="c9" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.TnsAmount}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsAmount.tooltip}" id="ot9">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseOmcPumpBack1.hints.TnsAmount.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.OildShortname.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseOmcPumpBack1.hints.OildShortname.label}" id="c6">
+                        <af:outputText value="#{row.OildShortname}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.OildShortname.tooltip}"
+                                       id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.OiltRegistration.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseOmcPumpBack1.hints.OiltRegistration.label}" id="c7"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.OiltRegistration}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.OiltRegistration.tooltip}"
+                                       id="ot7"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.OildShortname1.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseOmcPumpBack1.hints.OildShortname1.label}" id="c8">
+                        <af:outputText value="#{row.OildShortname1}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.OildShortname1.tooltip}"
+                                       id="ot8"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsId.label}" id="c10"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.TnsId}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsId.tooltip}" id="ot10">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseOmcPumpBack1.hints.TnsId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsDetail.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsDetail.label}"
+                               id="c11">
+                        <af:outputText value="#{row.TnsDetail}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsDetail.tooltip}" id="ot11"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsInfo.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsInfo.label}"
+                               id="c12">
+                        <af:outputText value="#{row.TnsInfo}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsInfo.tooltip}" id="ot12"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsNewrate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsNewrate.label}"
+                               id="c13" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.TnsNewrate}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsNewrate.tooltip}" id="ot13"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsSlipDate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsSlipDate.label}"
+                               id="c14">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.PurchaseOmcPumpBack1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.TnsSlipDate.value}"
+                                          id="id5"
+                                          binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.id5}">
+                                <af:convertDateTime pattern="#{bindings.PurchaseOmcPumpBack1.hints.TnsSlipDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.TnsSlipDate}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsSlipDate.tooltip}" id="ot14">
+                            <af:convertDateTime pattern="#{bindings.PurchaseOmcPumpBack1.hints.TnsSlipDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsSlipNo.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsSlipNo.label}"
+                               id="c15" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.TnsSlipNo}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsSlipNo.tooltip}" id="ot15"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsCoaCactNumber.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsCoaCactNumber.label}" id="c16"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.TnsCoaCactNumber}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsCoaCactNumber.tooltip}"
+                                       id="ot16">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseOmcPumpBack1.hints.TnsCoaCactNumber.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsCoaDactNumber.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsCoaDactNumber.label}" id="c17"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.TnsCoaDactNumber}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsCoaDactNumber.tooltip}"
+                                       id="ot17">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseOmcPumpBack1.hints.TnsCoaDactNumber.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.CoaBalance.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.CoaBalance.label}"
+                               id="c18" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.CoaBalance}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.CoaBalance.tooltip}" id="ot18">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseOmcPumpBack1.hints.CoaBalance.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.OiltCapacity.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.OiltCapacity.label}"
+                               id="c19" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.OiltCapacity}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.OiltCapacity.tooltip}"
+                                       id="ot19">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseOmcPumpBack1.hints.OiltCapacity.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.CoaBalance1.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseOmcPumpBack1.hints.CoaBalance1.label}"
+                               id="c20" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.CoaBalance1}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.CoaBalance1.tooltip}" id="ot20">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseOmcPumpBack1.hints.CoaBalance1.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.CoaQtyBalance.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseOmcPumpBack1.hints.CoaQtyBalance.label}" id="c21"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.CoaQtyBalance}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.CoaQtyBalance.tooltip}"
+                                       id="ot21">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseOmcPumpBack1.hints.CoaQtyBalance.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.TnsOildLoadDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseOmcPumpBack1.hints.TnsOildLoadDate.label}" id="c22">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.PurchaseOmcPumpBack1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.TnsOildLoadDate.value}"
+                                          id="id6"
+                                          binding="#{backingBeanScope.backing_PurchaseOmcPumpBackDatefview.id6}">
+                                <af:convertDateTime pattern="#{bindings.PurchaseOmcPumpBack1.hints.TnsOildLoadDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.TnsOildLoadDate}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.TnsOildLoadDate.tooltip}"
+                                       id="ot22">
+                            <af:convertDateTime pattern="#{bindings.PurchaseOmcPumpBack1.hints.TnsOildLoadDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseOmcPumpBack1.hints.PurchaseRateLogR.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseOmcPumpBack1.hints.PurchaseRateLogR.label}" id="c23"
+                               inlineStyle="text-align:right;" rendered="false">
+                        <af:outputText value="#{row.PurchaseRateLogR}"
+                                       shortDesc="#{bindings.PurchaseOmcPumpBack1.hints.PurchaseRateLogR.tooltip}"
+                                       id="ot23"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_PurchaseOmcPumpBackDatefview-->
+</ui:composition>

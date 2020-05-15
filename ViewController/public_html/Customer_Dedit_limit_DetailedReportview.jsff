@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelSplitter orientation="vertical" splitterPosition="225" id="ps1" partialTriggers="ps1">
+    <f:facet name="first">
+      <af:panelBox id="pb1" icon="#{resource['images:adfdi_logo_16.png']}">
+        <f:facet name="toolbar">
+          <af:outputText value="Mastams" id="ot12" inlineStyle="color:Maroon; font-size:x-large; font-style:italic;"/>
+        </f:facet>
+        <af:panelFormLayout id="pfl1" partialTriggers="pc1:t1">
+          <af:outputText value="Customer Debit Limit Detailed" id="ot11"
+                         inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+          <af:inputText value="#{bindings.CusTrdDlParamId.inputValue}" label="#{bindings.CusTrdDlParamId.hints.label}"
+                        required="#{bindings.CusTrdDlParamId.hints.mandatory}"
+                        columns="#{bindings.CusTrdDlParamId.hints.displayWidth}"
+                        maximumLength="#{bindings.CusTrdDlParamId.hints.precision}"
+                        shortDesc="#{bindings.CusTrdDlParamId.hints.tooltip}" id="it1" rendered="false">
+            <f:validator binding="#{bindings.CusTrdDlParamId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.CusTrdDlParamId.format}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.CusTrdDlStartDateParam.inputValue}"
+                        label="#{bindings.CusTrdDlStartDateParam.hints.label}"
+                        required="#{bindings.CusTrdDlStartDateParam.hints.mandatory}"
+                        columns="#{bindings.CusTrdDlStartDateParam.hints.displayWidth}"
+                        shortDesc="#{bindings.CusTrdDlStartDateParam.hints.tooltip}" id="id1">
+            <f:validator binding="#{bindings.CusTrdDlStartDateParam.validator}"/>
+            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+          </af:inputDate>
+          <af:inputDate value="#{bindings.CusTrdDlEndDateParam.inputValue}"
+                        label="#{bindings.CusTrdDlEndDateParam.hints.label}"
+                        required="#{bindings.CusTrdDlEndDateParam.hints.mandatory}"
+                        columns="#{bindings.CusTrdDlEndDateParam.hints.displayWidth}"
+                        shortDesc="#{bindings.CusTrdDlEndDateParam.hints.tooltip}" id="id2">
+            <f:validator binding="#{bindings.CusTrdDlEndDateParam.validator}"/>
+            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.CusTrdDlPartyId.inputValue}" label="#{bindings.CusTrdDlPartyId.hints.label}"
+                        required="#{bindings.CusTrdDlPartyId.hints.mandatory}"
+                        columns="#{bindings.CusTrdDlPartyId.hints.displayWidth}"
+                        maximumLength="#{bindings.CusTrdDlPartyId.hints.precision}"
+                        shortDesc="#{bindings.CusTrdDlPartyId.hints.tooltip}" id="it2" rendered="false">
+            <f:validator binding="#{bindings.CusTrdDlPartyId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.CusTrdDlPartyId.format}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.ShowOmcPump.inputValue}" label="#{bindings.ShowOmcPump.label}"
+                              required="#{bindings.ShowOmcPump.hints.mandatory}"
+                              shortDesc="#{bindings.ShowOmcPump.hints.tooltip}" id="soc1" autoSubmit="true">
+            <f:selectItems value="#{bindings.ShowOmcPump.items}" id="si1"/>
+            <f:validator binding="#{bindings.ShowOmcPump.validator}"/>
+          </af:selectOneChoice>
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl2">
+              <af:button actionListener="#{bindings.Execute.execute}" text="Show"
+                         disabled="#{!bindings.Execute.enabled}" id="b2"/>
+              <af:spacer width="80" height="10" id="s1"/>
+              <af:button text="Submit" id="b1" actionListener="#{bindings.Commit.execute}"
+                         icon="#{resource['images:commit.png']}"/>
+              <af:spacer width="500" height="10" id="s2"/>
+              <af:button text="Excel" id="b3" inlineStyle="color:Green;" icon="#{resource['images:export.png']}">
+                <af:exportCollectionActionListener type="excelHTML" exportedId="pc1:t1"
+                                                   filename="CustomerdebitlimitDetailed.xls"
+                                                   title="Customer Debit Limit Detailed"/>
+              </af:button>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="second">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.ZRptAllCustumerTrdDataView1.collectionModel}" var="row"
+                  rows="#{bindings.ZRptAllCustumerTrdDataView1.rangeSize}"
+                  emptyText="#{bindings.ZRptAllCustumerTrdDataView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.ZRptAllCustumerTrdDataView1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.ZRptAllCustumerTrdDataView1.collectionModel.makeCurrent}"
+                  rowSelection="single" fetchSize="#{bindings.ZRptAllCustumerTrdDataView1.rangeSize}"
+                  filterModel="#{bindings.ZRptAllCustumerTrdDataView1Query.queryDescriptor}" filterVisible="true"
+                  queryListener="#{bindings.ZRptAllCustumerTrdDataView1Query.processQuery}" varStatus="vs" id="t1"
+                  partialTriggers="::b2 :::b2 :::b1" scrollPolicy="page" width="1200">
+          <af:column sortProperty="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlOmcName.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlOmcName.label}"
+                     id="c1" width="150" align="center" inlineStyle="text-align:left;">
+            <af:outputText value="#{row.CusTrdDlOmcName}"
+                           shortDesc="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlOmcName.tooltip}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlDate.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlDate.label}"
+                     id="c2" inlineStyle="text-align:left;" width="143" align="center">
+            <f:facet name="filter">
+              <af:inputDate value="#{bindings.ZRptAllCustumerTrdDataView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.CusTrdDlDate.value}"
+                            id="id3">
+                <af:convertDateTime pattern="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlDate.format}"/>
+              </af:inputDate>
+            </f:facet>
+            <af:outputText value="#{row.CusTrdDlDate}"
+                           shortDesc="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlDate.tooltip}" id="ot2">
+              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlLedgerBalance.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlLedgerBalance.label}" id="c3"
+                     width="157" align="center" inlineStyle="text-align:left;">
+            <af:outputText value="#{row.CusTrdDlLedgerBalance}"
+                           shortDesc="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlLedgerBalance.tooltip}"
+                           id="ot3">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlLedgerBalance.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPayments.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPayments.label}" id="c5"
+                     align="center" width="166" inlineStyle="text-align:right;">
+            <af:outputText value="#{row.CusTrdDlPayments}"
+                           shortDesc="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPayments.tooltip}" id="ot5">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPayments.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPurchases.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPurchases.label}" id="c4"
+                     inlineStyle="text-align:right;" width="74" align="center">
+            <af:outputText value="#{row.CusTrdDlPurchases}"
+                           shortDesc="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPurchases.tooltip}" id="ot4">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPurchases.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlNetBalance.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlNetBalance.label}" id="c6"
+                     inlineStyle="text-align:right;" width="150" align="center">
+            <af:outputText value="#{row.CusTrdDlNetBalance}"
+                           shortDesc="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlNetBalance.tooltip}"
+                           id="ot6">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlNetBalance.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPmpCrdLimit.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPmpCrdLimit.label}" id="c7"
+                     width="120" align="center" inlineStyle="text-align:right;">
+            <af:outputText value="#{row.CusTrdDlPmpCrdLimit}"
+                           shortDesc="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPmpCrdLimit.tooltip}"
+                           id="ot7">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlPmpCrdLimit.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdBalanceWithLimit.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdBalanceWithLimit.label}" id="c8"
+                     inlineStyle="text-align:right;" width="150" align="center">
+            <af:outputText value="#{row.CusTrdBalanceWithLimit}"
+                           shortDesc="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdBalanceWithLimit.tooltip}"
+                           id="ot8">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdBalanceWithLimit.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlComments.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlComments.label}" id="c9"
+                     width="120" align="center" inlineStyle="text-align:left;">
+            <af:outputText value="#{row.CusTrdDlComments}"
+                           shortDesc="#{bindings.ZRptAllCustumerTrdDataView1.hints.CusTrdDlComments.tooltip}" id="ot9"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.ZRptAllCustumerTrdDataView1.hints.DebitLimitCat.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.ZRptAllCustumerTrdDataView1.hints.DebitLimitCat.label}"
+                     id="c10" rendered="false">
+            <af:outputText value="#{row.DebitLimitCat}"
+                           shortDesc="#{bindings.ZRptAllCustumerTrdDataView1.hints.DebitLimitCat.tooltip}" id="ot10">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ZRptAllCustumerTrdDataView1.hints.DebitLimitCat.format}"/>
+            </af:outputText>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+  </af:panelSplitter>
+</ui:composition>

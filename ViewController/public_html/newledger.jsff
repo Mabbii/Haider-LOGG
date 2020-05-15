@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelFormLayout id="pfl1">
+    <af:inputText value="#{bindings.BindCoaName.inputValue}" label="#{bindings.BindCoaName.hints.label}"
+                  required="#{bindings.BindCoaName.hints.mandatory}"
+                  columns="#{bindings.BindCoaName.hints.displayWidth}"
+                  maximumLength="#{bindings.BindCoaName.hints.precision}"
+                  shortDesc="#{bindings.BindCoaName.hints.tooltip}" id="it1">
+      <f:validator binding="#{bindings.BindCoaName.validator}"/>
+    </af:inputText>
+    <af:inputText label="Label 1" id="it2" value="#{pageFlowScope.zrptbName}"/>
+    <af:inputDate value="#{bindings.BindGleStartDate.inputValue}" label="#{bindings.BindGleStartDate.hints.label}"
+                  required="#{bindings.BindGleStartDate.hints.mandatory}"
+                  columns="#{bindings.BindGleStartDate.hints.displayWidth}"
+                  shortDesc="#{bindings.BindGleStartDate.hints.tooltip}" id="id1">
+      <f:validator binding="#{bindings.BindGleStartDate.validator}"/>
+      <af:convertDateTime pattern="#{bindings.BindGleStartDate.format}"/>
+    </af:inputDate>
+    <af:inputDate value="#{bindings.BindGleEndDate.inputValue}" label="#{bindings.BindGleEndDate.hints.label}"
+                  required="#{bindings.BindGleEndDate.hints.mandatory}"
+                  columns="#{bindings.BindGleEndDate.hints.displayWidth}"
+                  shortDesc="#{bindings.BindGleEndDate.hints.tooltip}" id="id2">
+      <f:validator binding="#{bindings.BindGleEndDate.validator}"/>
+      <af:convertDateTime pattern="#{bindings.BindGleEndDate.format}"/>
+    </af:inputDate>
+    <af:button actionListener="#{bindings.ExecuteWithParams.execute}" text="ExecuteWithParams"
+               disabled="#{!bindings.ExecuteWithParams.enabled}" id="b1"/>
+    <af:button text="button 1" id="b2" action="*return"/>
+  </af:panelFormLayout>
+</ui:composition>

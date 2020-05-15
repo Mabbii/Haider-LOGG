@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="279" id="ps1" partialTriggers="ps1">
+        <f:facet name="first">
+            <af:panelBox id="pb1">
+                <f:facet name="toolbar">
+                    <af:outputText value="Mastams" id="ot69" inlineStyle="color:Maroon; font-size:x-large; font-style:italic;"/>
+                </f:facet>
+                <af:panelFormLayout id="pfl1" partialTriggers="pc1:t1">
+                    <af:outputText value="OMC CREDIT LIMIT" id="ot12"
+                                   inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+                    <af:inputText value="#{bindings.CreditLimitParamId.inputValue}"
+                                  label="#{bindings.CreditLimitParamId.hints.label}"
+                                  required="#{bindings.CreditLimitParamId.hints.mandatory}"
+                                  columns="#{bindings.CreditLimitParamId.hints.displayWidth}"
+                                  maximumLength="#{bindings.CreditLimitParamId.hints.precision}"
+                                  shortDesc="#{bindings.CreditLimitParamId.hints.tooltip}" id="it1" rendered="false">
+                        <f:validator binding="#{bindings.CreditLimitParamId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CreditLimitParamId.format}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.CreditLimitParamStartDate.inputValue}"
+                                  label="#{bindings.CreditLimitParamStartDate.hints.label}"
+                                  required="#{bindings.CreditLimitParamStartDate.hints.mandatory}"
+                                  columns="#{bindings.CreditLimitParamStartDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.CreditLimitParamStartDate.hints.tooltip}" id="id1">
+                        <f:validator binding="#{bindings.CreditLimitParamStartDate.validator}"/>
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.CreditLimitParamEndDate.inputValue}"
+                                  label="#{bindings.CreditLimitParamEndDate.hints.label}"
+                                  required="#{bindings.CreditLimitParamEndDate.hints.mandatory}"
+                                  columns="#{bindings.CreditLimitParamEndDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.CreditLimitParamEndDate.hints.tooltip}" id="id2">
+                        <f:validator binding="#{bindings.CreditLimitParamEndDate.validator}"/>
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:inputText value="#{bindings.CreditLimitParamOmcId.inputValue}"
+                                  label="#{bindings.CreditLimitParamOmcId.hints.label}"
+                                  required="#{bindings.CreditLimitParamOmcId.hints.mandatory}"
+                                  columns="#{bindings.CreditLimitParamOmcId.hints.displayWidth}"
+                                  maximumLength="#{bindings.CreditLimitParamOmcId.hints.precision}"
+                                  shortDesc="#{bindings.CreditLimitParamOmcId.hints.tooltip}" id="it2" rendered="false">
+                        <f:validator binding="#{bindings.CreditLimitParamOmcId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CreditLimitParamOmcId.format}"/>
+                    </af:inputText>
+                    <af:inputListOfValues id="coaNameId" popupTitle="Search and Select: #{bindings.CoaName.hints.label}"
+                                          value="#{bindings.CoaName.inputValue}" label="#{bindings.CoaName.hints.label}"
+                                          model="#{bindings.CoaName.listOfValuesModel}"
+                                          required="#{bindings.CoaName.hints.mandatory}"
+                                          columns="#{bindings.CoaName.hints.displayWidth}"
+                                          shortDesc="#{bindings.CoaName.hints.tooltip}" autoSubmit="true">
+                        <f:validator binding="#{bindings.CoaName.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.CoaName.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputText value="#{bindings.CoaActNumber.inputValue}"
+                                  label="#{bindings.CoaActNumber.hints.label}"
+                                  required="#{bindings.CoaActNumber.hints.mandatory}"
+                                  columns="#{bindings.CoaActNumber.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaActNumber.hints.precision}"
+                                  shortDesc="#{bindings.CoaActNumber.hints.tooltip}" id="it3">
+                        <f:validator binding="#{bindings.CoaActNumber.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaActNumber.format}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout id="pgl2">
+                            <af:button actionListener="#{bindings.Execute.execute}" text="Show"
+                                       disabled="#{!bindings.Execute.enabled}" id="b2"/>
+                            <af:spacer width="80" height="10" id="s1"/>
+                            <af:button text="Submit" id="b1" actionListener="#{bindings.Commit.execute}"
+                                       icon="#{resource['images:commit.png']}"/>
+                            <af:spacer width="500" height="10" id="s2"/>
+                            <af:button text="Excel" id="b3" inlineStyle="color:Green;"
+                                       icon="#{resource['images:export.png']}">
+                                <af:exportCollectionActionListener type="excelHTML" exportedId="pc1:t1"
+                                                                   filename="OmcCreditLimit.xls"
+                                                                   title="OMC Credit Limit "/>
+                            </af:button>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar">
+                    <af:toolbar id="t2">
+                        <af:outputText value="MasTam" id="ot13" inlineStyle="font-size:large; color:Purple;"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.ZRptOmcCreditLimitDataView1.collectionModel}" var="row"
+                          rows="#{bindings.ZRptOmcCreditLimitDataView1.rangeSize}"
+                          emptyText="#{bindings.ZRptOmcCreditLimitDataView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.ZRptOmcCreditLimitDataView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.ZRptOmcCreditLimitDataView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.ZRptOmcCreditLimitDataView1.rangeSize}"
+                          filterModel="#{bindings.ZRptOmcCreditLimitDataView1Query.queryDescriptor}"
+                          filterVisible="true" queryListener="#{bindings.ZRptOmcCreditLimitDataView1Query.processQuery}"
+                          varStatus="vs" id="t1" partialTriggers="::b2 :::b2 :::b1" scrollPolicy="page" width="1200">
+                    <af:column sortProperty="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitOmcId.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitOmcId.label}" id="c1"
+                               align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.CreditLimitOmcId}"
+                                       shortDesc="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitOmcId.tooltip}"
+                                       id="ot1">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitOmcId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitOmcName.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitOmcName.label}"
+                               id="c9" width="200" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.CreditLimitOmcName}"
+                                       shortDesc="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitOmcName.tooltip}"
+                                       id="ot9"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitDate.label}" id="c2"
+                               inlineStyle="text-align:left;" align="center">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.ZRptOmcCreditLimitDataView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.CreditLimitDate.value}"
+                                          id="id3">
+                                <af:convertDateTime pattern="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.CreditLimitDate}"
+                                       shortDesc="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitDate.tooltip}"
+                                       id="ot2">
+                            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitOmcCrdLimit.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitOmcCrdLimit.label}"
+                               id="c3" inlineStyle="text-align:right;" align="center" width="150">
+                        <af:outputText value="#{row.CreditLimitOmcCrdLimit}"
+                                       shortDesc="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitOmcCrdLimit.tooltip}"
+                                       id="ot3">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitOmcCrdLimit.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitLedgerBalance.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitLedgerBalance.label}"
+                               id="c4" inlineStyle="text-align:right;" align="center" width="150">
+                        <af:outputText value="#{row.CreditLimitLedgerBalance}"
+                                       shortDesc="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitLedgerBalance.tooltip}"
+                                       id="ot4">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitLedgerBalance.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitPayments.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitPayments.label}"
+                               id="c6" inlineStyle="text-align:right;" width="150" align="center">
+                        <af:outputText value="#{row.CreditLimitPayments}"
+                                       shortDesc="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitPayments.tooltip}"
+                                       id="ot6">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitPayments.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitPurchases.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitPurchases.label}"
+                               id="c5" inlineStyle="text-align:right;" align="center" width="150">
+                        <af:outputText value="#{row.CreditLimitPurchases}"
+                                       shortDesc="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitPurchases.tooltip}"
+                                       id="ot5">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitPurchases.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitNetBalance.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitNetBalance.label}"
+                               id="c7" inlineStyle="text-align:right;" align="center" width="150">
+                        <af:outputText value="#{row.CreditLimitNetBalance}"
+                                       shortDesc="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitNetBalance.tooltip}"
+                                       id="ot7">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitNetBalance.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditBalanceWithLimit.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditBalanceWithLimit.label}"
+                               id="c8" inlineStyle="text-align:right;" align="center" width="150">
+                        <af:outputText value="#{row.CreditBalanceWithLimit}"
+                                       shortDesc="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditBalanceWithLimit.tooltip}"
+                                       id="ot8">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditBalanceWithLimit.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitComments.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitComments.label}"
+                               id="c10" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.CreditLimitComments}"
+                                       shortDesc="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitComments.tooltip}"
+                                       id="ot10"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitCat.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitCat.label}" id="c11"
+                               rendered="false">
+                        <af:outputText value="#{row.CreditLimitCat}"
+                                       shortDesc="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitCat.tooltip}"
+                                       id="ot11">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ZRptOmcCreditLimitDataView1.hints.CreditLimitCat.format}"/>
+                        </af:outputText>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+</ui:composition>

@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="DCMRLINK.jspx" id="d1">
+            <af:messages id="m1"/>
+            <af:form id="f1">
+                <af:panelSplitter orientation="vertical" splitterPosition="500" id="ps1">
+                    <f:facet name="first">
+                        <af:table value="#{bindings.DateCounterView1.collectionModel}" var="row"
+                                  rows="#{bindings.DateCounterView1.rangeSize}"
+                                  emptyText="#{bindings.DateCounterView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.DateCounterView1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.DateCounterView1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.DateCounterView1.rangeSize}"
+                                  filterModel="#{bindings.DateCounterView1Query.queryDescriptor}" filterVisible="true"
+                                  queryListener="#{bindings.DateCounterView1Query.processQuery}" varStatus="vs" id="t1">
+                            <af:column sortProperty="#{bindings.DateCounterView1.hints.DcId.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.DateCounterView1.hints.DcId.label}"
+                                       id="c1">
+                                <af:inputText value="#{row.bindings.DcId.inputValue}"
+                                              label="#{bindings.DateCounterView1.hints.DcId.label}"
+                                              required="#{bindings.DateCounterView1.hints.DcId.mandatory}"
+                                              columns="#{bindings.DateCounterView1.hints.DcId.displayWidth}"
+                                              maximumLength="#{bindings.DateCounterView1.hints.DcId.precision}"
+                                              shortDesc="#{bindings.DateCounterView1.hints.DcId.tooltip}" id="it1">
+                                    <f:validator binding="#{row.bindings.DcId.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.DateCounterView1.hints.DcId.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.DateCounterView1.hints.DcDate.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.DateCounterView1.hints.DcDate.label}"
+                                       id="c2">
+                                <f:facet name="filter">
+                                    <af:inputDate value="#{bindings.DateCounterView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.DcDate.value}"
+                                                  id="id1">
+                                        <af:convertDateTime pattern="#{bindings.DateCounterView1.hints.DcDate.format}"/>
+                                    </af:inputDate>
+                                </f:facet>
+                                <af:inputDate value="#{row.bindings.DcDate.inputValue}"
+                                              label="#{bindings.DateCounterView1.hints.DcDate.label}"
+                                              required="#{bindings.DateCounterView1.hints.DcDate.mandatory}"
+                                              columns="#{bindings.DateCounterView1.hints.DcDate.displayWidth}"
+                                              shortDesc="#{bindings.DateCounterView1.hints.DcDate.tooltip}" id="id2">
+                                    <f:validator binding="#{row.bindings.DcDate.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.DateCounterView1.hints.DcDate.format}"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.DateCounterView1.hints.DcDateCounter.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.DateCounterView1.hints.DcDateCounter.label}" id="c3">
+                                <f:facet name="filter">
+                                    <af:inputDate value="#{bindings.DateCounterView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.DcDateCounter.value}"
+                                                  id="id3">
+                                        <af:convertDateTime pattern="#{bindings.DateCounterView1.hints.DcDateCounter.format}"/>
+                                    </af:inputDate>
+                                </f:facet>
+                                <af:inputDate value="#{row.bindings.DcDateCounter.inputValue}"
+                                              label="#{bindings.DateCounterView1.hints.DcDateCounter.label}"
+                                              required="#{bindings.DateCounterView1.hints.DcDateCounter.mandatory}"
+                                              columns="#{bindings.DateCounterView1.hints.DcDateCounter.displayWidth}"
+                                              shortDesc="#{bindings.DateCounterView1.hints.DcDateCounter.tooltip}"
+                                              id="id4">
+                                    <f:validator binding="#{row.bindings.DcDateCounter.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.DateCounterView1.hints.DcDateCounter.format}"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.DateCounterView1.hints.DcStartDate.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.DateCounterView1.hints.DcStartDate.label}" id="c4">
+                                <f:facet name="filter">
+                                    <af:inputDate value="#{bindings.DateCounterView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.DcStartDate.value}"
+                                                  id="id5">
+                                        <af:convertDateTime pattern="#{bindings.DateCounterView1.hints.DcStartDate.format}"/>
+                                    </af:inputDate>
+                                </f:facet>
+                                <af:inputDate value="#{row.bindings.DcStartDate.inputValue}"
+                                              label="#{bindings.DateCounterView1.hints.DcStartDate.label}"
+                                              required="#{bindings.DateCounterView1.hints.DcStartDate.mandatory}"
+                                              columns="#{bindings.DateCounterView1.hints.DcStartDate.displayWidth}"
+                                              shortDesc="#{bindings.DateCounterView1.hints.DcStartDate.tooltip}"
+                                              id="id6">
+                                    <f:validator binding="#{row.bindings.DcStartDate.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.DateCounterView1.hints.DcStartDate.format}"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.DateCounterView1.hints.DcEndDate.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.DateCounterView1.hints.DcEndDate.label}" id="c5">
+                                <f:facet name="filter">
+                                    <af:inputDate value="#{bindings.DateCounterView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.DcEndDate.value}"
+                                                  id="id7">
+                                        <af:convertDateTime pattern="#{bindings.DateCounterView1.hints.DcEndDate.format}"/>
+                                    </af:inputDate>
+                                </f:facet>
+                                <af:inputDate value="#{row.bindings.DcEndDate.inputValue}"
+                                              label="#{bindings.DateCounterView1.hints.DcEndDate.label}"
+                                              required="#{bindings.DateCounterView1.hints.DcEndDate.mandatory}"
+                                              columns="#{bindings.DateCounterView1.hints.DcEndDate.displayWidth}"
+                                              shortDesc="#{bindings.DateCounterView1.hints.DcEndDate.tooltip}" id="id8">
+                                    <f:validator binding="#{row.bindings.DcEndDate.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.DateCounterView1.hints.DcEndDate.format}"/>
+                                </af:inputDate>
+                            </af:column>
+                        </af:table>
+                    </f:facet>
+                    <f:facet name="second">
+                        <af:table value="#{bindings.MeterReadingsView2.collectionModel}" var="row"
+                                  rows="#{bindings.MeterReadingsView2.rangeSize}"
+                                  emptyText="#{bindings.MeterReadingsView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.MeterReadingsView2.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.MeterReadingsView2.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.MeterReadingsView2.rangeSize}"
+                                  filterModel="#{bindings.MeterReadingsView2Query.queryDescriptor}" filterVisible="true"
+                                  queryListener="#{bindings.MeterReadingsView2Query.processQuery}" varStatus="vs"
+                                  id="t2">
+                            <af:column sortProperty="#{bindings.MeterReadingsView2.hints.MeterRId.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.MeterReadingsView2.hints.MeterRId.label}" id="c6">
+                                <af:inputText value="#{row.bindings.MeterRId.inputValue}"
+                                              label="#{bindings.MeterReadingsView2.hints.MeterRId.label}"
+                                              required="#{bindings.MeterReadingsView2.hints.MeterRId.mandatory}"
+                                              columns="#{bindings.MeterReadingsView2.hints.MeterRId.displayWidth}"
+                                              maximumLength="#{bindings.MeterReadingsView2.hints.MeterRId.precision}"
+                                              shortDesc="#{bindings.MeterReadingsView2.hints.MeterRId.tooltip}"
+                                              id="it2">
+                                    <f:validator binding="#{row.bindings.MeterRId.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.MeterReadingsView2.hints.MeterRId.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MeterReadingsView2.hints.MeterRReadings.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.MeterReadingsView2.hints.MeterRReadings.label}" id="c7">
+                                <af:inputText value="#{row.bindings.MeterRReadings.inputValue}"
+                                              label="#{bindings.MeterReadingsView2.hints.MeterRReadings.label}"
+                                              required="#{bindings.MeterReadingsView2.hints.MeterRReadings.mandatory}"
+                                              columns="#{bindings.MeterReadingsView2.hints.MeterRReadings.displayWidth}"
+                                              maximumLength="#{bindings.MeterReadingsView2.hints.MeterRReadings.precision}"
+                                              shortDesc="#{bindings.MeterReadingsView2.hints.MeterRReadings.tooltip}"
+                                              id="it3">
+                                    <f:validator binding="#{row.bindings.MeterRReadings.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.MeterReadingsView2.hints.MeterRReadings.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MeterReadingsView2.hints.MeterRNozalIdFk.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.MeterReadingsView2.hints.MeterRNozalIdFk.label}" id="c8">
+                                <af:inputText value="#{row.bindings.MeterRNozalIdFk.inputValue}"
+                                              label="#{bindings.MeterReadingsView2.hints.MeterRNozalIdFk.label}"
+                                              required="#{bindings.MeterReadingsView2.hints.MeterRNozalIdFk.mandatory}"
+                                              columns="#{bindings.MeterReadingsView2.hints.MeterRNozalIdFk.displayWidth}"
+                                              maximumLength="#{bindings.MeterReadingsView2.hints.MeterRNozalIdFk.precision}"
+                                              shortDesc="#{bindings.MeterReadingsView2.hints.MeterRNozalIdFk.tooltip}"
+                                              id="it4">
+                                    <f:validator binding="#{row.bindings.MeterRNozalIdFk.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.MeterReadingsView2.hints.MeterRNozalIdFk.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MeterReadingsView2.hints.MeterRDate.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.MeterReadingsView2.hints.MeterRDate.label}" id="c9">
+                                <f:facet name="filter">
+                                    <af:inputDate value="#{bindings.MeterReadingsView2Query.queryDescriptor.filterConjunctionCriterion.criterionMap.MeterRDate.value}"
+                                                  id="id9">
+                                        <af:convertDateTime pattern="#{bindings.MeterReadingsView2.hints.MeterRDate.format}"/>
+                                    </af:inputDate>
+                                </f:facet>
+                                <af:inputDate value="#{row.bindings.MeterRDate.inputValue}"
+                                              label="#{bindings.MeterReadingsView2.hints.MeterRDate.label}"
+                                              required="#{bindings.MeterReadingsView2.hints.MeterRDate.mandatory}"
+                                              columns="#{bindings.MeterReadingsView2.hints.MeterRDate.displayWidth}"
+                                              shortDesc="#{bindings.MeterReadingsView2.hints.MeterRDate.tooltip}"
+                                              id="id10">
+                                    <f:validator binding="#{row.bindings.MeterRDate.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.MeterReadingsView2.hints.MeterRDate.format}"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MeterReadingsView2.hints.MeterRPrevious.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.MeterReadingsView2.hints.MeterRPrevious.label}" id="c10">
+                                <af:inputText value="#{row.bindings.MeterRPrevious.inputValue}"
+                                              label="#{bindings.MeterReadingsView2.hints.MeterRPrevious.label}"
+                                              required="#{bindings.MeterReadingsView2.hints.MeterRPrevious.mandatory}"
+                                              columns="#{bindings.MeterReadingsView2.hints.MeterRPrevious.displayWidth}"
+                                              maximumLength="#{bindings.MeterReadingsView2.hints.MeterRPrevious.precision}"
+                                              shortDesc="#{bindings.MeterReadingsView2.hints.MeterRPrevious.tooltip}"
+                                              id="it5">
+                                    <f:validator binding="#{row.bindings.MeterRPrevious.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.MeterReadingsView2.hints.MeterRPrevious.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MeterReadingsView2.hints.MeterRCurrent.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.MeterReadingsView2.hints.MeterRCurrent.label}" id="c11">
+                                <af:inputText value="#{row.bindings.MeterRCurrent.inputValue}"
+                                              label="#{bindings.MeterReadingsView2.hints.MeterRCurrent.label}"
+                                              required="#{bindings.MeterReadingsView2.hints.MeterRCurrent.mandatory}"
+                                              columns="#{bindings.MeterReadingsView2.hints.MeterRCurrent.displayWidth}"
+                                              maximumLength="#{bindings.MeterReadingsView2.hints.MeterRCurrent.precision}"
+                                              shortDesc="#{bindings.MeterReadingsView2.hints.MeterRCurrent.tooltip}"
+                                              id="it6">
+                                    <f:validator binding="#{row.bindings.MeterRCurrent.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.MeterReadingsView2.hints.MeterRCurrent.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MeterReadingsView2.hints.MeterRSale.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.MeterReadingsView2.hints.MeterRSale.label}" id="c12">
+                                <af:inputText value="#{row.bindings.MeterRSale.inputValue}"
+                                              label="#{bindings.MeterReadingsView2.hints.MeterRSale.label}"
+                                              required="#{bindings.MeterReadingsView2.hints.MeterRSale.mandatory}"
+                                              columns="#{bindings.MeterReadingsView2.hints.MeterRSale.displayWidth}"
+                                              maximumLength="#{bindings.MeterReadingsView2.hints.MeterRSale.precision}"
+                                              shortDesc="#{bindings.MeterReadingsView2.hints.MeterRSale.tooltip}"
+                                              id="it7">
+                                    <f:validator binding="#{row.bindings.MeterRSale.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.MeterReadingsView2.hints.MeterRSale.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MeterReadingsView2.hints.MeterRProductId.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.MeterReadingsView2.hints.MeterRProductId.label}" id="c13">
+                                <af:inputText value="#{row.bindings.MeterRProductId.inputValue}"
+                                              label="#{bindings.MeterReadingsView2.hints.MeterRProductId.label}"
+                                              required="#{bindings.MeterReadingsView2.hints.MeterRProductId.mandatory}"
+                                              columns="#{bindings.MeterReadingsView2.hints.MeterRProductId.displayWidth}"
+                                              maximumLength="#{bindings.MeterReadingsView2.hints.MeterRProductId.precision}"
+                                              shortDesc="#{bindings.MeterReadingsView2.hints.MeterRProductId.tooltip}"
+                                              id="it8">
+                                    <f:validator binding="#{row.bindings.MeterRProductId.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.MeterReadingsView2.hints.MeterRProductId.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MeterReadingsView2.hints.DcIdFk.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.MeterReadingsView2.hints.DcIdFk.label}"
+                                       id="c14">
+                                <af:inputText value="#{row.bindings.DcIdFk.inputValue}"
+                                              label="#{bindings.MeterReadingsView2.hints.DcIdFk.label}"
+                                              required="#{bindings.MeterReadingsView2.hints.DcIdFk.mandatory}"
+                                              columns="#{bindings.MeterReadingsView2.hints.DcIdFk.displayWidth}"
+                                              maximumLength="#{bindings.MeterReadingsView2.hints.DcIdFk.precision}"
+                                              shortDesc="#{bindings.MeterReadingsView2.hints.DcIdFk.tooltip}" id="it9">
+                                    <f:validator binding="#{row.bindings.DcIdFk.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.MeterReadingsView2.hints.DcIdFk.format}"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                    </f:facet>
+                </af:panelSplitter>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

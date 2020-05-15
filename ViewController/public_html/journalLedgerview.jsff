@@ -1,0 +1,596 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="175" id="ps1">
+        <f:facet name="first">
+            <af:panelFormLayout id="pfl1">
+                <af:inputListOfValues label="#{bindings.BindCoaName.hints.label}" popupTitle="Search and Result Dialog" id="ilov1"
+                                      value="#{bindings.BindCoaName.inputValue}"
+                                      model="#{bindings.CoaName.listOfValuesModel}">
+                    <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                    <af:inputText value="#{bindings.BindCoaName.inputValue}" label="#{bindings.BindCoaName.hints.label}"
+                                  required="#{bindings.BindCoaName.hints.mandatory}"
+                                  columns="#{bindings.BindCoaName.hints.displayWidth}"
+                                  maximumLength="#{bindings.BindCoaName.hints.precision}"
+                                  shortDesc="#{bindings.BindCoaName.hints.tooltip}" id="it1">
+                        <f:validator binding="#{bindings.BindCoaName.validator}"/>
+                    </af:inputText>
+                </af:inputListOfValues>
+                <af:inputDate value="#{bindings.BindGleStartDate.inputValue}"
+                              label="#{bindings.BindGleStartDate.hints.label}"
+                              required="#{bindings.BindGleStartDate.hints.mandatory}"
+                              columns="#{bindings.BindGleStartDate.hints.displayWidth}"
+                              shortDesc="#{bindings.BindGleStartDate.hints.tooltip}" id="id6">
+                    <f:validator binding="#{bindings.BindGleStartDate.validator}"/>
+                    <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                </af:inputDate>
+                <af:inputDate value="#{bindings.BindGleEndDate.inputValue}"
+                              label="#{bindings.BindGleEndDate.hints.label}"
+                              required="#{bindings.BindGleEndDate.hints.mandatory}"
+                              columns="#{bindings.BindGleEndDate.hints.displayWidth}"
+                              shortDesc="#{bindings.BindGleEndDate.hints.tooltip}" id="id7">
+                    <f:validator binding="#{bindings.BindGleEndDate.validator}"/>
+                    <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                </af:inputDate>
+                <af:button actionListener="#{bindings.ExecuteWithParams.execute}" text="SHOW"
+                           disabled="#{!bindings.ExecuteWithParams.enabled}" id="b1"/>
+            </af:panelFormLayout>
+        </f:facet>
+        <f:facet name="second">
+            <af:table value="#{bindings.GleForJournalLedgerReport1.collectionModel}" var="row"
+                      rows="#{bindings.GleForJournalLedgerReport1.rangeSize}"
+                      emptyText="#{bindings.GleForJournalLedgerReport1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.GleForJournalLedgerReport1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.GleForJournalLedgerReport1.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.GleForJournalLedgerReport1.rangeSize}"
+                      filterModel="#{bindings.GleForJournalLedgerReport1Query.queryDescriptor}" filterVisible="true"
+                      queryListener="#{bindings.GleForJournalLedgerReport1Query.processQuery}" varStatus="vs" id="t1"
+                      partialTriggers="::b1">
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleAcInTnsAcNo.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleAcInTnsAcNo.label}" id="c1">
+                    <af:outputText value="#{row.GleAcInTnsAcNo}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleAcInTnsAcNo.tooltip}"
+                                   id="ot1">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleAcInTnsAcNo.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleAdjDate.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleAdjDate.label}"
+                           id="c2">
+                    <f:facet name="filter">
+                        <af:inputDate value="#{bindings.GleForJournalLedgerReport1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.GleAdjDate.value}"
+                                      id="id1">
+                            <af:convertDateTime pattern="#{bindings.GleForJournalLedgerReport1.hints.GleAdjDate.format}"/>
+                        </af:inputDate>
+                    </f:facet>
+                    <af:outputText value="#{row.GleAdjDate}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleAdjDate.tooltip}" id="ot2">
+                        <af:convertDateTime pattern="#{bindings.GleForJournalLedgerReport1.hints.GleAdjDate.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleAdjTnsChildId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleAdjTnsChildId.label}" id="c3">
+                    <af:outputText value="#{row.GleAdjTnsChildId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleAdjTnsChildId.tooltip}"
+                                   id="ot3">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleAdjTnsChildId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleAdjTnsId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleAdjTnsId.label}" id="c4">
+                    <af:outputText value="#{row.GleAdjTnsId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleAdjTnsId.tooltip}"
+                                   id="ot4">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleAdjTnsId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleAvgrate.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleAvgrate.label}"
+                           id="c5">
+                    <af:outputText value="#{row.GleAvgrate}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleAvgrate.tooltip}" id="ot5">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleAvgrate.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleBalance.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleBalance.label}"
+                           id="c6">
+                    <af:outputText value="#{row.GleBalance}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleBalance.tooltip}" id="ot6">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleBalance.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleBankName.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleBankName.label}" id="c7">
+                    <af:outputText value="#{row.GleBankName}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleBankName.tooltip}"
+                                   id="ot7"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleBankNameId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleBankNameId.label}" id="c8">
+                    <af:outputText value="#{row.GleBankNameId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleBankNameId.tooltip}"
+                                   id="ot8">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleBankNameId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleBankTnsTypIdFk.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleBankTnsTypIdFk.label}" id="c9">
+                    <af:outputText value="#{row.GleBankTnsTypIdFk}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleBankTnsTypIdFk.tooltip}"
+                                   id="ot9">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleBankTnsTypIdFk.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleBrCode.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleBrCode.label}"
+                           id="c10">
+                    <af:outputText value="#{row.GleBrCode}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleBrCode.tooltip}"
+                                   id="ot10"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleCgsFlag.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleCgsFlag.label}"
+                           id="c11">
+                    <af:outputText value="#{row.GleCgsFlag}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleCgsFlag.tooltip}"
+                                   id="ot11">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleCgsFlag.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleCgsRate.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleCgsRate.label}"
+                           id="c12">
+                    <af:outputText value="#{row.GleCgsRate}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleCgsRate.tooltip}"
+                                   id="ot12">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleCgsRate.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleCoaActNumber.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleCoaActNumber.label}" id="c13">
+                    <af:outputText value="#{row.GleCoaActNumber}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleCoaActNumber.tooltip}"
+                                   id="ot13">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleCoaActNumber.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleCoaExemptSalesPurchase.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleCoaExemptSalesPurchase.label}"
+                           id="c14">
+                    <af:outputText value="#{row.GleCoaExemptSalesPurchase}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleCoaExemptSalesPurchase.tooltip}"
+                                   id="ot14">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleCoaExemptSalesPurchase.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleCredit.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleCredit.label}"
+                           id="c15">
+                    <af:outputText value="#{row.GleCredit}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleCredit.tooltip}" id="ot15">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleCredit.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleCreditQty.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleCreditQty.label}" id="c16">
+                    <af:outputText value="#{row.GleCreditQty}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleCreditQty.tooltip}"
+                                   id="ot16">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleCreditQty.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleDate.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleDate.label}"
+                           id="c17">
+                    <f:facet name="filter">
+                        <af:inputDate value="#{bindings.GleForJournalLedgerReport1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.GleDate.value}"
+                                      id="id2">
+                            <af:convertDateTime pattern="#{bindings.GleForJournalLedgerReport1.hints.GleDate.format}"/>
+                        </af:inputDate>
+                    </f:facet>
+                    <af:outputText value="#{row.GleDate}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleDate.tooltip}" id="ot17">
+                        <af:convertDateTime pattern="#{bindings.GleForJournalLedgerReport1.hints.GleDate.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleDebit.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleDebit.label}"
+                           id="c18">
+                    <af:outputText value="#{row.GleDebit}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleDebit.tooltip}" id="ot18">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleDebit.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleDebitBal.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleDebitBal.label}" id="c19">
+                    <af:outputText value="#{row.GleDebitBal}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleDebitBal.tooltip}"
+                                   id="ot19">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleDebitBal.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleDebitQty.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleDebitQty.label}" id="c20">
+                    <af:outputText value="#{row.GleDebitQty}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleDebitQty.tooltip}"
+                                   id="ot20">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleDebitQty.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleDetails.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleDetails.label}"
+                           id="c21">
+                    <af:outputText value="#{row.GleDetails}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleDetails.tooltip}"
+                                   id="ot21"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleEtc.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleEtc.label}"
+                           id="c22">
+                    <af:outputText value="#{row.GleEtc}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleEtc.tooltip}" id="ot22"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleId.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleId.label}"
+                           id="c23">
+                    <af:outputText value="#{row.GleId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleId.tooltip}" id="ot23">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleInfo.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleInfo.label}"
+                           id="c24">
+                    <af:outputText value="#{row.GleInfo}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleInfo.tooltip}" id="ot24"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleOilDId.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleOilDId.label}"
+                           id="c25">
+                    <af:outputText value="#{row.GleOilDId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleOilDId.tooltip}" id="ot25">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleOilDId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleOilTId.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleOilTId.label}"
+                           id="c26">
+                    <af:outputText value="#{row.GleOilTId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleOilTId.tooltip}" id="ot26">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleOilTId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleOildLoadDate.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleOildLoadDate.label}" id="c27">
+                    <f:facet name="filter">
+                        <af:inputDate value="#{bindings.GleForJournalLedgerReport1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.GleOildLoadDate.value}"
+                                      id="id3">
+                            <af:convertDateTime pattern="#{bindings.GleForJournalLedgerReport1.hints.GleOildLoadDate.format}"/>
+                        </af:inputDate>
+                    </f:facet>
+                    <af:outputText value="#{row.GleOildLoadDate}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleOildLoadDate.tooltip}"
+                                   id="ot27">
+                        <af:convertDateTime pattern="#{bindings.GleForJournalLedgerReport1.hints.GleOildLoadDate.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleOildLoadId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleOildLoadId.label}" id="c28">
+                    <af:outputText value="#{row.GleOildLoadId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleOildLoadId.tooltip}"
+                                   id="ot28">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleOildLoadId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleOldw.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleOldw.label}"
+                           id="c29">
+                    <af:outputText value="#{row.GleOldw}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleOldw.tooltip}" id="ot29">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleOldw.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GlePlFlag.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GlePlFlag.label}"
+                           id="c30">
+                    <af:outputText value="#{row.GlePlFlag}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GlePlFlag.tooltip}" id="ot30">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GlePlFlag.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleQty.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleQty.label}"
+                           id="c31">
+                    <af:outputText value="#{row.GleQty}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleQty.tooltip}" id="ot31">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleQty.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleQtyBal.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleQtyBal.label}"
+                           id="c32">
+                    <af:outputText value="#{row.GleQtyBal}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleQtyBal.tooltip}" id="ot32">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleQtyBal.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleQtyBalance.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleQtyBalance.label}" id="c33">
+                    <af:outputText value="#{row.GleQtyBalance}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleQtyBalance.tooltip}"
+                                   id="ot33">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleQtyBalance.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleRate.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleRate.label}"
+                           id="c34">
+                    <af:outputText value="#{row.GleRate}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleRate.tooltip}" id="ot34">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleRate.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleSDate.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleSDate.label}"
+                           id="c35">
+                    <f:facet name="filter">
+                        <af:inputDate value="#{bindings.GleForJournalLedgerReport1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.GleSDate.value}"
+                                      id="id4">
+                            <af:convertDateTime pattern="#{bindings.GleForJournalLedgerReport1.hints.GleSDate.format}"/>
+                        </af:inputDate>
+                    </f:facet>
+                    <af:outputText value="#{row.GleSDate}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleSDate.tooltip}" id="ot35">
+                        <af:convertDateTime pattern="#{bindings.GleForJournalLedgerReport1.hints.GleSDate.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleSlipDate.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleSlipDate.label}" id="c36">
+                    <f:facet name="filter">
+                        <af:inputDate value="#{bindings.GleForJournalLedgerReport1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.GleSlipDate.value}"
+                                      id="id5">
+                            <af:convertDateTime pattern="#{bindings.GleForJournalLedgerReport1.hints.GleSlipDate.format}"/>
+                        </af:inputDate>
+                    </f:facet>
+                    <af:outputText value="#{row.GleSlipDate}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleSlipDate.tooltip}"
+                                   id="ot36">
+                        <af:convertDateTime pattern="#{bindings.GleForJournalLedgerReport1.hints.GleSlipDate.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleSlipNo.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleSlipNo.label}"
+                           id="c37">
+                    <af:outputText value="#{row.GleSlipNo}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleSlipNo.tooltip}"
+                                   id="ot37"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleSlipUseDate.name}"
+                           sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleSlipUseDate.label}"
+                           filterable="true" id="c38">
+                    <af:outputText value="#{row.GleSlipUseDate}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleSlipUseDate.tooltip}"
+                                   id="ot38">
+                        <af:convertDateTime pattern="#{bindings.GleForJournalLedgerReport1.hints.GleSlipUseDate.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleStId.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleStId.label}"
+                           id="c39">
+                    <af:outputText value="#{row.GleStId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleStId.tooltip}" id="ot39">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleStId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleTnsBankId.name}" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleTnsBankId.label}"
+                           filterable="true" id="c40">
+                    <af:outputText value="#{row.GleTnsBankId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleTnsBankId.tooltip}"
+                                   id="ot40">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleTnsBankId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleTnsChildIdFk.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleTnsChildIdFk.label}" id="c41">
+                    <af:outputText value="#{row.GleTnsChildIdFk}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleTnsChildIdFk.tooltip}"
+                                   id="ot41">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleTnsChildIdFk.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleTnsId.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.GleTnsId.label}"
+                           id="c42">
+                    <af:outputText value="#{row.GleTnsId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleTnsId.tooltip}" id="ot42">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleTnsId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.GleTnsViewId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.GleTnsViewId.label}" id="c43">
+                    <af:outputText value="#{row.GleTnsViewId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.GleTnsViewId.tooltip}"
+                                   id="ot43">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.GleTnsViewId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.BankName1.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.BankName1.label}"
+                           id="c44">
+                    <af:outputText value="#{row.BankName1}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.BankName1.tooltip}"
+                                   id="ot44"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.BankNameId.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.BankNameId.label}"
+                           id="c45">
+                    <af:outputText value="#{row.BankNameId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.BankNameId.tooltip}"
+                                   id="ot45">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.BankNameId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.BankTnsTypeName.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.BankTnsTypeName.label}" id="c46">
+                    <af:outputText value="#{row.BankTnsTypeName}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.BankTnsTypeName.tooltip}"
+                                   id="ot46"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.BankTnsTypeId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.BankTnsTypeId.label}" id="c47">
+                    <af:outputText value="#{row.BankTnsTypeId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.BankTnsTypeId.tooltip}"
+                                   id="ot47">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.BankTnsTypeId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.OildShortname.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.OildShortname.label}" id="c48">
+                    <af:outputText value="#{row.OildShortname}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.OildShortname.tooltip}"
+                                   id="ot48"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.OildId.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.OildId.label}"
+                           id="c49">
+                    <af:outputText value="#{row.OildId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.OildId.tooltip}" id="ot49">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.OildId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.OiltRegistration.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.OiltRegistration.label}" id="c50">
+                    <af:outputText value="#{row.OiltRegistration}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.OiltRegistration.tooltip}"
+                                   id="ot50"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.OiltId.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.OiltId.label}"
+                           id="c51">
+                    <af:outputText value="#{row.OiltId}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.OiltId.tooltip}" id="ot51">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.OiltId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.OildShortname1.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.OildShortname1.label}" id="c52">
+                    <af:outputText value="#{row.OildShortname1}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.OildShortname1.tooltip}"
+                                   id="ot52"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.OildId1.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.OildId1.label}"
+                           id="c53">
+                    <af:outputText value="#{row.OildId1}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.OildId1.tooltip}" id="ot53">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.OildId1.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.CoaName.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.CoaName.label}"
+                           id="c54">
+                    <af:outputText value="#{row.CoaName}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.CoaName.tooltip}" id="ot54"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.CoaActNumber.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.CoaActNumber.label}" id="c55">
+                    <af:outputText value="#{row.CoaActNumber}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.CoaActNumber.tooltip}"
+                                   id="ot55">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.CoaActNumber.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.CoaBalance.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.CoaBalance.label}"
+                           id="c56">
+                    <af:outputText value="#{row.CoaBalance}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.CoaBalance.tooltip}"
+                                   id="ot56">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.CoaBalance.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.CoaName1.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GleForJournalLedgerReport1.hints.CoaName1.label}"
+                           id="c57">
+                    <af:outputText value="#{row.CoaName1}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.CoaName1.tooltip}" id="ot57"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GleForJournalLedgerReport1.hints.CoaActNumber1.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.GleForJournalLedgerReport1.hints.CoaActNumber1.label}" id="c58">
+                    <af:outputText value="#{row.CoaActNumber1}"
+                                   shortDesc="#{bindings.GleForJournalLedgerReport1.hints.CoaActNumber1.tooltip}"
+                                   id="ot58">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.GleForJournalLedgerReport1.hints.CoaActNumber1.format}"/>
+                    </af:outputText>
+                </af:column>
+            </af:table>
+        </f:facet>
+    </af:panelSplitter>
+</ui:composition>

@@ -1,0 +1,350 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="316" id="ps1">
+        <f:facet name="first">
+            <af:panelBox id="pb1">
+               <f:facet name="toolbar">
+          <af:outputText value="Mastams" id="ot69" inlineStyle="color:Maroon; font-size:x-large; font-style:italic;"/>
+        </f:facet>
+                <af:panelFormLayout id="pfl1" maxColumns="2" rows="2">
+                    <af:outputText value="Omc Credit Limit" id="ot14"
+                                   inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+                    <af:inputListOfValues id="coaNameId" popupTitle="Search and Select: #{bindings.CoaName.hints.label}"
+                                          value="#{bindings.CoaName.inputValue}" label="#{bindings.CoaName.hints.label}"
+                                          model="#{bindings.CoaName.listOfValuesModel}"
+                                          required="#{bindings.CoaName.hints.mandatory}"
+                                          columns="#{bindings.CoaName.hints.displayWidth}"
+                                          shortDesc="#{bindings.CoaName.hints.tooltip}" autoSubmit="true">
+                        <f:validator binding="#{bindings.CoaName.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.CoaName.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputText value="#{bindings.CoaActNumber.inputValue}"
+                                  label="#{bindings.CoaActNumber.hints.label}"
+                                  required="#{bindings.CoaActNumber.hints.mandatory}"
+                                  columns="#{bindings.CoaActNumber.hints.displayWidth}"
+                                  maximumLength="#{bindings.CoaActNumber.hints.precision}"
+                                  shortDesc="#{bindings.CoaActNumber.hints.tooltip}" id="it8">
+                        <f:validator binding="#{bindings.CoaActNumber.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaActNumber.format}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.OmcoClStartDate.inputValue}"
+                                  label="#{bindings.OmcoClStartDate.hints.label}"
+                                  required="#{bindings.OmcoClStartDate.hints.mandatory}"
+                                  columns="#{bindings.OmcoClStartDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.OmcoClStartDate.hints.tooltip}" id="id1">
+                        <f:validator binding="#{bindings.OmcoClStartDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.OmcoClStartDate.format}"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.OmcoClEndDate.inputValue}"
+                                  label="#{bindings.OmcoClEndDate.hints.label}"
+                                  required="#{bindings.OmcoClEndDate.hints.mandatory}"
+                                  columns="#{bindings.OmcoClEndDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.OmcoClEndDate.hints.tooltip}" id="id2" rendered="false">
+                        <f:validator binding="#{bindings.OmcoClEndDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.OmcoClEndDate.format}"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.OmcoClLimitDate.inputValue}"
+                                  label="#{bindings.OmcoClLimitDate.hints.label}"
+                                  required="#{bindings.OmcoClLimitDate.hints.mandatory}"
+                                  columns="#{bindings.OmcoClLimitDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.OmcoClLimitDate.hints.tooltip}" id="id3" rendered="false">
+                        <f:validator binding="#{bindings.OmcoClLimitDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.OmcoClLimitDate.format}"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.OmcoClApprovedFrom.inputValue}"
+                                  label="#{bindings.OmcoClApprovedFrom.hints.label}"
+                                  required="#{bindings.OmcoClApprovedFrom.hints.mandatory}"
+                                  columns="#{bindings.OmcoClApprovedFrom.hints.displayWidth}"
+                                  shortDesc="#{bindings.OmcoClApprovedFrom.hints.tooltip}" id="id4" rendered="false">
+                        <f:validator binding="#{bindings.OmcoClApprovedFrom.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.OmcoClApprovedFrom.format}"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.OmcoClSysDate.inputValue}"
+                                  label="#{bindings.OmcoClSysDate.hints.label}"
+                                  required="#{bindings.OmcoClSysDate.hints.mandatory}"
+                                  columns="#{bindings.OmcoClSysDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.OmcoClSysDate.hints.tooltip}" id="id5">
+                        <f:validator binding="#{bindings.OmcoClSysDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.OmcoClSysDate.format}"/>
+                    </af:inputDate>
+                    <af:inputText value="#{bindings.OmcoClRate.inputValue}" label="#{bindings.OmcoClRate.hints.label}"
+                                  required="#{bindings.OmcoClRate.hints.mandatory}"
+                                  columns="#{bindings.OmcoClRate.hints.displayWidth}"
+                                  maximumLength="#{bindings.OmcoClRate.hints.precision}"
+                                  shortDesc="#{bindings.OmcoClRate.hints.tooltip}" id="it1" autoSubmit="true">
+                        <f:validator binding="#{bindings.OmcoClRate.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcoClRate.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OmcoClId.inputValue}" label="#{bindings.OmcoClId.hints.label}"
+                                  required="#{bindings.OmcoClId.hints.mandatory}"
+                                  columns="#{bindings.OmcoClId.hints.displayWidth}"
+                                  maximumLength="#{bindings.OmcoClId.hints.precision}"
+                                  shortDesc="#{bindings.OmcoClId.hints.tooltip}" id="it2" readOnly="true">
+                        <f:validator binding="#{bindings.OmcoClId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcoClId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OmcoClVolume.inputValue}"
+                                  label="#{bindings.OmcoClVolume.hints.label}"
+                                  required="#{bindings.OmcoClVolume.hints.mandatory}"
+                                  columns="#{bindings.OmcoClVolume.hints.displayWidth}"
+                                  maximumLength="#{bindings.OmcoClVolume.hints.precision}"
+                                  shortDesc="#{bindings.OmcoClVolume.hints.tooltip}" id="it3" autoSubmit="true">
+                        <f:validator binding="#{bindings.OmcoClVolume.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcoClVolume.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OmcoClAmount.inputValue}"
+                                  label="#{bindings.OmcoClAmount.hints.label}"
+                                  required="#{bindings.OmcoClAmount.hints.mandatory}"
+                                  columns="#{bindings.OmcoClAmount.hints.displayWidth}"
+                                  maximumLength="#{bindings.OmcoClAmount.hints.precision}"
+                                  shortDesc="#{bindings.OmcoClAmount.hints.tooltip}" id="it4">
+                        <f:validator binding="#{bindings.OmcoClAmount.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcoClAmount.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OmcoClDetail.inputValue}"
+                                  label="#{bindings.OmcoClDetail.hints.label}"
+                                  required="#{bindings.OmcoClDetail.hints.mandatory}"
+                                  columns="#{bindings.OmcoClDetail.hints.displayWidth}"
+                                  maximumLength="#{bindings.OmcoClDetail.hints.precision}"
+                                  shortDesc="#{bindings.OmcoClDetail.hints.tooltip}" id="it5">
+                        <f:validator binding="#{bindings.OmcoClDetail.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OmcoClDevDetail.inputValue}"
+                                  label="#{bindings.OmcoClDevDetail.hints.label}"
+                                  required="#{bindings.OmcoClDevDetail.hints.mandatory}"
+                                  columns="#{bindings.OmcoClDevDetail.hints.displayWidth}"
+                                  maximumLength="#{bindings.OmcoClDevDetail.hints.precision}"
+                                  shortDesc="#{bindings.OmcoClDevDetail.hints.tooltip}" id="it6">
+                        <f:validator binding="#{bindings.OmcoClDevDetail.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OmcoClOmcIdFk.inputValue}"
+                                  label="#{bindings.OmcoClOmcIdFk.hints.label}"
+                                  required="#{bindings.OmcoClOmcIdFk.hints.mandatory}"
+                                  columns="#{bindings.OmcoClOmcIdFk.hints.displayWidth}"
+                                  maximumLength="#{bindings.OmcoClOmcIdFk.hints.precision}"
+                                  shortDesc="#{bindings.OmcoClOmcIdFk.hints.tooltip}" id="it7" rendered="false">
+                        <f:validator binding="#{bindings.OmcoClOmcIdFk.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcoClOmcIdFk.format}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout layout="horizontal" id="pgl1">
+                            <af:panelGroupLayout layout="horizontal" id="pgl3">
+                                <af:button actionListener="#{bindings.First.execute}"
+                                           disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1"
+                                           icon="#{resource['images:first_hor_ena.png']}"/>
+                                <af:button actionListener="#{bindings.Previous.execute}"
+                                           disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"
+                                           icon="#{resource['images:previoustraversalarrow_ena.png']}"/>
+                                <af:button actionListener="#{bindings.Next.execute}"
+                                           disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"
+                                           icon="#{resource['images:nexttraversalarrow_ena.png']}"/>
+                                <af:button actionListener="#{bindings.Last.execute}"
+                                           disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4"
+                                           icon="#{resource['images:last_hor_ena.png']}"/>
+                                <af:outputText value="---------" id="ot50"/>
+                            </af:panelGroupLayout>
+                            <af:button text="Submit" id="b5" actionListener="#{bindings.Commit.execute}"
+                                       icon="#{resource['images:commit.png']}">
+                                       <af:showPopupBehavior popupId="p1" triggerType="click"/>
+                                </af:button>
+                            <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                                       disabled="#{!bindings.CreateInsert.enabled}" id="b6"
+                                       icon="#{resource['images:add.png']}"/>
+                            <af:outputText value="--------------" id="ot60"/>
+                            <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                       disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b7"
+                                       icon="#{resource['images:rollback.png']}">
+                                <af:resetActionListener/>
+                            </af:button>
+                            <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                                          binding="#{backingBeanScope.backing_stocklossVIEW.p1}">
+                                    <af:noteWindow id="nw1"  binding="#{backingBeanScope.backing_stocklossVIEW.nw1}">
+                                            <b style="color:Maroon;">Submitted</b>
+                                    </af:noteWindow>
+                                </af:popup>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar">
+                    <af:toolbar id="t2">
+                        <af:outputText value="MasTam" id="ot15" inlineStyle="color:Purple; font-size:large;"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.OmcOnlyCreditLimitView1.collectionModel}" var="row"
+                          rows="#{bindings.OmcOnlyCreditLimitView1.rangeSize}"
+                          emptyText="#{bindings.OmcOnlyCreditLimitView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.OmcOnlyCreditLimitView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.OmcOnlyCreditLimitView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.OmcOnlyCreditLimitView1.rangeSize}"
+                          filterModel="#{bindings.OmcOnlyCreditLimitView1Query.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.OmcOnlyCreditLimitView1Query.processQuery}" varStatus="vs" id="t1"
+                          partialTriggers="::b1 ::b2 ::b3 ::b4 ::b6 :::b1 :::b2 :::b3 :::b4 :::b6 :::b5 :::b7" scrollPolicy="page"
+                          inlineStyle="text-align:left;" width="1200">
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.CoaName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.OmcOnlyCreditLimitView1.hints.CoaName.label}"
+                               id="c1" width="150" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.CoaName}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.CoaName.tooltip}" id="ot1"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.CoaActNumber.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.OmcOnlyCreditLimitView1.hints.CoaActNumber.label}" id="c13"
+                               width="120" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.CoaActNumber}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.CoaActNumber.tooltip}"
+                                       id="ot13">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.OmcOnlyCreditLimitView1.hints.CoaActNumber.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClStartDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClStartDate.label}" id="c3"
+                               width="200" align="center" inlineStyle="text-align:left;">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.OmcOnlyCreditLimitView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.OmcoClStartDate.value}"
+                                          id="id6">
+                                <af:convertDateTime pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClStartDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.OmcoClStartDate}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClStartDate.tooltip}"
+                                       id="ot3">
+                            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClEndDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClEndDate.label}" id="c4"
+                               width="200" align="center" inlineStyle="text-align:left;" rendered="false">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.OmcOnlyCreditLimitView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.OmcoClEndDate.value}"
+                                          id="id7">
+                                <af:convertDateTime pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClEndDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.OmcoClEndDate}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClEndDate.tooltip}"
+                                       id="ot4">
+                            <af:convertDateTime pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClEndDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClLimitDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClLimitDate.label}" id="c5"
+                               width="200" align="center" inlineStyle="text-align:left;" rendered="false">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.OmcOnlyCreditLimitView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.OmcoClLimitDate.value}"
+                                          id="id8">
+                                <af:convertDateTime pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClLimitDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.OmcoClLimitDate}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClLimitDate.tooltip}"
+                                       id="ot5">
+                            <af:convertDateTime pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClLimitDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClApprovedFrom.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClApprovedFrom.label}" id="c6"
+                               width="200" align="center" inlineStyle="text-align:left;" rendered="false">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.OmcOnlyCreditLimitView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.OmcoClApprovedFrom.value}"
+                                          id="id9">
+                                <af:convertDateTime pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClApprovedFrom.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.OmcoClApprovedFrom}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClApprovedFrom.tooltip}"
+                                       id="ot6">
+                            <af:convertDateTime pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClApprovedFrom.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClRate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClRate.label}" id="c8"
+                               width="120" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.OmcoClRate}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClRate.tooltip}"
+                                       id="ot8">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClRate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClVolume.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClVolume.label}" id="c9"
+                               width="120" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.OmcoClVolume}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClVolume.tooltip}"
+                                       id="ot9">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClVolume.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClAmount.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClAmount.label}" id="c10"
+                               width="120" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.OmcoClAmount}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClAmount.tooltip}"
+                                       id="ot10">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClAmount.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClDetail.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClDetail.label}" id="c11"
+                               width="200" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.OmcoClDetail}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClDetail.tooltip}"
+                                       id="ot11"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClId.label}"
+                               id="c2" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.OmcoClId}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClId.tooltip}" id="ot2">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClSysDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClSysDate.label}" id="c7"
+                               width="200" align="center" inlineStyle="text-align:left;" rendered="false">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.OmcOnlyCreditLimitView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.OmcoClSysDate.value}"
+                                          id="id10">
+                                <af:convertDateTime pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClSysDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.OmcoClSysDate}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClSysDate.tooltip}"
+                                       id="ot7">
+                            <af:convertDateTime pattern="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClSysDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClDevDetail.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClDevDetail.label}" id="c12"
+                               inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.OmcoClDevDetail}"
+                                       shortDesc="#{bindings.OmcOnlyCreditLimitView1.hints.OmcoClDevDetail.tooltip}"
+                                       id="ot12"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+</ui:composition>

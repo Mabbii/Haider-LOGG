@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="208" id="ps1" partialTriggers="ps1">
+        <f:facet name="first">
+            <af:panelFormLayout id="pfl1" inlineStyle="width:586px; height:285px;" partialTriggers="pc1:t1">
+                <af:outputText value="Add Omc" id="ot4"
+                               inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+                <af:inputText value="#{bindings.OmcId.inputValue}" label="#{bindings.OmcId.hints.label}"
+                              required="#{bindings.OmcId.hints.mandatory}"
+                              columns="#{bindings.OmcId.hints.displayWidth}"
+                              maximumLength="#{bindings.OmcId.hints.precision}"
+                              shortDesc="#{bindings.OmcId.hints.tooltip}" id="it1" inlineStyle="text-align:right;">
+                    <f:validator binding="#{bindings.OmcId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcId.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.OmcName.inputValue}" label="#{bindings.OmcName.hints.label}"
+                              required="#{bindings.OmcName.hints.mandatory}"
+                              columns="#{bindings.OmcName.hints.displayWidth}"
+                              maximumLength="#{bindings.OmcName.hints.precision}"
+                              shortDesc="#{bindings.OmcName.hints.tooltip}" id="it2">
+                    <f:validator binding="#{bindings.OmcName.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.OmcShortname.inputValue}" label="#{bindings.OmcShortname.hints.label}"
+                              required="#{bindings.OmcShortname.hints.mandatory}"
+                              columns="#{bindings.OmcShortname.hints.displayWidth}"
+                              maximumLength="#{bindings.OmcShortname.hints.precision}"
+                              shortDesc="#{bindings.OmcShortname.hints.tooltip}" id="it3">
+                    <f:validator binding="#{bindings.OmcShortname.validator}"/>
+                </af:inputText>
+                <f:facet name="footer">
+                    <af:panelGroupLayout layout="horizontal" id="pgl1">
+                        <af:panelGroupLayout layout="horizontal" id="pgl3">
+                            <af:button actionListener="#{bindings.First.execute}" disabled="#{!bindings.First.enabled}"
+                                       partialSubmit="true" id="b1" icon="#{resource['images:first_hor_ena.png']}"/>
+                            <af:button actionListener="#{bindings.Previous.execute}"
+                                       disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"
+                                       icon="#{resource['images:previoustraversalarrow_ena.png']}"/>
+                            <af:button actionListener="#{bindings.Next.execute}" disabled="#{!bindings.Next.enabled}"
+                                       partialSubmit="true" id="b3"
+                                       icon="#{resource['images:nexttraversalarrow_ena.png']}"/>
+                            <af:button actionListener="#{bindings.Last.execute}" disabled="#{!bindings.Last.enabled}"
+                                       partialSubmit="true" id="b4" icon="#{resource['images:last_hor_ena.png']}"/>
+                            <af:outputText value="---------" id="ot5"/>
+                        </af:panelGroupLayout>
+                        <af:button text="Submit" id="b5" actionListener="#{bindings.Commit.execute}"
+                                   icon="#{resource['images:commit.png']}">
+                                   <af:showPopupBehavior popupId="p2" triggerType="click"/>
+                                </af:button>
+                                
+                        <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                                   disabled="#{!bindings.CreateInsert.enabled}" id="b6"
+                                   icon="#{resource['images:add.png']}"/>
+                        <af:outputText value="--------------" id="ot6"/>
+                        <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b7"
+                                   icon="#{resource['images:rollback.png']}">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:popup childCreation="deferred" autoCancel="disabled" id="p2">
+                            <af:noteWindow id="nw1"  >
+                                            <b style="color:Maroon;">Submitted</b>
+                                            </af:noteWindow>
+                        </af:popup>
+                        
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelFormLayout>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1">
+                <f:facet name="menus">
+                    <af:menu id="m1" text="Menu">
+                        <af:commandMenuItem text="Print" id="cmi1">
+                            <af:showPrintablePageBehavior/>
+                        </af:commandMenuItem>
+                    </af:menu>
+                </f:facet>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.OMCNONJournalView1.collectionModel}" var="row"
+                          rows="#{bindings.OMCNONJournalView1.rangeSize}"
+                          emptyText="#{bindings.OMCNONJournalView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.OMCNONJournalView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.OMCNONJournalView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.OMCNONJournalView1.rangeSize}"
+                          filterModel="#{bindings.OMCNONJournalView1Query.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.OMCNONJournalView1Query.processQuery}" varStatus="vs" id="t1"
+                          partialTriggers="::b1 ::b2 ::b3 ::b4 ::b6 ::b5 ::b7 :::b1 :::b2 :::b3 :::b4 :::b6 :::b5 :::b7" scrollPolicy="page">
+                    <af:column sortProperty="#{bindings.OMCNONJournalView1.hints.OmcId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.OMCNONJournalView1.hints.OmcId.label}" id="c1"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.OmcId}"
+                                       shortDesc="#{bindings.OMCNONJournalView1.hints.OmcId.tooltip}" id="ot1">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.OMCNONJournalView1.hints.OmcId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OMCNONJournalView1.hints.OmcName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.OMCNONJournalView1.hints.OmcName.label}" id="c2"
+                               width="200" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.OmcName}"
+                                       shortDesc="#{bindings.OMCNONJournalView1.hints.OmcName.tooltip}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.OMCNONJournalView1.hints.OmcShortname.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.OMCNONJournalView1.hints.OmcShortname.label}"
+                               id="c3" width="200" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.OmcShortname}"
+                                       shortDesc="#{bindings.OMCNONJournalView1.hints.OmcShortname.tooltip}" id="ot3"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_OMCNONJOURNALVIEW-->
+</ui:composition>

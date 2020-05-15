@@ -1,0 +1,345 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="267" id="ps1" partialTriggers="ps1">
+        <f:facet name="first">
+            <af:panelBox id="pb1">
+                <f:facet name="toolbar"/>
+                <af:panelFormLayout id="pfl1" maxColumns="2" rows="2" partialTriggers="pc1:t1">
+                    <af:outputText value="Purchase OMC Pump Rate" id="ot15"
+                                   inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+                    <af:inputText value="#{bindings.PurchaseRateId.inputValue}"
+                                  label="#{bindings.PurchaseRateId.hints.label}"
+                                  required="#{bindings.PurchaseRateId.hints.mandatory}"
+                                  columns="#{bindings.PurchaseRateId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PurchaseRateId.hints.precision}"
+                                  shortDesc="#{bindings.PurchaseRateId.hints.tooltip}" id="it1" readOnly="true">
+                        <f:validator binding="#{bindings.PurchaseRateId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PurchaseRateId.format}"/>
+                    </af:inputText>
+                    <af:inputListOfValues id="partyNameId"
+                                          popupTitle="Search and Select: #{bindings.PartyName.hints.label}"
+                                          value="#{bindings.PartyName.inputValue}"
+                                          label="#{bindings.PartyName.hints.label}"
+                                          model="#{bindings.PartyName.listOfValuesModel}"
+                                          required="#{bindings.PartyName.hints.mandatory}"
+                                          columns="#{bindings.PartyName.hints.displayWidth}"
+                                          shortDesc="#{bindings.PartyName.hints.tooltip}" autoSubmit="true">
+                        <f:validator binding="#{bindings.PartyName.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.PartyName.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputListOfValues id="productShortnameId"
+                                          popupTitle="Search and Select: #{bindings.ProductShortname.hints.label}"
+                                          value="#{bindings.ProductShortname.inputValue}"
+                                          label="#{bindings.ProductShortname.hints.label}"
+                                          model="#{bindings.ProductShortname.listOfValuesModel}"
+                                          required="#{bindings.ProductShortname.hints.mandatory}"
+                                          columns="#{bindings.ProductShortname.hints.displayWidth}"
+                                          shortDesc="#{bindings.ProductShortname.hints.tooltip}" autoSubmit="true">
+                        <f:validator binding="#{bindings.ProductShortname.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.ProductShortname.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <af:inputText value="#{bindings.PurchaseRateR.inputValue}"
+                                  label="#{bindings.PurchaseRateR.hints.label}"
+                                  required="#{bindings.PurchaseRateR.hints.mandatory}"
+                                  columns="#{bindings.PurchaseRateR.hints.displayWidth}"
+                                  maximumLength="#{bindings.PurchaseRateR.hints.precision}"
+                                  shortDesc="#{bindings.PurchaseRateR.hints.tooltip}" id="it2" autoSubmit="true"
+                                  inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.PurchaseRateR.validator}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.PurchaseRateDate.inputValue}"
+                                  label="#{bindings.PurchaseRateDate.hints.label}"
+                                  required="#{bindings.PurchaseRateDate.hints.mandatory}"
+                                  columns="#{bindings.PurchaseRateDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.PurchaseRateDate.hints.tooltip}" id="id1">
+                        <f:validator binding="#{bindings.PurchaseRateDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.PurchaseRateDate.format}"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.PurchaseRateStartdate.inputValue}"
+                                  label="#{bindings.PurchaseRateStartdate.hints.label}"
+                                  required="#{bindings.PurchaseRateStartdate.hints.mandatory}"
+                                  columns="#{bindings.PurchaseRateStartdate.hints.displayWidth}"
+                                  shortDesc="#{bindings.PurchaseRateStartdate.hints.tooltip}" id="id2">
+                        <f:validator binding="#{bindings.PurchaseRateStartdate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.PurchaseRateStartdate.format}"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.PurchaseRateEnddate.inputValue}"
+                                  label="#{bindings.PurchaseRateEnddate.hints.label}"
+                                  required="#{bindings.PurchaseRateEnddate.hints.mandatory}"
+                                  columns="#{bindings.PurchaseRateEnddate.hints.displayWidth}"
+                                  shortDesc="#{bindings.PurchaseRateEnddate.hints.tooltip}" id="id3">
+                        <f:validator binding="#{bindings.PurchaseRateEnddate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.PurchaseRateEnddate.format}"/>
+                    </af:inputDate>
+                    <af:inputText value="#{bindings.PpartyId.inputValue}" label="#{bindings.PpartyId.hints.label}"
+                                  required="#{bindings.PpartyId.hints.mandatory}"
+                                  columns="#{bindings.PpartyId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PpartyId.hints.precision}"
+                                  shortDesc="#{bindings.PpartyId.hints.tooltip}" id="it3" rendered="false">
+                        <f:validator binding="#{bindings.PpartyId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PpartyId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PproductId.inputValue}" label="#{bindings.PproductId.hints.label}"
+                                  required="#{bindings.PproductId.hints.mandatory}"
+                                  columns="#{bindings.PproductId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PproductId.hints.precision}"
+                                  shortDesc="#{bindings.PproductId.hints.tooltip}" id="it4" rendered="false">
+                        <f:validator binding="#{bindings.PproductId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PproductId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PurchaseRateDetails.inputValue}"
+                                  label="#{bindings.PurchaseRateDetails.hints.label}"
+                                  required="#{bindings.PurchaseRateDetails.hints.mandatory}"
+                                  columns="#{bindings.PurchaseRateDetails.hints.displayWidth}"
+                                  maximumLength="#{bindings.PurchaseRateDetails.hints.precision}"
+                                  shortDesc="#{bindings.PurchaseRateDetails.hints.tooltip}" id="it5" autoSubmit="true">
+                        <f:validator binding="#{bindings.PurchaseRateDetails.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PartyId.inputValue}" label="#{bindings.PartyId.hints.label}"
+                                  required="#{bindings.PartyId.hints.mandatory}"
+                                  columns="#{bindings.PartyId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PartyId.hints.precision}"
+                                  shortDesc="#{bindings.PartyId.hints.tooltip}" id="it6" rendered="false">
+                        <f:validator binding="#{bindings.PartyId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PartyId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PartyCode.inputValue}" label="#{bindings.PartyCode.hints.label}"
+                                  required="#{bindings.PartyCode.hints.mandatory}"
+                                  columns="#{bindings.PartyCode.hints.displayWidth}"
+                                  maximumLength="#{bindings.PartyCode.hints.precision}"
+                                  shortDesc="#{bindings.PartyCode.hints.tooltip}" id="it7"
+                                  inlineStyle="text-align:right;" readOnly="true">
+                        <f:validator binding="#{bindings.PartyCode.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PtypeId.inputValue}" label="#{bindings.PtypeId.hints.label}"
+                                  required="#{bindings.PtypeId.hints.mandatory}"
+                                  columns="#{bindings.PtypeId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PtypeId.hints.precision}"
+                                  shortDesc="#{bindings.PtypeId.hints.tooltip}" id="it8" rendered="false">
+                        <f:validator binding="#{bindings.PtypeId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PtypeId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.ProductId.inputValue}" label="#{bindings.ProductId.hints.label}"
+                                  required="#{bindings.ProductId.hints.mandatory}"
+                                  columns="#{bindings.ProductId.hints.displayWidth}"
+                                  maximumLength="#{bindings.ProductId.hints.precision}"
+                                  shortDesc="#{bindings.ProductId.hints.tooltip}" id="it9" rendered="false">
+                        <f:validator binding="#{bindings.ProductId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.ProductId.format}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout layout="horizontal" id="pgl1">
+                            <af:panelGroupLayout layout="horizontal" id="pgl3">
+                                <af:button actionListener="#{bindings.First.execute}"
+                                           disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1"
+                                           icon="#{resource['images:first_hor_ena.png']}"/>
+                                <af:button actionListener="#{bindings.Previous.execute}"
+                                           disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"
+                                           icon="#{resource['images:previoustraversalarrow_ena.png']}"/>
+                                <af:button actionListener="#{bindings.Next.execute}"
+                                           disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"
+                                           icon="#{resource['images:nexttraversalarrow_ena.png']}"/>
+                                <af:button actionListener="#{bindings.Last.execute}"
+                                           disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4"
+                                           icon="#{resource['images:last_hor_ena.png']}"/>
+                                <af:outputText value="---------" id="ot50"/>
+                            </af:panelGroupLayout>
+                            <af:button text="Submit" id="b5" actionListener="#{bindings.Commit.execute}"
+                                       icon="#{resource['images:commit.png']}">
+                                       <af:showPopupBehavior popupId="p1" triggerType="click"/>
+                                </af:button>
+                            <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                                       disabled="#{!bindings.CreateInsert.enabled}" id="b6"
+                                       icon="#{resource['images:add.png']}"/>
+                            <af:outputText value="--------------" id="ot60"/>
+                            <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                       disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b7"
+                                       icon="#{resource['images:rollback.png']}">
+                                <af:resetActionListener/>
+                            </af:button>
+                            <af:spacer width="150" height="10" id="s14"/>
+                            <af:button text="EXCEL" id="b8" inlineStyle="color:Green;"
+                                       icon="#{resource['images:export.png']}">
+                                <af:exportCollectionActionListener type="excelHTML" exportedId="t1"
+                                                                   filename="PURCHASE OMCPUMP RATE.XLS"/>
+                            </af:button>
+                            <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                                    <af:noteWindow id="nw1">
+                                            <b style="color:Maroon;">Submitted</b>
+                                    </af:noteWindow>
+                                </af:popup>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar">
+                    <af:toolbar id="t2">
+                        <af:outputText value="Mastams" id="ot16" inlineStyle="color:Purple; font-size:large;"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.PurchaseRateForOMCPump1.collectionModel}" var="row"
+                          rows="#{bindings.PurchaseRateForOMCPump1.rangeSize}"
+                          emptyText="#{bindings.PurchaseRateForOMCPump1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.PurchaseRateForOMCPump1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.PurchaseRateForOMCPump1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.PurchaseRateForOMCPump1.rangeSize}"
+                          filterModel="#{bindings.PurchaseRateForOMCPump1Query.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.PurchaseRateForOMCPump1Query.processQuery}" varStatus="vs" id="t1"
+                          partialTriggers="::b1 ::b2 ::b3 ::b4 ::b6 ::b5 ::b7 :::b1 :::b2 :::b3 :::b4 :::b6 :::b5 :::b7" scrollPolicy="page">
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateDate.label}" id="c3"
+                               width="150" align="center" inlineStyle="text-align:left;">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.PurchaseRateForOMCPump1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.PurchaseRateDate.value}"
+                                          id="id4">
+                                <af:convertDateTime pattern="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.PurchaseRateDate}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateDate.tooltip}"
+                                       id="ot3">
+                            <af:convertDateTime pattern="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateR.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateR.label}" id="c2"
+                               inlineStyle="text-align:right;" align="center">
+                        <af:outputText value="#{row.PurchaseRateR}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateR.tooltip}"
+                                       id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateStartdate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateStartdate.label}"
+                               id="c4" width="200" align="center" inlineStyle="text-align:left;">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.PurchaseRateForOMCPump1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.PurchaseRateStartdate.value}"
+                                          id="id5">
+                                <af:convertDateTime pattern="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateStartdate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.PurchaseRateStartdate}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateStartdate.tooltip}"
+                                       id="ot4">
+                            <af:convertDateTime pattern="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateStartdate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateEnddate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateEnddate.label}" id="c5"
+                               width="200" inlineStyle="text-align:left;" align="center">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.PurchaseRateForOMCPump1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.PurchaseRateEnddate.value}"
+                                          id="id6">
+                                <af:convertDateTime pattern="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateEnddate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.PurchaseRateEnddate}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateEnddate.tooltip}"
+                                       id="ot5">
+                            <af:convertDateTime pattern="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateEnddate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PartyName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseRateForOMCPump1.hints.PartyName.label}"
+                               id="c9" width="150" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.PartyName}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PartyName.tooltip}"
+                                       id="ot9"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.ProductShortname.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseRateForOMCPump1.hints.ProductShortname.label}" id="c13"
+                               align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.ProductShortname}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.ProductShortname.tooltip}"
+                                       id="ot13"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateDetails.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateDetails.label}" id="c8"
+                               width="150">
+                        <af:outputText value="#{row.PurchaseRateDetails}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateDetails.tooltip}"
+                                       id="ot8"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PartyId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseRateForOMCPump1.hints.PartyId.label}"
+                               id="c10">
+                        <af:outputText value="#{row.PartyId}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PartyId.tooltip}" id="ot10">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseRateForOMCPump1.hints.PartyId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PpartyId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseRateForOMCPump1.hints.PpartyId.label}"
+                               id="c6" inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.PpartyId}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PpartyId.tooltip}" id="ot6">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseRateForOMCPump1.hints.PpartyId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PartyCode.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseRateForOMCPump1.hints.PartyCode.label}"
+                               id="c11">
+                        <af:outputText value="#{row.PartyCode}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PartyCode.tooltip}"
+                                       id="ot11"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PtypeId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseRateForOMCPump1.hints.PtypeId.label}"
+                               id="c12">
+                        <af:outputText value="#{row.PtypeId}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PtypeId.tooltip}" id="ot12">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseRateForOMCPump1.hints.PtypeId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PproductId.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseRateForOMCPump1.hints.PproductId.label}" id="c7">
+                        <af:outputText value="#{row.PproductId}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PproductId.tooltip}"
+                                       id="ot7">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseRateForOMCPump1.hints.PproductId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateId.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateId.label}" id="c1"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.PurchaseRateId}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateId.tooltip}"
+                                       id="ot1">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseRateForOMCPump1.hints.PurchaseRateId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PurchaseRateForOMCPump1.hints.ProductId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PurchaseRateForOMCPump1.hints.ProductId.label}"
+                               id="c14">
+                        <af:outputText value="#{row.ProductId}"
+                                       shortDesc="#{bindings.PurchaseRateForOMCPump1.hints.ProductId.tooltip}"
+                                       id="ot14">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PurchaseRateForOMCPump1.hints.ProductId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_prchserateomcpmpview-->
+</ui:composition>

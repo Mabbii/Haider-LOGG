@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelSplitter orientation="vertical" splitterPosition="276" id="ps1" partialTriggers="ps1">
+        <f:facet name="first">
+            <af:panelBox id="pb1">
+                <f:facet name="toolbar"/>
+                <af:panelFormLayout id="pfl1" partialTriggers="pc1:t1">
+                    <af:outputText value="Add Party OmcPump" id="ot10"
+                                   inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+                    <af:inputText value="#{bindings.PartyCode.inputValue}" label="#{bindings.PartyCode.hints.label}"
+                                  required="#{bindings.PartyCode.hints.mandatory}"
+                                  columns="#{bindings.PartyCode.hints.displayWidth}"
+                                  maximumLength="#{bindings.PartyCode.hints.precision}"
+                                  shortDesc="#{bindings.PartyCode.hints.tooltip}" id="it1"
+                                  inlineStyle="text-align:right;">
+                        <f:validator binding="#{bindings.PartyCode.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PartyId.inputValue}" label="#{bindings.PartyId.hints.label}"
+                                  required="#{bindings.PartyId.hints.mandatory}"
+                                  columns="#{bindings.PartyId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PartyId.hints.precision}"
+                                  shortDesc="#{bindings.PartyId.hints.tooltip}" id="it2" rendered="false">
+                        <f:validator binding="#{bindings.PartyId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PartyId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PartyName.inputValue}" label="#{bindings.PartyName.hints.label}"
+                                  required="#{bindings.PartyName.hints.mandatory}"
+                                  columns="#{bindings.PartyName.hints.displayWidth}"
+                                  maximumLength="#{bindings.PartyName.hints.precision}"
+                                  shortDesc="#{bindings.PartyName.hints.tooltip}" id="it3">
+                        <f:validator binding="#{bindings.PartyName.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PartyShortname.inputValue}"
+                                  label="#{bindings.PartyShortname.hints.label}"
+                                  required="#{bindings.PartyShortname.hints.mandatory}"
+                                  columns="#{bindings.PartyShortname.hints.displayWidth}"
+                                  maximumLength="#{bindings.PartyShortname.hints.precision}"
+                                  shortDesc="#{bindings.PartyShortname.hints.tooltip}" id="it4">
+                        <f:validator binding="#{bindings.PartyShortname.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PomcId.inputValue}" label="#{bindings.PomcId.hints.label}"
+                                  required="#{bindings.PomcId.hints.mandatory}"
+                                  columns="#{bindings.PomcId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PomcId.hints.precision}"
+                                  shortDesc="#{bindings.PomcId.hints.tooltip}" id="it5" rendered="false">
+                        <f:validator binding="#{bindings.PomcId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PomcId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PtypeId.inputValue}" label="#{bindings.PtypeId.hints.label}"
+                                  required="#{bindings.PtypeId.hints.mandatory}"
+                                  columns="#{bindings.PtypeId.hints.displayWidth}"
+                                  maximumLength="#{bindings.PtypeId.hints.precision}"
+                                  shortDesc="#{bindings.PtypeId.hints.tooltip}" id="it6" rendered="false">
+                        <f:validator binding="#{bindings.PtypeId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PtypeId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OmcId.inputValue}" label="#{bindings.OmcId.hints.label}"
+                                  required="#{bindings.OmcId.hints.mandatory}"
+                                  columns="#{bindings.OmcId.hints.displayWidth}"
+                                  maximumLength="#{bindings.OmcId.hints.precision}"
+                                  shortDesc="#{bindings.OmcId.hints.tooltip}" id="it7" rendered="false">
+                        <f:validator binding="#{bindings.OmcId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.OmcName.inputValue}" label="#{bindings.OmcName.hints.label}"
+                                  required="#{bindings.OmcName.hints.mandatory}"
+                                  columns="#{bindings.OmcName.hints.displayWidth}"
+                                  maximumLength="#{bindings.OmcName.hints.precision}"
+                                  shortDesc="#{bindings.OmcName.hints.tooltip}" id="it8">
+                        <f:validator binding="#{bindings.OmcName.validator}"/>
+                    </af:inputText>
+                    <af:inputListOfValues id="omcShortnameId"
+                                          popupTitle="Search and Select: #{bindings.OmcShortname.hints.label}"
+                                          value="#{bindings.OmcShortname.inputValue}"
+                                          label="#{bindings.OmcShortname.hints.label}"
+                                          model="#{bindings.OmcShortname.listOfValuesModel}"
+                                          required="#{bindings.OmcShortname.hints.mandatory}"
+                                          columns="#{bindings.OmcShortname.hints.displayWidth}"
+                                          shortDesc="#{bindings.OmcShortname.hints.tooltip}" autoSubmit="true">
+                        <f:validator binding="#{bindings.OmcShortname.validator}"/>
+                        <af:autoSuggestBehavior suggestedItems="#{bindings.OmcShortname.suggestedItems}"/>
+                    </af:inputListOfValues>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout layout="horizontal" id="pgl1">
+                            <af:panelGroupLayout layout="horizontal" id="pgl3">
+                                <af:button actionListener="#{bindings.First.execute}"
+                                           disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1"
+                                           icon="#{resource['images:first_hor_ena.png']}"/>
+                                <af:button actionListener="#{bindings.Previous.execute}"
+                                           disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"
+                                           icon="#{resource['images:previoustraversalarrow_ena.png']}"/>
+                                <af:button actionListener="#{bindings.Next.execute}"
+                                           disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"
+                                           icon="#{resource['images:nexttraversalarrow_ena.png']}"/>
+                                <af:button actionListener="#{bindings.Last.execute}"
+                                           disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4"
+                                           icon="#{resource['images:last_hor_ena.png']}"/>
+                                <af:outputText value="---------" id="ot50"/>
+                            </af:panelGroupLayout>
+                            <af:button text="Submit" id="b5" actionListener="#{bindings.Commit.execute}"
+                                       icon="#{resource['images:commit.png']}">
+                                       <af:showPopupBehavior popupId="p1" triggerType="click"/>
+                                </af:button>
+                            <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                                       disabled="#{!bindings.CreateInsert.enabled}" id="b6"
+                                       icon="#{resource['images:add.png']}"/>
+                            <af:outputText value="--------------" id="ot60"/>
+                            <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                       disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b7"
+                                       icon="#{resource['images:rollback.png']}">
+                                <af:resetActionListener/>
+                            </af:button>
+                            <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                                    <af:noteWindow id="nw1">
+                                            <b style="color:Maroon;">Submitted</b>
+                                    </af:noteWindow>
+                                </af:popup>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelCollection id="pc1">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar">
+                    <af:toolbar id="t2">
+                        <af:outputText value="Mastams" id="ot11" inlineStyle="color:Purple; font-size:large;"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.PartyOmcPumps1.collectionModel}" var="row"
+                          rows="#{bindings.PartyOmcPumps1.rangeSize}"
+                          emptyText="#{bindings.PartyOmcPumps1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.PartyOmcPumps1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.PartyOmcPumps1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.PartyOmcPumps1.rangeSize}"
+                          filterModel="#{bindings.PartyOmcPumps1Query.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.PartyOmcPumps1Query.processQuery}" varStatus="vs" id="t1"
+                          partialTriggers="::b1 ::b2 ::b3 ::b4 ::b6 ::b5 ::b7 :::b1 :::b2 :::b3 :::b4 :::b6 :::b5 :::b7" scrollPolicy="page"
+                          width="1200">
+                    <af:column sortProperty="#{bindings.PartyOmcPumps1.hints.PartyId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PartyOmcPumps1.hints.PartyId.label}" id="c2"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.PartyId}"
+                                       shortDesc="#{bindings.PartyOmcPumps1.hints.PartyId.tooltip}" id="ot2">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PartyOmcPumps1.hints.PartyId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PartyOmcPumps1.hints.PartyName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PartyOmcPumps1.hints.PartyName.label}" id="c3"
+                               width="200" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.PartyName}"
+                                       shortDesc="#{bindings.PartyOmcPumps1.hints.PartyName.tooltip}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PartyOmcPumps1.hints.PartyShortname.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PartyOmcPumps1.hints.PartyShortname.label}"
+                               id="c4" width="200" align="center" inlineStyle="text-align:left;">
+                        <af:outputText value="#{row.PartyShortname}"
+                                       shortDesc="#{bindings.PartyOmcPumps1.hints.PartyShortname.tooltip}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PartyOmcPumps1.hints.OmcName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PartyOmcPumps1.hints.OmcName.label}" id="c8"
+                               width="175">
+                        <af:outputText value="#{row.OmcName}"
+                                       shortDesc="#{bindings.PartyOmcPumps1.hints.OmcName.tooltip}" id="ot8"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PartyOmcPumps1.hints.OmcShortname.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PartyOmcPumps1.hints.OmcShortname.label}" id="c9"
+                               width="110">
+                        <af:outputText value="#{row.OmcShortname}"
+                                       shortDesc="#{bindings.PartyOmcPumps1.hints.OmcShortname.tooltip}" id="ot9"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PartyOmcPumps1.hints.PomcId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PartyOmcPumps1.hints.PomcId.label}" id="c5"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.PomcId}" shortDesc="#{bindings.PartyOmcPumps1.hints.PomcId.tooltip}"
+                                       id="ot5">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PartyOmcPumps1.hints.PomcId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PartyOmcPumps1.hints.PtypeId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PartyOmcPumps1.hints.PtypeId.label}" id="c6"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.PtypeId}"
+                                       shortDesc="#{bindings.PartyOmcPumps1.hints.PtypeId.tooltip}" id="ot6">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PartyOmcPumps1.hints.PtypeId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PartyOmcPumps1.hints.PartyCode.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PartyOmcPumps1.hints.PartyCode.label}" id="c1"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.PartyCode}"
+                                       shortDesc="#{bindings.PartyOmcPumps1.hints.PartyCode.tooltip}" id="ot1"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.PartyOmcPumps1.hints.OmcId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.PartyOmcPumps1.hints.OmcId.label}" id="c7"
+                               inlineStyle="text-align:right;">
+                        <af:outputText value="#{row.OmcId}" shortDesc="#{bindings.PartyOmcPumps1.hints.OmcId.tooltip}"
+                                       id="ot7">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.PartyOmcPumps1.hints.OmcId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+    </af:panelSplitter>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_omcpumpview-->
+</ui:composition>

@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelSplitter orientation="vertical" splitterPosition="277" id="ps1" partialTriggers="ps1">
+    <f:facet name="first">
+      <af:panelBox id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl1" maxColumns="2" rows="2" partialTriggers="pc1:t1">
+          <af:outputText value="Supplier Trader Credit Limit" id="ot8"
+                         inlineStyle="font-size:x-large; font-style:italic; font-weight:bold;"/>
+          <af:inputText value="#{bindings.OmcgClId.inputValue}" label="ID"
+                        required="#{bindings.OmcgClId.hints.mandatory}"
+                        columns="#{bindings.OmcgClId.hints.displayWidth}"
+                        maximumLength="#{bindings.OmcgClId.hints.precision}"
+                        shortDesc="#{bindings.OmcgClId.hints.tooltip}" id="it1" readOnly="true">
+            <f:validator binding="#{bindings.OmcgClId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcgClId.format}"/>
+          </af:inputText>
+          <af:inputListOfValues id="coaNameId" popupTitle="Search and Select: #{bindings.CoaName.hints.label}"
+                                value="#{bindings.CoaName.inputValue}" label="#{bindings.CoaName.hints.label}"
+                                model="#{bindings.CoaName.listOfValuesModel}"
+                                required="#{bindings.CoaName.hints.mandatory}"
+                                columns="#{bindings.CoaName.hints.displayWidth}"
+                                shortDesc="#{bindings.CoaName.hints.tooltip}" autoSubmit="true">
+            <f:validator binding="#{bindings.CoaName.validator}"/>
+            <af:autoSuggestBehavior suggestedItems="#{bindings.CoaName.suggestedItems}"/>
+          </af:inputListOfValues>
+          <af:inputDate value="#{bindings.OmcgClStartDate.inputValue}" label="Start Date"
+                        required="#{bindings.OmcgClStartDate.hints.mandatory}"
+                        columns="#{bindings.OmcgClStartDate.hints.displayWidth}"
+                        shortDesc="#{bindings.OmcgClStartDate.hints.tooltip}" id="id1">
+            <f:validator binding="#{bindings.OmcgClStartDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.OmcgClStartDate.format}"/>
+          </af:inputDate>
+          <af:inputDate value="#{bindings.OmcgClEndDate.inputValue}" label="#{bindings.OmcgClEndDate.hints.label}"
+                        required="#{bindings.OmcgClEndDate.hints.mandatory}"
+                        columns="#{bindings.OmcgClEndDate.hints.displayWidth}"
+                        shortDesc="#{bindings.OmcgClEndDate.hints.tooltip}" id="id2" rendered="false">
+            <f:validator binding="#{bindings.OmcgClEndDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.OmcgClEndDate.format}"/>
+          </af:inputDate>
+          <af:inputDate value="#{bindings.OmcgClLimitDate.inputValue}" label="#{bindings.OmcgClLimitDate.hints.label}"
+                        required="#{bindings.OmcgClLimitDate.hints.mandatory}"
+                        columns="#{bindings.OmcgClLimitDate.hints.displayWidth}"
+                        shortDesc="#{bindings.OmcgClLimitDate.hints.tooltip}" id="id3">
+            <f:validator binding="#{bindings.OmcgClLimitDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.OmcgClLimitDate.format}"/>
+          </af:inputDate>
+          <af:inputDate value="#{bindings.OmcgClSysDate.inputValue}" label="#{bindings.OmcgClSysDate.hints.label}"
+                        required="#{bindings.OmcgClSysDate.hints.mandatory}"
+                        columns="#{bindings.OmcgClSysDate.hints.displayWidth}"
+                        shortDesc="#{bindings.OmcgClSysDate.hints.tooltip}" id="id4" rendered="false">
+            <f:validator binding="#{bindings.OmcgClSysDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.OmcgClSysDate.format}"/>
+          </af:inputDate>
+          <af:inputDate value="#{bindings.OmcgClApprovedFrom.inputValue}"
+                        label="#{bindings.OmcgClApprovedFrom.hints.label}"
+                        required="#{bindings.OmcgClApprovedFrom.hints.mandatory}"
+                        columns="#{bindings.OmcgClApprovedFrom.hints.displayWidth}"
+                        shortDesc="#{bindings.OmcgClApprovedFrom.hints.tooltip}" id="id5" rendered="false">
+            <f:validator binding="#{bindings.OmcgClApprovedFrom.validator}"/>
+            <af:convertDateTime pattern="#{bindings.OmcgClApprovedFrom.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.OmcgClRate.inputValue}" label="#{bindings.OmcgClRate.hints.label}"
+                        required="#{bindings.OmcgClRate.hints.mandatory}"
+                        columns="#{bindings.OmcgClRate.hints.displayWidth}"
+                        maximumLength="#{bindings.OmcgClRate.hints.precision}"
+                        shortDesc="#{bindings.OmcgClRate.hints.tooltip}" id="it2" rendered="true" autoSubmit="true">
+            <f:validator binding="#{bindings.OmcgClRate.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcgClRate.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.OmcgClVolume.inputValue}" label="#{bindings.OmcgClVolume.hints.label}"
+                        required="#{bindings.OmcgClVolume.hints.mandatory}"
+                        columns="#{bindings.OmcgClVolume.hints.displayWidth}"
+                        maximumLength="#{bindings.OmcgClVolume.hints.precision}"
+                        shortDesc="#{bindings.OmcgClVolume.hints.tooltip}" id="it3" autoSubmit="true">
+            <f:validator binding="#{bindings.OmcgClVolume.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcgClVolume.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.OmcgClAmount.inputValue}" label="#{bindings.OmcgClAmount.hints.label}"
+                        required="#{bindings.OmcgClAmount.hints.mandatory}"
+                        columns="#{bindings.OmcgClAmount.hints.displayWidth}"
+                        maximumLength="#{bindings.OmcgClAmount.hints.precision}"
+                        shortDesc="#{bindings.OmcgClAmount.hints.tooltip}" id="it4">
+            <f:validator binding="#{bindings.OmcgClAmount.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcgClAmount.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.OmcgClDetail.inputValue}" label="#{bindings.OmcgClDetail.hints.label}"
+                        required="#{bindings.OmcgClDetail.hints.mandatory}"
+                        columns="#{bindings.OmcgClDetail.hints.displayWidth}"
+                        maximumLength="#{bindings.OmcgClDetail.hints.precision}"
+                        shortDesc="#{bindings.OmcgClDetail.hints.tooltip}" id="it5">
+            <f:validator binding="#{bindings.OmcgClDetail.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.OmcgClDevDetail.inputValue}" label="#{bindings.OmcgClDevDetail.hints.label}"
+                        required="#{bindings.OmcgClDevDetail.hints.mandatory}"
+                        columns="#{bindings.OmcgClDevDetail.hints.displayWidth}"
+                        maximumLength="#{bindings.OmcgClDevDetail.hints.precision}"
+                        shortDesc="#{bindings.OmcgClDevDetail.hints.tooltip}" id="it6" rendered="false">
+            <f:validator binding="#{bindings.OmcgClDevDetail.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.OmcgClPartyIdFk.inputValue}" label="#{bindings.OmcgClPartyIdFk.hints.label}"
+                        required="#{bindings.OmcgClPartyIdFk.hints.mandatory}"
+                        columns="#{bindings.OmcgClPartyIdFk.hints.displayWidth}"
+                        maximumLength="#{bindings.OmcgClPartyIdFk.hints.precision}"
+                        shortDesc="#{bindings.OmcgClPartyIdFk.hints.tooltip}" id="it7" rendered="false">
+            <f:validator binding="#{bindings.OmcgClPartyIdFk.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.OmcgClPartyIdFk.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CoaActNumber.inputValue}" label="#{bindings.CoaActNumber.hints.label}"
+                        required="#{bindings.CoaActNumber.hints.mandatory}"
+                        columns="#{bindings.CoaActNumber.hints.displayWidth}"
+                        maximumLength="#{bindings.CoaActNumber.hints.precision}"
+                        shortDesc="#{bindings.CoaActNumber.hints.tooltip}" id="it8" readOnly="true">
+            <f:validator binding="#{bindings.CoaActNumber.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.CoaActNumber.format}"/>
+          </af:inputText>
+          <f:facet name="footer">
+            <af:panelGroupLayout layout="horizontal" id="pgl1">
+              <af:panelGroupLayout layout="horizontal" id="pgl3">
+                <af:button actionListener="#{bindings.First.execute}" disabled="#{!bindings.First.enabled}"
+                           partialSubmit="true" id="b1" icon="#{resource['images:first_hor_ena.png']}"/>
+                <af:button actionListener="#{bindings.Previous.execute}" disabled="#{!bindings.Previous.enabled}"
+                           partialSubmit="true" id="b2" icon="#{resource['images:previoustraversalarrow_ena.png']}"/>
+                <af:button actionListener="#{bindings.Next.execute}" disabled="#{!bindings.Next.enabled}"
+                           partialSubmit="true" id="b3" icon="#{resource['images:nexttraversalarrow_ena.png']}"/>
+                <af:button actionListener="#{bindings.Last.execute}" disabled="#{!bindings.Last.enabled}"
+                           partialSubmit="true" id="b4" icon="#{resource['images:last_hor_ena.png']}"/>
+                <af:outputText value="---------" id="ot50"/>
+              </af:panelGroupLayout>
+              <af:button text="Submit" id="b5" actionListener="#{bindings.Commit.execute}"
+                         icon="#{resource['images:commit.png']}">
+                         <af:showPopupBehavior popupId="p1" triggerType="click"/>
+                                </af:button>
+              <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                         disabled="#{!bindings.CreateInsert.enabled}" id="b6" icon="#{resource['images:add.png']}"/>
+              <af:outputText value="--------------" id="ot60"/>
+              <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                         disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b7"
+                         icon="#{resource['images:rollback.png']}">
+                <af:resetActionListener/>
+              </af:button>
+              <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                                    <af:noteWindow id="nw1">
+                                            <b style="color:Maroon;">Submitted</b>
+                                    </af:noteWindow>
+                                </af:popup>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="second">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <af:table value="#{bindings.OmcGournalCreditLimitView1.collectionModel}" var="row"
+                  rows="#{bindings.OmcGournalCreditLimitView1.rangeSize}"
+                  emptyText="#{bindings.OmcGournalCreditLimitView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.OmcGournalCreditLimitView1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.OmcGournalCreditLimitView1.collectionModel.makeCurrent}"
+                  rowSelection="single" fetchSize="#{bindings.OmcGournalCreditLimitView1.rangeSize}"
+                  filterModel="#{bindings.OmcGournalCreditLimitView1Query.queryDescriptor}" filterVisible="true"
+                  queryListener="#{bindings.OmcGournalCreditLimitView1Query.processQuery}" varStatus="vs" id="t1"
+                  partialTriggers=":::b1 :::b2 :::b3 :::b4 :::b6 :::b5 :::b7" width="1200">
+          <af:column sortProperty="#{bindings.OmcGournalCreditLimitView1.hints.CoaActNumber.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.OmcGournalCreditLimitView1.hints.CoaActNumber.label}"
+                     id="c7" align="center" inlineStyle="text-align:left;">
+            <af:outputText value="#{row.CoaActNumber}"
+                           shortDesc="#{bindings.OmcGournalCreditLimitView1.hints.CoaActNumber.tooltip}" id="ot7">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.OmcGournalCreditLimitView1.hints.CoaActNumber.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.OmcGournalCreditLimitView1.hints.CoaName.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.OmcGournalCreditLimitView1.hints.CoaName.label}" id="c1"
+                     align="center" width="150" inlineStyle="text-align:left;">
+            <af:outputText value="#{row.CoaName}"
+                           shortDesc="#{bindings.OmcGournalCreditLimitView1.hints.CoaName.tooltip}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClStartDate.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClStartDate.label}"
+                     id="c2" align="center" width="120" inlineStyle="text-align:left;">
+            <f:facet name="filter">
+              <af:inputDate value="#{bindings.OmcGournalCreditLimitView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.OmcgClStartDate.value}"
+                            id="id6">
+                <af:convertDateTime pattern="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClStartDate.format}"/>
+              </af:inputDate>
+            </f:facet>
+            <af:outputText value="#{row.OmcgClStartDate}"
+                           shortDesc="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClStartDate.tooltip}" id="ot2">
+              <af:convertDateTime pattern="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClStartDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClLimitDate.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClLimitDate.label}"
+                     id="c3" inlineStyle="text-align:left;" align="center" width="120">
+            <f:facet name="filter">
+              <af:inputDate value="#{bindings.OmcGournalCreditLimitView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.OmcgClLimitDate.value}"
+                            id="id7">
+                <af:convertDateTime pattern="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClLimitDate.format}"/>
+              </af:inputDate>
+            </f:facet>
+            <af:outputText value="#{row.OmcgClLimitDate}"
+                           shortDesc="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClLimitDate.tooltip}" id="ot3">
+              <af:convertDateTime pattern="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClLimitDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClVolume.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClVolume.label}"
+                     id="c4" width="120" align="center" inlineStyle="text-align:right;">
+            <af:outputText value="#{row.OmcgClVolume}"
+                           shortDesc="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClVolume.tooltip}" id="ot4">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClVolume.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClAmount.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClAmount.label}"
+                     id="c5" inlineStyle="text-align:right;" width="120" align="center">
+            <af:outputText value="#{row.OmcgClAmount}"
+                           shortDesc="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClAmount.tooltip}" id="ot5">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClAmount.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClDetail.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClDetail.label}"
+                     id="c6" width="130" align="center" inlineStyle="text-align:left;">
+            <af:outputText value="#{row.OmcgClDetail}"
+                           shortDesc="#{bindings.OmcGournalCreditLimitView1.hints.OmcgClDetail.tooltip}" id="ot6"/>
+          </af:column>
+        </af:table>
+        <f:facet name="statusbar">
+          <af:toolbar id="t2">
+            <af:outputText value="MasTam" id="ot9" inlineStyle="color:Purple; font-size:large;"/>
+          </af:toolbar>
+        </f:facet>
+      </af:panelCollection>
+    </f:facet>
+  </af:panelSplitter>
+</ui:composition>
